@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6t0l273ot0t"]
+
+[ext_resource type="Script" uid="uid://cglfww4q07588" path="res://Scripts/snap_point.gd" id="1_pabsk"]
+
+[node name="SnapPoint" type="RayCast3D"]
+target_position = Vector3(0, 0, -5)
+collision_mask = 0
+debug_shape_custom_color = Color(0, 1, 0, 1)
+script = ExtResource("1_pabsk")

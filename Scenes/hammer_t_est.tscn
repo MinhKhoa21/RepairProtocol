@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://duysh31wxlxy2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lsy6v"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.155
+radial_segments = 7
+
+[sub_resource type="BoxMesh" id="BoxMesh_lsy6v"]
+size = Vector3(0.025, 0.065, 0.03)
+
+[node name="HammerTEst" type="Node3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.9999993, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.305342, 0.423438, -0.852916, -0.951923, 0.112538, -0.284916, -0.0246588, 0.898907, 0.437443, -0.03694, 0.0715859, -0.00283289)
+mesh = SubResource("CylinderMesh_lsy6v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.868291, 0.00541537, 0.496026, -0.0946682, 0.983371, 0.15498, -0.486938, -0.181526, 0.854364, 0.000319451, 0.0801485, 0.0676297)
+mesh = SubResource("BoxMesh_lsy6v")

@@ -1,0 +1,2 @@
+player size to garage: 1.42
+armIK influence: 0.518

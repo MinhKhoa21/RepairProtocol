@@ -1,0 +1,10 @@
+res://Scenes/pipe_puzzle.tscn
+res://ShaderMaterial/ship_ui.gdshader
+res://shader/PixelShader.gdshader
+res://Shaders/WaterPlaneNormal.tres
+res://Shaders/Water.tres
+res://model/Ship/ThrusterShader.gdshader
+res://shader/hologram.tres
+res://Scripts/pipe_puzzle.gd
+res://Scripts/Resources/rope_cell.gd
+res://Scripts/Resources/direction.gd

@@ -1,0 +1,2 @@
+extends MouseControl
+class_name RopeCell

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://85t6k4k75hud"]
+
+[ext_resource type="Script" uid="uid://ubvfhvsmxdsv" path="res://Scripts/pipe_puzzle.gd" id="1_1p65e"]
+
+[node name="LinePuzzle" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1p65e")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 5

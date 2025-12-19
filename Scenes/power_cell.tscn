@@ -1,0 +1,135 @@
+[gd_scene load_steps=11 format=3 uid="uid://ya3wrhlra5vn"]
+
+[ext_resource type="Script" uid="uid://brfx7d0f1fts6" path="res://Scripts/power_cell.gd" id="1_qwvy3"]
+[ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="2_qnfy6"]
+[ext_resource type="PackedScene" uid="uid://bt6t0l273ot0t" path="res://Scenes/snap_point.tscn" id="3_qnfy6"]
+[ext_resource type="PackedScene" uid="uid://df4p4t8qbhp8w" path="res://modelScene/shipParts/powercell.tscn" id="3_qpeyf"]
+
+[sub_resource type="Animation" id="Animation_qwvy3"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MovingPart:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qnfy6"]
+resource_name = "extract"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MovingPart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MovingPart:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.5708), Vector3(0, 0, 1.5708), Vector3(0, 0, 1.5708)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:freeze")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnfy6"]
+_data = {
+&"RESET": SubResource("Animation_qwvy3"),
+&"extract": SubResource("Animation_qnfy6")
+}
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qwvy3"]
+points = PackedVector3Array(0.25, 0.25, 0.75, 0.25, -0.25, 0.75, 0.25, 0.25, -0.75, -0.25, 0.25, 0.75, -0.25, -0.25, 0.75, 0.25, -0.25, -0.75, -0.25, 0.25, -0.75, -0.25, -0.25, -0.75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nrbxg"]
+size = Vector3(0.5, 0.5, 1.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qpeyf"]
+points = PackedVector3Array(0.25, 0.25, 0.75, 0.25, -0.25, 0.75, 0.25, 0.25, -0.75, -0.25, 0.25, 0.75, -0.25, -0.25, 0.75, 0.25, -0.25, -0.75, -0.25, 0.25, -0.75, -0.25, -0.25, -0.75)
+
+[node name="PowerCell" type="RigidBody3D" node_paths=PackedStringArray("holding_Sprite", "sprite", "i_area")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+collision_layer = 0
+freeze = true
+script = ExtResource("1_qwvy3")
+holding_Sprite = NodePath("HoldingSprite")
+sprite = NodePath("MovingPart/MeshInstance3D")
+i_area = NodePath("InteractArea")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qnfy6")
+}
+
+[node name="InteractArea" parent="." instance=ExtResource("2_qnfy6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+shape = SubResource("ConvexPolygonShape3D_qwvy3")
+
+[node name="MovingPart" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovingPart"]
+visible = false
+mesh = SubResource("BoxMesh_nrbxg")
+skeleton = NodePath("../..")
+
+[node name="Marker" type="Marker3D" parent="MovingPart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
+
+[node name="Powercell" parent="MovingPart" instance=ExtResource("3_qpeyf")]
+transform = Transform3D(-4.07, 0, -3.5581073e-07, 0, 4.07, 0, 3.5581073e-07, 0, -4.07, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_qpeyf")
+
+[node name="HoldingPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2496, -0.2496, 0)
+
+[node name="SnapPoint" parent="." instance=ExtResource("3_qnfy6")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.714286, 1.5)
+
+[node name="HoldingSprite" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.25, 0)
+visible = false
+mesh = SubResource("BoxMesh_nrbxg")
+skeleton = NodePath("../..")

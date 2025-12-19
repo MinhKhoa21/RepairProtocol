@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpvj50kcm3msx"]
+
+[ext_resource type="Script" uid="uid://bfhhebxehrwdn" path="res://Scripts/repair_point.gd" id="1_jnmjl"]
+
+[node name="RepairPoint" type="Area3D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_jnmjl")

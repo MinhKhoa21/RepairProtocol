@@ -1,0 +1,117 @@
+[gd_scene load_steps=24 format=3 uid="uid://c2ebkvnab70xa"]
+
+[ext_resource type="PackedScene" uid="uid://cx6tunadgsvk6" path="res://model/level/Garage.glb" id="1_yhf6j"]
+[ext_resource type="Texture2D" uid="uid://b07j57pbpo4qs" path="res://texture/OldFloorConcreteTexture.png" id="2_tewrc"]
+[ext_resource type="Texture2D" uid="uid://b0lac2ds602no" path="res://texture/OldConcreteWallTexture.png" id="3_j33fr"]
+[ext_resource type="Texture2D" uid="uid://bx3nub3mc7rfo" path="res://texture/SecondWallTexture.png" id="4_5q51s"]
+[ext_resource type="Texture2D" uid="uid://e3yk1r51uq5e" path="res://texture/rusted4.png" id="5_o7e7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4eycm"]
+albedo_texture = ExtResource("2_tewrc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkfcd"]
+albedo_texture = ExtResource("2_tewrc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7edo"]
+albedo_texture = ExtResource("3_j33fr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q453r"]
+albedo_texture = ExtResource("3_j33fr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07ssd"]
+albedo_texture = ExtResource("4_5q51s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erdyu"]
+albedo_texture = ExtResource("5_o7e7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_paoct"]
+albedo_texture = ExtResource("5_o7e7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmswc"]
+albedo_texture = ExtResource("4_5q51s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdbpa"]
+albedo_texture = ExtResource("5_o7e7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlgp5"]
+albedo_texture = ExtResource("4_5q51s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkd7j"]
+albedo_texture = ExtResource("4_5q51s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wd42f"]
+albedo_texture = ExtResource("4_5q51s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7dqb"]
+albedo_texture = ExtResource("3_j33fr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5gtn"]
+albedo_texture = ExtResource("3_j33fr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixpvj"]
+albedo_texture = ExtResource("5_o7e7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pt6x8"]
+albedo_texture = ExtResource("5_o7e7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4u2p"]
+albedo_texture = ExtResource("5_o7e7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bynyn"]
+albedo_texture = ExtResource("5_o7e7d")
+
+[node name="Garage" instance=ExtResource("1_yhf6j")]
+
+[node name="Cube" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_4eycm")
+
+[node name="Cube_001" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_lkfcd")
+
+[node name="Cube_003" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_c7edo")
+
+[node name="Cube_002" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_q453r")
+
+[node name="Cube_004" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_07ssd")
+
+[node name="Cube_005" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_erdyu")
+
+[node name="Cube_006" parent="." index="6"]
+material_override = SubResource("StandardMaterial3D_paoct")
+
+[node name="Cube_007" parent="." index="7"]
+material_override = SubResource("StandardMaterial3D_vmswc")
+
+[node name="Cube_008" parent="." index="8"]
+material_override = SubResource("StandardMaterial3D_gdbpa")
+
+[node name="Cube_010" parent="." index="9"]
+material_override = SubResource("StandardMaterial3D_nlgp5")
+
+[node name="Cube_009" parent="." index="10"]
+material_override = SubResource("StandardMaterial3D_dkd7j")
+
+[node name="Cube_011" parent="." index="11"]
+material_override = SubResource("StandardMaterial3D_wd42f")
+
+[node name="Cube_012" parent="." index="12"]
+material_override = SubResource("StandardMaterial3D_u7dqb")
+
+[node name="Cube_013" parent="." index="13"]
+material_override = SubResource("StandardMaterial3D_m5gtn")
+
+[node name="Cube_014" parent="." index="14"]
+material_override = SubResource("StandardMaterial3D_ixpvj")
+
+[node name="Cube_015" parent="." index="15"]
+material_override = SubResource("StandardMaterial3D_pt6x8")
+
+[node name="Cube_016" parent="." index="16"]
+material_override = SubResource("StandardMaterial3D_y4u2p")
+
+[node name="Cube_017" parent="." index="17"]
+material_override = SubResource("StandardMaterial3D_bynyn")

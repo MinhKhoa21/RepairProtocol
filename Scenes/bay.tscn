@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cscai7crhbaml"]
+
+[ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="1_jyss4"]
+[ext_resource type="PackedScene" uid="uid://5bybde5xq8dg" path="res://Character/player_controller.tscn" id="2_6b1xc"]
+[ext_resource type="PackedScene" uid="uid://85t6k4k75hud" path="res://Scenes/pipe_puzzle.tscn" id="3_6b1xc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wgb56"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dc6q0"]
+points = PackedVector3Array(-25, -0.5, -25, -25, 0.5, -25, 25, -0.5, -25, -25, -0.5, 25, -25, 0.5, 25, 25, 0.5, -25, 25, -0.5, 25, 25, 0.5, 25)
+
+[node name="Bay" type="Node3D"]
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_wgb56")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_dc6q0")
+
+[node name="shipver2" parent="." instance=ExtResource("1_jyss4")]
+
+[node name="Player_Controller" parent="." instance=ExtResource("2_6b1xc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="LinePuzzle" parent="." instance=ExtResource("3_6b1xc")]

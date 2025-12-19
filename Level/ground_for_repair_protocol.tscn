@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4lkp273v3aas"]
+
+[ext_resource type="PackedScene" uid="uid://dfp8pw3nqr3vq" path="res://model/level/GroundForRepairProtocol.glb" id="1_pcodb"]
+[ext_resource type="Texture2D" uid="uid://bqoe8qxnd6x2j" path="res://texture/MeteorTexture2.png" id="2_2lnc7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8he2k"]
+cull_mode = 2
+albedo_texture = ExtResource("2_2lnc7")
+
+[node name="GroundForRepairProtocol" instance=ExtResource("1_pcodb")]
+
+[node name="Ground " parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_8he2k")

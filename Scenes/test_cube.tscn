@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8lxoac4yih74"]
+
+[ext_resource type="Script" uid="uid://bjtch1qoadqap" path="res://Scripts/test_cube.gd" id="1_greu4"]
+[ext_resource type="PackedScene" uid="uid://d05a6rjfpacei" path="res://Scenes/pipe_puzz.tscn" id="1_vlink"]
+[ext_resource type="Script" uid="uid://b2r5q0wsi4buj" path="res://Scripts/cube_i.gd" id="3_greu4"]
+[ext_resource type="PackedScene" uid="uid://cpgcyxvqaaca2" path="res://Scenes/pipe_puzzle.tscn" id="4_m5mef"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5mef"]
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhn1u"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_greu4"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="TestCube" type="RigidBody3D"]
+script = ExtResource("1_greu4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_m5mef")
+mesh = SubResource("BoxMesh_bhn1u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_greu4")
+
+[node name="InteractArea" parent="." node_paths=PackedStringArray("puz") instance=ExtResource("1_vlink")]
+script = ExtResource("3_greu4")
+puz = NodePath("Control2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+shape = SubResource("ConvexPolygonShape3D_greu4")
+
+[node name="Control2" parent="InteractArea" instance=ExtResource("4_m5mef")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
+light_energy = 20.0
+omni_range = 8.0

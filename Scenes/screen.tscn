@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bni504qjr31br"]
+
+[ext_resource type="Script" uid="uid://cde47yrt8wq0f" path="res://Scripts/screen.gd" id="1_fq6pb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fq6pb"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Screen" type="Sprite3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+texture = SubResource("ViewportTexture_fq6pb")
+script = ExtResource("1_fq6pb")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Container" type="VBoxContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="SubViewport/Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "U suck"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="SubViewport/Container"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_font_sizes/font_size = 50
+alignment = 1
+max_length = 20
+context_menu_enabled = false
+emoji_menu_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+select_all_on_focus = true
+caret_blink = true
+text_direction = 1

@@ -1,0 +1,26 @@
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://2u533a41d2q8"]
+
+[sub_resource type="VisualShaderNodeBooleanConstant" id="VisualShaderNodeBooleanConstant_3dhhb"]
+constant = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// BooleanConstant:3
+	bool n_out3p0 = true;
+
+
+// Output:0
+	COLOR.a = (n_out3p0 ? 1.0 : 0.0);
+
+
+}
+"
+nodes/vertex/3/node = SubResource("VisualShaderNodeBooleanConstant_3dhhb")
+nodes/vertex/3/position = Vector2(60, 380)
+nodes/vertex/connections = PackedInt32Array(3, 0, 0, 7)

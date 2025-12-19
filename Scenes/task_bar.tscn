@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bvwltwp05brp7"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+disabled = true
+
+[node name="TaskName" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Task name."
