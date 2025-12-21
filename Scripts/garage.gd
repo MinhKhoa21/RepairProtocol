@@ -43,6 +43,8 @@ func perform_landing():
 func stop_ground_smoke():
 	for p in ground_smokes:
 		p.emitting = false
+	Watcher.cargo.clear()
+	Watcher.cargo.append({"ship_hologram":ship_root})
 
 func play_push_anims():
 	if "thrusters" in ship_root:

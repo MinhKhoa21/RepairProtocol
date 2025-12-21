@@ -7,7 +7,12 @@ var game_state_watcher:int = 0:
 signal game_state_changed(_int:int)
 signal action_ended
 signal hand_swapped(_item:Item)
-var cargo:Array
+signal cargo_assigned
+var cargo:Array:
+	set = set_cargo
+func set_cargo(a):
+	cargo = a
+	cargo_assigned.emit()
 var right_hand:Node3D
 var carry:Node3D
 var player:Player
@@ -16,6 +21,7 @@ var tool_nodes:Array[Node] = []
 var current_ship:Vehicle
 var ship_in_queue:Array[Vehicle]
 var level:Level
+var player_cam:Camera3D
 
 func _ready() -> void:
 	GState.play()

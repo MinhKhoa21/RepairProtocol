@@ -10,7 +10,7 @@ var fuel:int = 2
 @export var grid_size:Vector2i = Vector2i(5, 5)
 @export var cell_size:Vector2 = Vector2(64, 64)
 #var grid:Array[Point2]
-var grid:Array[Array] #[grid_position, is_check_point, direction, is_head, is_traveled, p_line]
+var grid:Array[Array] #[grid_position, is_check_point, route_direction, is_head, is_traveled, p_line]
 var grid_dict:Dictionary[Vector2i, Array]
 const p_pos = 0
 const p_checkpoint = 1#bool
@@ -19,6 +19,7 @@ const p_head = 3#bool
 const p_traveled = 4#bool
 const p_line = 5#direction
 var draw_queue:Array = []
+var drew:Array = []
 var prev_point:Array
 
 func _ready() -> void:
@@ -72,34 +73,56 @@ func grid_ui_gen():
 		var _control:MouseControl = MouseControl.new()
 		set_size_.call(_control, cell_size)
 		_control.pressed.connect(func(a):
-			if i[p_head]:
+			if a == MOUSE_BUTTON_LEFT && i[p_head]:
 				can_draw = true
-				draw_queue.append(_control)
+				if !drew.has(_control): draw_queue.append(_control)
+			elif a == MOUSE_BUTTON_RIGHT && cell_to_point(_control)[p_checkpoint]:
+				var point3 = cell_to_point(_control)
+				point3[p_route].rotate(false)
+				grid_ui_update()
 			)
 		_control.released.connect(func(a):
+			if !can_draw || a == MOUSE_BUTTON_RIGHT: return
 			can_draw = false
-			var i2 = draw_queue.pop_back()
-			var point2 = cell_to_point(i2)
-			while i2 && !point2[p_checkpoint]:
-				point2[p_head] = false
-				point2[p_line] = null
-				i2 = draw_queue.pop_back()
-				point2 = cell_to_point(i2)
-				point2[p_head] = true
+			var i2
+			var last_pos
+			var last_point
+			var vector_to_clear_dir = func(point, from_vec:Vector2i, to_vec:Vector2i):
+				match sign(to_vec - from_vec):
+					Vector2i(0, -1): point[p_line].dir &= ~Direction.left
+					Vector2i(-1, 0): point[p_line].dir &= ~Direction.up
+					Vector2i(0, 1): point[p_line].dir &= ~Direction.right
+					Vector2i(1, 0): point[p_line].dir &= ~Direction.down
+
+			while !draw_queue.is_empty():
+				last_point = draw_queue.pop_back()
+				i2 = cell_to_point(last_point)
+				if i2[p_checkpoint]: break
+				last_pos = i2[p_pos]
+				ArrayKit.replace_tail(i2, 3, [false, false, null])
 				fuel += 1
-			if !draw_queue.is_empty(): cell_to_point(draw_queue[-1])[p_head] = true
+			if i2 && i2[p_checkpoint]:
+				i2[p_head] = true
+				if last_pos: vector_to_clear_dir.call(i2, i2[p_pos], last_pos)
+			if !draw_queue.is_empty(): ArrayKit.append_unique(drew, draw_queue)
+			#ArrayKit.append_unique(drew, [last_point])
 			draw_queue.clear()
 			grid_ui_update()
+			print(drew.map(func(x): return cell_to_point(x)[p_pos]))
 			)
 		_control.mouse_entered.connect(func():
-			if fuel > 0 && can_draw && !draw_queue.has(_control):
-				fuel -= 1
+			if fuel > 0 && can_draw && !draw_queue.has(_control)\
+			 && !cell_to_point(_control)[p_traveled]:
 				var last_point = cell_to_point(draw_queue[-1])
 				var cur_point = cell_to_point(_control)
 				var dir:Vector2i = cur_point[p_pos] - last_point[p_pos]
+				if last_point[p_checkpoint]:
+					pass
+				fuel -= 1
 				if cur_point[p_checkpoint]: fuel += 2
-				last_point[p_head] = false
-				cur_point[p_head] = true
+				#last_point[p_head] = false
+				#cur_point[p_head] = true
+				cur_point[p_traveled] = true
 				draw_queue.append(_control)
 				match dir:
 					Vector2i(0, -1):#left
@@ -209,3 +232,11 @@ func grid_snap() -> Vector2i:
 func cell_to_point(_con:Control):
 	var index = grid_container.get_children().find(_con)
 	return grid[index]
+
+func pos_to_dir(from_pos:Vector2i, to_pos:Vector2i) -> int:
+	match sign(to_pos-from_pos):
+		Vector2i(0, -1): return Direction.left
+		Vector2i(-1, 0): return Direction.up
+		Vector2i(0, 1): return Direction.right
+		Vector2i(1, 0): return Direction.down
+		_:return 0

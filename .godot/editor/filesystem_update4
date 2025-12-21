@@ -1,3 +1,4 @@
+res://Scripts/pipe_puzzle.gd
 res://Scenes/pipe_puzzle.tscn
 res://ShaderMaterial/ship_ui.gdshader
 res://shader/PixelShader.gdshader
@@ -5,6 +6,15 @@ res://Shaders/WaterPlaneNormal.tres
 res://Shaders/Water.tres
 res://model/Ship/ThrusterShader.gdshader
 res://shader/hologram.tres
-res://Scripts/pipe_puzzle.gd
-res://Scripts/Resources/rope_cell.gd
-res://Scripts/Resources/direction.gd
+res://Scripts/Resources/array_kit.gd
+res://Scripts/tool_script.gd
+res://Level/level.tscn
+res://Scenes/test_control.tscn
+res://Scenes/test_cam.gd
+res://Scenes/scanner_control.tscn
+res://Autoloads/watcher.gd
+res://Character/player_controller.tscn
+res://Character/Player/player.gd
+res://Scripts/scanner_cam.gd
+res://Scripts/scanner_world.gd
+res://Scripts/garage.gd

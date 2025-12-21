@@ -1,5 +1,10 @@
-MeshInstance3D
 RayCast3D
+SpotLight3D
+Camera3D
+SubViewport
+SubViewportContainer
+GridContainer
+MeshInstance3D
 Marker3D
 OmniLight3D
 PanelContainer
@@ -7,8 +12,3 @@ Control
 TextureRect
 Container
 Sprite2D
-GridContainer
-Node3D
-DirectionalLight3D
-Camera3D
-SubViewport

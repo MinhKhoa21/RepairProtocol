@@ -21,6 +21,7 @@ func _ready() -> void:
 	super()
 	HotBar.populate_hot_bar(inventory)
 	Watcher.player = self
+	Watcher.player_cam = fps_cam
 	Watcher.carry = carry_marker
 	Watcher.right_hand = holding_bone
 	#Watcher.action_ended.connect(func(): hit = false)
@@ -89,7 +90,8 @@ func display_pointer() -> bool:
 	if look_ray.is_colliding() && look_ray.get_collider() != null && GState.is_playing():
 		pointer_label.text = look_ray.get_collider().par.name
 		return true
-	else: pointer_label.text = ""
+	else:
+		pointer_label.text = ""
 	return false
 
 func display_cd():
