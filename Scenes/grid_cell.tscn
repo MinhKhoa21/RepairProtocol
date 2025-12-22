@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy4w15xefe40a"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o0mm6"]
+size = Vector3(0.8, 0.8, 0.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a7rwb"]
+size = Vector3(0.2, 0.5, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vqexn"]
+top_radius = 0.07
+bottom_radius = 0.07
+height = 0.9
+
+[node name="GridCell" type="Node3D"]
+
+[node name="Checkpoint" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o0mm6")
+
+[node name="Route" type="Node3D" parent="."]
+
+[node name="RouteLeft" type="MeshInstance3D" parent="Route"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+mesh = SubResource("BoxMesh_a7rwb")
+skeleton = NodePath("../..")
+
+[node name="RouteUp" type="MeshInstance3D" parent="Route"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_a7rwb")
+skeleton = NodePath("../..")
+
+[node name="RouteRight" type="MeshInstance3D" parent="Route"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+mesh = SubResource("BoxMesh_a7rwb")
+skeleton = NodePath("../..")
+
+[node name="RouteDown" type="MeshInstance3D" parent="Route"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, -0.4, 0)
+mesh = SubResource("BoxMesh_a7rwb")
+skeleton = NodePath("../..")
+
+[node name="Line" type="Node3D" parent="."]
+
+[node name="LineLeft" type="MeshInstance3D" parent="Line"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.4, 0, 0)
+mesh = SubResource("CylinderMesh_vqexn")
+skeleton = NodePath("../..")
+
+[node name="ConnectPoint" type="Marker3D" parent="Line/LineLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)
+
+[node name="LineUp" type="MeshInstance3D" parent="Line"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_vqexn")
+skeleton = NodePath("../..")
+
+[node name="ConnectPoint" type="Marker3D" parent="Line/LineUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)
+
+[node name="LineRight" type="MeshInstance3D" parent="Line"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.4, 0, 0)
+mesh = SubResource("CylinderMesh_vqexn")
+skeleton = NodePath("../..")
+
+[node name="ConnectPoint" type="Marker3D" parent="Line/LineRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)
+
+[node name="LineDown" type="MeshInstance3D" parent="Line"]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, -0.4, 0)
+mesh = SubResource("CylinderMesh_vqexn")
+skeleton = NodePath("../..")
+
+[node name="ConnectPoint" type="Marker3D" parent="Line/LineDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)

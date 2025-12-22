@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg1tl7uy6bd4f"]
+
+[ext_resource type="Script" uid="uid://c0y6ni2avxqy4" path="res://Scripts/pipe_puzzle_3D.gd" id="1_o35k7"]
+
+[node name="PipePuzzle3D" type="Node3D"]
+script = ExtResource("1_o35k7")
+grid_size = Vector2i(4, 5)
+
+[node name="Points" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+gizmo_extents = 1.0

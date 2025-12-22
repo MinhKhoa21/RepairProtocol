@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cscai7crhbaml"]
+[gd_scene load_steps=5 format=3 uid="uid://cscai7crhbaml"]
 
 [ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="1_jyss4"]
 [ext_resource type="PackedScene" uid="uid://5bybde5xq8dg" path="res://Character/player_controller.tscn" id="2_6b1xc"]
-[ext_resource type="PackedScene" uid="uid://85t6k4k75hud" path="res://Scenes/pipe_puzzle.tscn" id="3_6b1xc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wgb56"]
 size = Vector3(50, 1, 50)
@@ -24,9 +23,7 @@ shape = SubResource("ConvexPolygonShape3D_dc6q0")
 [node name="shipver2" parent="." instance=ExtResource("1_jyss4")]
 
 [node name="Player_Controller" parent="." instance=ExtResource("2_6b1xc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
-
-[node name="LinePuzzle" parent="." instance=ExtResource("3_6b1xc")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://kcd4vy0cuttn"]
+[gd_scene load_steps=33 format=3 uid="uid://kcd4vy0cuttn"]
 
 [ext_resource type="PackedScene" uid="uid://5bybde5xq8dg" path="res://Character/player_controller.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://dt0tmw6s7on5b" path="res://Scripts/garage.gd" id="1_wqlfs"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cr0f1nnopyk3m" path="res://UI/ComputerUI/ComputerUI.tscn" id="12_i5g78"]
 [ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="12_q47le"]
 [ext_resource type="Texture2D" uid="uid://nmolea6k5cyd" path="res://trail/particle_sprite_smoke.webp" id="13_q47le"]
+[ext_resource type="PackedScene" uid="uid://dg1tl7uy6bd4f" path="res://Scenes/pipe_puzzle_3d.tscn" id="14_dx36h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yfk6w"]
 size = Vector3(20, 0.5, 20)
@@ -201,3 +202,7 @@ one_shot = true
 collision_base_size = 0.1
 process_material = SubResource("ParticleProcessMaterial_l5n2q")
 draw_pass_1 = SubResource("QuadMesh_jghi6")
+
+[node name="PipePuzzle3D" parent="." instance=ExtResource("14_dx36h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -4)
+size_mod = 0.5

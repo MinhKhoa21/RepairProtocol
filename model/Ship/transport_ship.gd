@@ -1,12 +1,6 @@
 extends Vehicle
 
 @onready var ani_tree: AnimationTree = $AnimationTree
-#var front_door_left_os:AnimationNodeOneShot
-#var front_door_right_os:AnimationNodeOneShot
-#var rear_door_left_1_os:AnimationNodeOneShot
-#var rear_door_left_2_os:AnimationNodeOneShot
-#var rear_door_right_1_os:AnimationNodeOneShot
-#var rear_door_right_2_os:AnimationNodeOneShot
 @export var one_shot_name:Array[StringName]
 @export var state_machine_name:Array[StringName]
 @export var ias:Array[InteractArea]
