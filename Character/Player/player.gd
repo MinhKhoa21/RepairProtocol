@@ -19,6 +19,7 @@ var hit:bool = false
 
 func _ready() -> void:
 	super()
+	Watcher.input_hud.append($Control)
 	HotBar.populate_hot_bar(inventory)
 	Watcher.player = self
 	Watcher.player_cam = fps_cam

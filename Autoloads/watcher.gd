@@ -22,6 +22,7 @@ var current_ship:Vehicle
 var ship_in_queue:Array[Vehicle]
 var level:Level
 var player_cam:Camera3D
+var input_hud:Array[Control]
 
 func _ready() -> void:
 	GState.play()
@@ -43,21 +44,22 @@ func _input(event: InputEvent) -> void:
 		if GState.is_playing(): GState.pause()
 		else: GState.play()
 	
-	if event.is_action_pressed("slot1"):
-		HotBar.select(0)
-		hand_swapped.emit()
-	if event.is_action_pressed("slot2"):
-		HotBar.select(1)
-		hand_swapped.emit()
-	if event.is_action_pressed("slot3"):
-		HotBar.select(2)
-		hand_swapped.emit()
-	if event.is_action_pressed("slot4"):
-		HotBar.select(3)
-		hand_swapped.emit()
-	if event.is_action_pressed("slot5"):
-		HotBar.select(4)
-		hand_swapped.emit()
+	if GState.is_playing():
+		if event.is_action_pressed("slot1"):
+			HotBar.select(0)
+			hand_swapped.emit()
+		if event.is_action_pressed("slot2"):
+			HotBar.select(1)
+			hand_swapped.emit()
+		if event.is_action_pressed("slot3"):
+			HotBar.select(2)
+			hand_swapped.emit()
+		if event.is_action_pressed("slot4"):
+			HotBar.select(3)
+			hand_swapped.emit()
+		if event.is_action_pressed("slot5"):
+			HotBar.select(4)
+			hand_swapped.emit()
 
 func update_game_state():
 	match GState.game_state:
@@ -76,3 +78,13 @@ func tool_cache():
 
 func start_game():
 	pass
+
+func absolute_focus(control:Control):
+	if !input_hud.has(control):
+		input_hud.append(control)
+	for i:Control in input_hud:
+		if i != control: i.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func neutralize_control():
+	for i:Control in input_hud:
+		i.mouse_filter = Control.MOUSE_FILTER_STOP

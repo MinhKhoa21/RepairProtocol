@@ -1673,7 +1673,7 @@ mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
 
 [node name="FDB_H1_L1" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.538309)
+transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.882179)
 material_override = SubResource("StandardMaterial3D_48n33")
 mesh = SubResource("ArrayMesh_yl2rn")
 skeleton = NodePath("")
@@ -1686,7 +1686,7 @@ transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504
 shape = SubResource("ConvexPolygonShape3D_h6h2g")
 
 [node name="FDB_H1_L2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.8646)
+transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
 material_override = SubResource("StandardMaterial3D_alxw5")
 mesh = SubResource("ArrayMesh_vruif")
 skeleton = NodePath("")
@@ -1794,11 +1794,11 @@ parameters/Others/FrontDoorRight/active = false
 parameters/Others/FrontDoorRight/internal_active = false
 parameters/Others/FrontDoorRight/request = 0
 parameters/Others/MainTimeScale/scale = 1.0
-parameters/Others/RearDoorLeft1/active = true
-parameters/Others/RearDoorLeft1/internal_active = true
+parameters/Others/RearDoorLeft1/active = false
+parameters/Others/RearDoorLeft1/internal_active = false
 parameters/Others/RearDoorLeft1/request = 0
-parameters/Others/RearDoorLeft2/active = true
-parameters/Others/RearDoorLeft2/internal_active = true
+parameters/Others/RearDoorLeft2/active = false
+parameters/Others/RearDoorLeft2/internal_active = false
 parameters/Others/RearDoorLeft2/request = 0
 parameters/Others/RearDoorRight1/active = false
 parameters/Others/RearDoorRight1/internal_active = false
@@ -1815,5 +1815,5 @@ transform = Transform3D(-1.3987644e-08, 0, 0.32, 0, 0.32, 0, -0.32, 0, -1.398764
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028211176, 0.27220893)
 
 [node name="PipePuzzle3D" parent="." instance=ExtResource("7_vywj1")]
-transform = Transform3D(1.0000001, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1.0000001, 1.959032, 1.1670909, -0.8382008)
+transform = Transform3D(-1.0331604e-07, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -1.0331604e-07, 1.959032, 1.1670909, -0.8382008)
 grid_size = Vector2i(4, 4)

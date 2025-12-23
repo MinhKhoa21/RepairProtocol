@@ -1,0 +1,152 @@
+[gd_scene load_steps=2 format=3 uid="uid://c33kbg5i8lyn3"]
+
+[ext_resource type="Script" uid="uid://b6vgbf3bsg77x" path="res://Scripts/command_prompt.gd" id="1_jol3t"]
+
+[node name="CommandPrompt" type="Node"]
+script = ExtResource("1_jol3t")
+
+[node name="Control" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(700, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Close" type="Button" parent="Control"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Close"
+
+[node name="Back" type="Button" parent="Control"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(0, 440)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Command Prompt"
+
+[node name="Control" type="Control" parent="Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/VBoxContainer2/Control"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="Nodes" type="VBoxContainer" parent="Control/VBoxContainer2/Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="EditContainer" type="VBoxContainer" parent="Control/VBoxContainer2/Control"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 120.0
+grow_horizontal = 2
+size_flags_vertical = 0
+
+[node name="NodeName" type="Label" parent="Control/VBoxContainer2/Control/EditContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Node name"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="GPos" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Global position"
+
+[node name="X" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "x"
+
+[node name="XEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Y" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "y"
+
+[node name="YEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Z" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "z"
+
+[node name="ZEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Move" type="Button" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Move"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="GRot" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "Global rotation"
+
+[node name="X" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "x"
+
+[node name="XEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Y" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "y"
+
+[node name="YEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Z" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "z"
+
+[node name="ZEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+placeholder_text = "0"
+
+[node name="Spin" type="Button" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "Spin"

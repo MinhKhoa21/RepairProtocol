@@ -17,6 +17,7 @@ anchor_bottom = 1.0
 offset_top = -60.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("1_5c38u")
 
 [node name="Slot0" type="Control" parent="."]
