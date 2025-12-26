@@ -1,3 +1,4 @@
+StandardMaterial3D
 AtlasTexture
 VisualShader
 Tool

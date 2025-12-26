@@ -124,6 +124,7 @@ func select_node():
 	$Control/VBoxContainer2/Control/EditContainer.visible = false
 
 func set_edit():
+	if selected_node is not Node3D: return
 	pos_x.placeholder_text = "%s"%truncate(selected_node.global_position.x, 2)
 	pos_y.placeholder_text = "%s"%truncate(selected_node.global_position.y, 2)
 	pos_z.placeholder_text = "%s"%truncate(selected_node.global_position.z, 2)

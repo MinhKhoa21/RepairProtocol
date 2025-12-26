@@ -36,7 +36,7 @@ func _ready() -> void:
 	#$AnimationTree.sta
 
 func _process(delta: float) -> void:
-	fps_cam.process_mode = ReferKit.flow(GState.game_state, [GState.gstate_enum.INSPECTING, GState.gstate_enum.PLAYING], [Node.PROCESS_MODE_DISABLED, Node.PROCESS_MODE_INHERIT])
+	#fps_cam.process_mode = ReferKit.flow(GState.game_state, [GState.gstate_enum.INSPECTING, GState.gstate_enum.PLAYING], [Node.PROCESS_MODE_DISABLED, Node.PROCESS_MODE_INHERIT])
 	global_rotation.y = neck.global_rotation.y
 	#print(neck.global_position)
 
@@ -64,6 +64,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("tab"):
 		if GState.is_playing(): GState.check()
 		elif GState.is_checking(): GState.play()
+	#project_mouse(event)
 
 func movement_input():
 	if !GState.is_playing():

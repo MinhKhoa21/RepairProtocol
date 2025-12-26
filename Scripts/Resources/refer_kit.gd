@@ -27,7 +27,7 @@ static func retrieve(flag:String) -> Variant:
 
 ##For quick variable converter without creating a dictionary
 static func flow(variable:Variant, within:Array, to:Array) -> Variant:
-	if within.size() > to.size(): return null
+	if within.size() > to.size() || !within.has(variable): return null
 	return to[within.find(variable)]
 
 static func find_type(arr:Array, class_type:StringName):

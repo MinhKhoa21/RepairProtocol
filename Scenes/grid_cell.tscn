@@ -1,47 +1,109 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy4w15xefe40a"]
+[gd_scene load_steps=22 format=3 uid="uid://cy4w15xefe40a"]
+
+[ext_resource type="Texture2D" uid="uid://bx3nub3mc7rfo" path="res://texture/SecondWallTexture.png" id="1_jeuci"]
+[ext_resource type="Texture2D" uid="uid://bv2vs8vqlsp34" path="res://model/Tool/AnotherSciFiDeck/SciFiDeck_ImphenziaPalette01-256-Gradient.png" id="2_xb01k"]
+[ext_resource type="Texture2D" uid="uid://c2jnxaadih8al" path="res://shader/Univer2.png" id="3_ewbrc"]
+[ext_resource type="Texture2D" uid="uid://clp8ag7ej3cy7" path="res://Images/powered.jpg" id="4_xb01k"]
+[ext_resource type="Texture2D" uid="uid://6q0g4k578nkr" path="res://Images/unpowered.jpg" id="6_uqyw7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_xb01k"]
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqyw7"]
+albedo_texture = ExtResource("1_jeuci")
 
 [sub_resource type="BoxMesh" id="BoxMesh_o0mm6"]
-size = Vector3(0.8, 0.8, 0.8)
+size = Vector3(0.8, 0.8, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8fba"]
+albedo_texture = ExtResource("2_xb01k")
 
 [sub_resource type="BoxMesh" id="BoxMesh_a7rwb"]
-size = Vector3(0.2, 0.5, 0.5)
+size = Vector3(0.2, 0.5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_40vdx"]
+albedo_texture = ExtResource("3_ewbrc")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vqexn"]
 top_radius = 0.07
 bottom_radius = 0.07
 height = 0.9
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrekf"]
+albedo_texture = ExtResource("4_xb01k")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lvagh"]
+material = SubResource("StandardMaterial3D_lrekf")
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvagh"]
+albedo_texture = ExtResource("6_uqyw7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ishqw"]
+material = SubResource("StandardMaterial3D_lvagh")
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb01k"]
+albedo_texture = ExtResource("1_jeuci")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ewbrc"]
+size = Vector3(0.8, 0.8, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ishqw"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.32941177)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qj1kn"]
+material = SubResource("StandardMaterial3D_ishqw")
+size = Vector2(1.6, 1.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jeuci"]
+size = Vector3(1.6, 1.6, 0.3)
+
 [node name="GridCell" type="Node3D"]
 
-[node name="Checkpoint" type="MeshInstance3D" parent="."]
+[node name="Checkpoint" type="Node3D" parent="."]
+
+[node name="Core" type="MeshInstance3D" parent="Checkpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.151)
+mesh = SubResource("QuadMesh_xb01k")
+
+[node name="Box" type="MeshInstance3D" parent="Checkpoint"]
+material_override = SubResource("StandardMaterial3D_uqyw7")
 mesh = SubResource("BoxMesh_o0mm6")
+skeleton = NodePath("../..")
 
 [node name="Route" type="Node3D" parent="."]
 
 [node name="RouteLeft" type="MeshInstance3D" parent="Route"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+material_override = SubResource("StandardMaterial3D_l8fba")
 mesh = SubResource("BoxMesh_a7rwb")
 skeleton = NodePath("../..")
 
 [node name="RouteUp" type="MeshInstance3D" parent="Route"]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.4, 0)
+material_override = SubResource("StandardMaterial3D_l8fba")
 mesh = SubResource("BoxMesh_a7rwb")
 skeleton = NodePath("../..")
 
 [node name="RouteRight" type="MeshInstance3D" parent="Route"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+material_override = SubResource("StandardMaterial3D_l8fba")
 mesh = SubResource("BoxMesh_a7rwb")
 skeleton = NodePath("../..")
 
 [node name="RouteDown" type="MeshInstance3D" parent="Route"]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, -0.4, 0)
+material_override = SubResource("StandardMaterial3D_l8fba")
 mesh = SubResource("BoxMesh_a7rwb")
 skeleton = NodePath("../..")
 
 [node name="Line" type="Node3D" parent="."]
 
 [node name="LineLeft" type="MeshInstance3D" parent="Line"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.4, 0, 0)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.4, 0, 0)
+material_override = SubResource("StandardMaterial3D_40vdx")
 mesh = SubResource("CylinderMesh_vqexn")
 skeleton = NodePath("../..")
 
@@ -50,6 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)
 
 [node name="LineUp" type="MeshInstance3D" parent="Line"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+material_override = SubResource("StandardMaterial3D_40vdx")
 mesh = SubResource("CylinderMesh_vqexn")
 skeleton = NodePath("../..")
 
@@ -57,7 +120,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)
 
 [node name="LineRight" type="MeshInstance3D" parent="Line"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.4, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.4, 0, 0)
+material_override = SubResource("StandardMaterial3D_40vdx")
 mesh = SubResource("CylinderMesh_vqexn")
 skeleton = NodePath("../..")
 
@@ -66,8 +130,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)
 
 [node name="LineDown" type="MeshInstance3D" parent="Line"]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, -0.4, 0)
+material_override = SubResource("StandardMaterial3D_40vdx")
 mesh = SubResource("CylinderMesh_vqexn")
 skeleton = NodePath("../..")
 
 [node name="ConnectPoint" type="Marker3D" parent="Line/LineDown"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7484556e-08, 0.4, 0)
+
+[node name="Power" type="Node3D" parent="."]
+
+[node name="Powered" type="MeshInstance3D" parent="Power"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.151)
+mesh = SubResource("PlaneMesh_lvagh")
+skeleton = NodePath("../..")
+
+[node name="Unpowered" type="MeshInstance3D" parent="Power"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.151)
+mesh = SubResource("PlaneMesh_ishqw")
+skeleton = NodePath("../..")
+
+[node name="Box" type="MeshInstance3D" parent="Power"]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, -3.821371e-15, -1, 0, -8.742278e-08, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_xb01k")
+mesh = SubResource("BoxMesh_ewbrc")
+skeleton = NodePath("../..")
+
+[node name="Highlight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_qj1kn")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_jeuci")

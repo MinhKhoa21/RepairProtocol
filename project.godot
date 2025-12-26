@@ -123,6 +123,8 @@ move_down={
 
 3d_physics/layer_2="Player"
 3d_physics/layer_5="Interactable"
+3d_physics/layer_6="Exposure"
+3d_physics/layer_7="Puzzle"
 
 [rendering]
 

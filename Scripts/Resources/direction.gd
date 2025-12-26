@@ -43,3 +43,33 @@ func set_dir(a):
 	if has_up(): dir_arr[1] = true
 	if has_right(): dir_arr[2] = true
 	if has_down(): dir_arr[3] = true
+
+static func get_dir(from_point:Vector2i, to_point:Vector2i) -> int:
+	match to_point - from_point:
+		Vector2i(0, -1): return left
+		Vector2i(-1, 0): return up
+		Vector2i(0, 1): return right
+		Vector2i(1, 0): return down
+		_: return -2
+
+static func direct_rotate(_dir:int, _right:bool = true, times:int = 1):
+	for i in times:
+		if _right:
+			_dir = ((_dir >> 1) & 0b1111) | ((_dir & 1) << 3)
+		else:
+			_dir = ((_dir << 1) & 0b1111) | ((_dir >>3) & 1)
+
+static func I_gen() -> Direction:
+	var new_dir = Direction.new()
+	new_dir.dir = up | down
+	return new_dir
+
+static func L_gen() -> Direction:
+	var new_dir = Direction.new()
+	new_dir.dir = up | right
+	return new_dir
+
+static func T_gen() -> Direction:
+	var new_dir = Direction.new()
+	new_dir.dir = left | up | right
+	return new_dir

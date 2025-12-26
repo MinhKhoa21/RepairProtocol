@@ -1,12 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg1tl7uy6bd4f"]
+[gd_scene load_steps=5 format=3 uid="uid://dg1tl7uy6bd4f"]
 
 [ext_resource type="Script" uid="uid://c0y6ni2avxqy4" path="res://Scripts/pipe_puzzle_3D.gd" id="1_o35k7"]
+[ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="2_vmdyy"]
 
-[node name="PipePuzzle3D" type="Node3D"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_o35k7"]
+size = Vector2(6.4, 6.4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_12r8w"]
+points = PackedVector3Array(-3.2, 0, -3.2, -3.2, 0, 3.2, 3.2, 0, -3.2, 3.2, 0, 3.2)
+
+[node name="PipePuzzle3D" type="Node3D" node_paths=PackedStringArray("i_area")]
 script = ExtResource("1_o35k7")
-grid_size = Vector2i(4, 5)
+grid_size = Vector2i(4, 4)
+i_area = NodePath("InteractArea")
 
 [node name="Points" type="Node3D" parent="."]
 
 [node name="Marker3D" type="Marker3D" parent="."]
 gizmo_extents = 1.0
+
+[node name="Boardholder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, -1, 0, 1, -5.9604645e-08, 2.5, -2.5, 0)
+mesh = SubResource("PlaneMesh_o35k7")
+
+[node name="InteractArea" parent="." instance=ExtResource("2_vmdyy")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, -1, 0, 1, -5.9604645e-08, 2.5, -2.5, 0)
+shape = SubResource("ConvexPolygonShape3D_12r8w")
