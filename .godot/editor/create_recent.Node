@@ -1,6 +1,6 @@
+Camera3D
 CollisionShape3D
 StaticBody3D
-Camera3D
 SubViewport
 SubViewportContainer
 ColorRect
@@ -12,4 +12,3 @@ HBoxContainer
 Panel
 TextureRect
 GridContainer
-TextureButton

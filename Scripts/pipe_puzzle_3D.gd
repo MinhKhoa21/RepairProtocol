@@ -29,12 +29,7 @@ var goal_point
 
 func _ready() -> void:
 	$Boardholder.visible = false
-	i_area.cooldown = 0.5
-	grid_gen()
-	await generate_solution(start_point, [], [], fuel)
-	grid_randomize()
-	grid3D_gen()
-	grid_ui_update()
+	await puzzle_gen(true)
 	i_area.interacted.connect(func():
 		GState.solve()
 		cam.make_current()
@@ -63,8 +58,9 @@ func grid_gen():
 	start_point = spawn_points.filter(func(x): return !x[p_checkpoint]).pick_random()
 	start_point[p_start] = true
 	start_point[p_head] = true
+	spawn_points = GridKit.get_edges(grid, grid_size.y, start_point[p_pos])
 	spawn_points.erase(start_point)
-	goal_point = spawn_points.filter(func(x): return !x[p_checkpoint]).pick_random()
+	goal_point = spawn_points.pick_random()
 	goal_point[p_goal] = true
 
 func grid3D_gen():
@@ -91,7 +87,6 @@ func _input(event: InputEvent) -> void:
 		#print("Can draw now.")
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.is_released():
 		can_draw = false
-		if !draw_queue.is_empty(): fuel -= 1
 		while !draw_queue.is_empty():
 			var cell = draw_queue.pop_back()
 			var point = cell_to_point(cell)
@@ -101,9 +96,10 @@ func _input(event: InputEvent) -> void:
 				fuel += draw_queue.size()
 				draw_queue.clear()
 				break
-			fuel += 1
+			if !draw_queue.is_empty(): fuel += 1
 			point[p_line] = null
 			point[p_traveled] = false
+			
 		for i in drew:
 			cell_to_point(i)[p_head] = false
 		grid_ui_update()
@@ -146,6 +142,7 @@ func grid_ui_update():
 		cell.get_child(3).get_child(0).visible = i[p_start] || (i[p_goal] && [p_traveled])
 		cell.get_child(3).get_child(1).visible = i[p_goal] && !i[p_traveled]
 		cell.get_child(3).get_child(2).visible = i[p_start] || i[p_goal]
+		cell.get_child(-2).visible = cell_to_point(cell)[p_head]
 
 func hit_cell() -> bool:
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -226,6 +223,7 @@ func project_mouse() -> void:
 				cur_point[p_line] = Direction.spe_dir_gen(rev_dir)
 			if cur_point[p_goal]:
 				print("Victory!")
+				add_child(TimerKit.generate_timer(1, puzzle_gen))
 			grid_ui_update()
 
 func generate_solution(_point:Array, _traveled:Array, _avoids:Array, _fuel:int = 2):
@@ -269,8 +267,9 @@ func generate_solution(_point:Array, _traveled:Array, _avoids:Array, _fuel:int =
 		#return
 	
 	if _point == goal_point:
-		validate_checkpoints.call()
+		traveled[-1][p_checkpoint] = false
 		print(traveled)
+		validate_checkpoints.call()
 		return
 	
 	var idx = grid.find(_point)
@@ -293,3 +292,18 @@ func grid_randomize():
 	for i in grid:
 		if i[p_checkpoint]:
 			i[p_route].rotate(true, [0, 1, 2, 3].pick_random())
+
+func puzzle_gen(first:bool = false):
+	fuel = 2
+	start_point = null
+	goal_point = null
+	hover_cell = null
+	grid_gen()
+	grid_revalid()
+	generate_solution(start_point, [], [], fuel)
+	grid_randomize()
+	if first: grid3D_gen()
+	grid_ui_update()
+
+func grid_revalid():
+	if grid.map(func(x): return x[p_head]).is_empty(): start_point[p_head] = true

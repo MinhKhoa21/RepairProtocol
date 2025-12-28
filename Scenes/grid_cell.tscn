@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cy4w15xefe40a"]
+[gd_scene load_steps=24 format=3 uid="uid://cy4w15xefe40a"]
 
 [ext_resource type="Texture2D" uid="uid://bx3nub3mc7rfo" path="res://texture/SecondWallTexture.png" id="1_jeuci"]
 [ext_resource type="Texture2D" uid="uid://bv2vs8vqlsp34" path="res://model/Tool/AnotherSciFiDeck/SciFiDeck_ImphenziaPalette01-256-Gradient.png" id="2_xb01k"]
@@ -49,11 +49,19 @@ albedo_texture = ExtResource("1_jeuci")
 [sub_resource type="BoxMesh" id="BoxMesh_ewbrc"]
 size = Vector3(0.8, 0.8, 0.3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ishqw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewbrc"]
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.32941177)
+albedo_color = Color(1, 1, 1, 0.36078432)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qj1kn"]
+material = SubResource("StandardMaterial3D_ewbrc")
+size = Vector2(1.6, 1.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ishqw"]
+transparency = 1
+albedo_color = Color(0, 1, 0.116666794, 0.38039216)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gmqsg"]
 material = SubResource("StandardMaterial3D_ishqw")
 size = Vector2(1.6, 1.6)
 
@@ -159,6 +167,11 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 visible = false
 mesh = SubResource("PlaneMesh_qj1kn")
+
+[node name="Selected" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.01)
+visible = false
+mesh = SubResource("PlaneMesh_gmqsg")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 64

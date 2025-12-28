@@ -147,3 +147,10 @@ static func get_manhattan_neighbors(distance:int, arr:Array, cols:int, item) -> 
 			if nx < 0 or nx >= cols or ny < 0 or ny >= rows: continue
 			result.append(arr[ny * cols + nx])
 	return result
+
+static func get_edges(arr:Array, cols:int, pos:Vector2i) -> Array:
+	if pos.x == 0: return arr.filter(func(x): return arr.find(x)/cols == cols-1)
+	if pos.x == arr.size()/cols: return arr.filter(func(x): return arr.find(x)/cols == 0)
+	if pos.y == 0: return arr.filter(func(x): return arr.find(x)%cols == cols-1)
+	if pos.y == cols-1: return arr.filter(func(x): return arr.find(x)%cols == 0)
+	return [arr[-1]]

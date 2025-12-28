@@ -72,81 +72,81 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Node name"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer"]
+[node name="Node3DEdit" type="VBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit"]
 layout_mode = 2
 
-[node name="GPos" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="GPos" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 layout_mode = 2
 text = "Global position"
 
-[node name="X" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="X" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 layout_mode = 2
 text = "x"
 
-[node name="XEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="XEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Y" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="Y" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 layout_mode = 2
 text = "y"
 
-[node name="YEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="YEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Z" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="Z" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 layout_mode = 2
 text = "z"
 
-[node name="ZEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="ZEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Move" type="Button" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer"]
+[node name="Move" type="Button" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer"]
 layout_mode = 2
 text = "Move"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit"]
 layout_mode = 2
 
-[node name="GRot" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="GRot" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 layout_mode = 2
 text = "Global rotation"
 
-[node name="X" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="X" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 layout_mode = 2
 text = "x"
 
-[node name="XEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="XEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Y" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Y" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 layout_mode = 2
 text = "y"
 
-[node name="YEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="YEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Z" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Z" type="Label" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 layout_mode = 2
 text = "z"
 
-[node name="ZEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="ZEdit" type="TextEdit" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 placeholder_text = "0"
 
-[node name="Spin" type="Button" parent="Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Spin" type="Button" parent="Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2"]
 layout_mode = 2
 text = "Spin"

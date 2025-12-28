@@ -43,3 +43,22 @@ func set_dir(a):
 	if has_up(): dir_arr[1] = true
 	if has_right(): dir_arr[2] = true
 	if has_down(): dir_arr[3] = true
+
+static func get_dir(from_pos:Vector2i, to_pos:Vector2i) -> int:
+	var velo = to_pos - from_pos
+	match velo:
+		Vector2i(0, -1): return left
+		Vector2i(-1, 0): return up
+		Vector2i(0, 1): return right
+		Vector2i(1, 0): return down
+		_: return left
+
+static func I_gen() -> Direction:
+	var _dir = Direction.new()
+	_dir.dir = up | down
+	return _dir
+
+static func L_gen() -> Direction:
+	var _dir = Direction.new()
+	_dir.dir = up | right
+	return _dir

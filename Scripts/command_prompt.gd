@@ -70,8 +70,8 @@ func _ready() -> void:
 		back.clear()
 		#<Change game state here>
 		)
-	$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer/Move.pressed.connect(move)
-	$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2/Spin.pressed.connect(spin)
+	$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer/Move.pressed.connect(move)
+	$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/Spin.pressed.connect(spin)
 
 func _physics_process(delta: float) -> void:
 	if $Control/VBoxContainer2/Control/EditContainer.visible && selected_node && selected_node is Node3D:
@@ -118,6 +118,8 @@ func edit_node(node):
 	else:
 		$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer.visible = false
 		$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2.visible = false
+
+
 
 func select_node():
 	$Control/VBoxContainer2/Control/ScrollContainer.visible = true

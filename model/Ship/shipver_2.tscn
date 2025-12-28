@@ -1607,7 +1607,6 @@ nodes/default/position = Vector2(-1280, 5200)
 node_connections = [&"output", 0, &"MainTimeScale", &"CoreDoor", 0, &"TimeScale", &"CoreDoor", 1, &"CoreSTM", &"FrontDoorLeft", 0, &"CoreDoor", &"FrontDoorLeft", 1, &"FrontDoorLeftSTM", &"FrontDoorRight", 0, &"FrontDoorLeft", &"FrontDoorRight", 1, &"FrontDoorRightSTM", &"MainTimeScale", 0, &"RearDoorRight2", &"RearDoorLeft1", 0, &"FrontDoorRight", &"RearDoorLeft1", 1, &"RearDoorLeft1STM", &"RearDoorLeft2", 0, &"RearDoorLeft1", &"RearDoorLeft2", 1, &"RearDoorLeft2STM", &"RearDoorRight1", 0, &"RearDoorLeft2", &"RearDoorRight1", 1, &"RearDoorRight1STM", &"RearDoorRight2", 0, &"RearDoorRight1", &"RearDoorRight2", 1, &"RearDoorRight2STM", &"TimeScale", 0, &"default"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3gbcc"]
-graph_offset = Vector2(-640.2156, 201.01648)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_enbsd")
 nodes/Add2/position = Vector2(40, 260)
 nodes/Engine/node = SubResource("AnimationNodeBlendSpace1D_gb3wm")
@@ -1854,6 +1853,9 @@ transform = Transform3D(-1.3987644e-08, 0, 0.32, 0, 0.32, 0, -0.32, 0, -1.398764
 [node name="LandingPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028211176, 0.27220893)
 
-[node name="PipePuzzle3D" parent="." instance=ExtResource("7_vywj1")]
-transform = Transform3D(-1.0331604e-07, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -1.0331604e-07, 1.959032, 1.1670909, -0.8382008)
-grid_size = Vector2i(4, 4)
+[node name="PipePuzzle3D" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("7_vywj1")]
+transform = Transform3D(-5.4639235e-09, 0, 0.125, 0, 0.125, 0, -0.125, 0, -5.4639235e-09, 1.959032, 1.7939391, -0.8474133)
+cam = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.499551, 1.487, -1.149)
