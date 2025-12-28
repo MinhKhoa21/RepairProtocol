@@ -126,12 +126,12 @@ point_count = 4
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_enbsd"]
 radius = 0.255
 sections = 3
-section_length = 0.995
+section_length = 1.41
 curve = SubResource("Curve_guwuu")
 
 [sub_resource type="Gradient" id="Gradient_vywj1"]
 offsets = PackedFloat32Array(0.4, 0.6105263)
-colors = PackedColorArray(0.25176516, 0.032717258, 0.0056415377, 1, 0.91711676, 0.11580513, 0.20583647, 1)
+colors = PackedColorArray(0.20658273, 0.091079794, 2.4065375e-08, 1, 0.74445915, 0.39825675, 0.02912873, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c6mn2"]
 noise_type = 3
@@ -147,7 +147,7 @@ render_priority = 0
 shader = ExtResource("6_guwuu")
 shader_parameter/main_color = Color(0, 0, 0, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_c6mn2")
-shader_parameter/emission = Color(0.5031428, 0.08945555, 4.813075e-08, 1)
+shader_parameter/emission = Color(0.89853436, 0.51766574, 0.10449622, 1)
 shader_parameter/emission_energy = 20.0
 shader_parameter/scroll_speed = 5.0
 shader_parameter/alpha_threshold = 0.0
@@ -1641,14 +1641,30 @@ mesh = SubResource("ArrayMesh_kapjw")
 skeleton = NodePath("")
 
 [node name="Thruster3" type="MeshInstance3D" parent="FrontEngine_lower"]
-transform = Transform3D(2.545, 0, 0, 0, 1.57, 0, 0, 0, 3.085, 0.27427292, -2.4661942, 0.07208204)
+transform = Transform3D(2.545, 0, 0, 0, 1.5700004, 0, 0, 0, 3.085, 0.27427292, -4.2084494, 0.07208204)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="FrontEngine_lower/Thruster3"]
+light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
+light_energy = 8.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+light_specular = 1.0
+omni_range = 3.0
+
 [node name="Thruster4" type="MeshInstance3D" parent="FrontEngine_lower"]
-transform = Transform3D(2.545, 0, 0, 0, 1.57, 0, 0, 0, 3.085, -16.758, -2.466, 0.083)
+transform = Transform3D(2.545, 0, 0, 0, 1.5700002, 0, 0, 0, 3.085, -16.758, -4.208255, 0.082999945)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="FrontEngine_lower/Thruster4"]
+light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
+light_energy = 8.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+light_specular = 1.0
+omni_range = 3.0
 
 [node name="BackEngine_upper_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.267167, 0, 0, 0, 1, 0, 0, 0, 0.662664, 1.67397, 1.53227, -2.94956)
@@ -1663,17 +1679,34 @@ mesh = SubResource("ArrayMesh_cc1q3")
 skeleton = NodePath("")
 
 [node name="Thruster1" type="MeshInstance3D" parent="BackEngine_lower_001"]
-transform = Transform3D(1.62, 0, 0, 0, 1.41, 0, 0, 0, 3.085, -13.006, -2.913, -0.077)
+transform = Transform3D(1.6199999, 0, 0, 0, 1.5600001, 0, 0, 0, 3.085, -13.006, -4.299457, -0.07700014)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BackEngine_lower_001/Thruster1"]
+light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
+light_energy = 8.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+light_specular = 1.0
+omni_range = 3.0
 
 [node name="Thruster2" type="MeshInstance3D" parent="BackEngine_lower_001"]
-transform = Transform3D(1.62, 0, 0, 0, 1.41, 0, 0, 0, 3.085, -0.05299902, -2.913026, -0.07700014)
+transform = Transform3D(1.6199996, 0, 0, 0, 1.6550004, 0, 0, 0, 3.085, -0.05299902, -4.0535336, -0.07700014)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="BackEngine_lower_001/Thruster2"]
+light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
+light_energy = 8.0
+light_indirect_energy = 2.0
+light_volumetric_fog_energy = 2.0
+light_specular = 1.0
+omni_range = 3.0
+
 [node name="FDB_H1_L1" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.538309)
+transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.882179)
+layers = 5
 material_override = SubResource("StandardMaterial3D_48n33")
 mesh = SubResource("ArrayMesh_yl2rn")
 skeleton = NodePath("")
@@ -1686,7 +1719,8 @@ transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504
 shape = SubResource("ConvexPolygonShape3D_h6h2g")
 
 [node name="FDB_H1_L2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.8646)
+transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
+layers = 5
 material_override = SubResource("StandardMaterial3D_alxw5")
 mesh = SubResource("ArrayMesh_vruif")
 skeleton = NodePath("")
@@ -1700,6 +1734,7 @@ shape = SubResource("ConvexPolygonShape3D_55ua2")
 
 [node name="FDB_H2_R1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0391215, 5.90535e-08, 0, -5.90719e-09, -0.391093, 0, 0, 0, 0.227566, -1.99905, 1.48358, -0.860369)
+layers = 5
 material_override = SubResource("StandardMaterial3D_jnwo8")
 mesh = SubResource("ArrayMesh_cxnwg")
 skeleton = NodePath("")
@@ -1713,6 +1748,7 @@ shape = SubResource("ConvexPolygonShape3D_3gbcc")
 
 [node name="FDB_H2_R2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08, 0, -0.305572, -1.99905, 1.48358, -1.38065)
+layers = 5
 material_override = SubResource("StandardMaterial3D_0pwad")
 mesh = SubResource("ArrayMesh_yu1iv")
 skeleton = NodePath("")
@@ -1726,6 +1762,7 @@ shape = SubResource("ConvexPolygonShape3D_3ir81")
 
 [node name="Fix_Opener_F1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
+layers = 5
 material_override = SubResource("StandardMaterial3D_al2xl")
 mesh = SubResource("ArrayMesh_p0vqr")
 skeleton = NodePath("")
@@ -1739,6 +1776,7 @@ shape = SubResource("ConvexPolygonShape3D_guwuu")
 
 [node name="Fix_Opener_F2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.246184, -1.4465965e-07, 0, 9.586759e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
+layers = 5
 material_override = SubResource("StandardMaterial3D_qa1qe")
 mesh = SubResource("ArrayMesh_03wp2")
 skeleton = NodePath("")
@@ -1752,12 +1790,14 @@ shape = SubResource("ConvexPolygonShape3D_otce0")
 
 [node name="CorePlace" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.86193e-08, 1.46121, 0, -0.425961, -6.38713e-08, 0, 0, 0, 1, 1.31777, 1.28118, 0.678845)
+layers = 5
 material_override = SubResource("StandardMaterial3D_kxc64")
 mesh = SubResource("ArrayMesh_16q8h")
 skeleton = NodePath("")
 
 [node name="CoreOpener" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1.01088e-08, 1, 0, -0.231264, -4.37114e-08, 0, 0, 0, 0.676852, 1.6159, 1.22521, 0.678845)
+layers = 5
 material_override = SubResource("StandardMaterial3D_3hidu")
 mesh = SubResource("ArrayMesh_f8ijs")
 skeleton = NodePath("")
@@ -1794,11 +1834,11 @@ parameters/Others/FrontDoorRight/active = false
 parameters/Others/FrontDoorRight/internal_active = false
 parameters/Others/FrontDoorRight/request = 0
 parameters/Others/MainTimeScale/scale = 1.0
-parameters/Others/RearDoorLeft1/active = true
-parameters/Others/RearDoorLeft1/internal_active = true
+parameters/Others/RearDoorLeft1/active = false
+parameters/Others/RearDoorLeft1/internal_active = false
 parameters/Others/RearDoorLeft1/request = 0
-parameters/Others/RearDoorLeft2/active = true
-parameters/Others/RearDoorLeft2/internal_active = true
+parameters/Others/RearDoorLeft2/active = false
+parameters/Others/RearDoorLeft2/internal_active = false
 parameters/Others/RearDoorLeft2/request = 0
 parameters/Others/RearDoorRight1/active = false
 parameters/Others/RearDoorRight1/internal_active = false
@@ -1815,5 +1855,5 @@ transform = Transform3D(-1.3987644e-08, 0, 0.32, 0, 0.32, 0, -0.32, 0, -1.398764
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028211176, 0.27220893)
 
 [node name="PipePuzzle3D" parent="." instance=ExtResource("7_vywj1")]
-transform = Transform3D(1.0000001, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1.0000001, 1.959032, 1.1670909, -0.8382008)
+transform = Transform3D(-1.0331604e-07, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -1.0331604e-07, 1.959032, 1.1670909, -0.8382008)
 grid_size = Vector2i(4, 4)

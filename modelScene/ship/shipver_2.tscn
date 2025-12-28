@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckby3qpvdib70"]
+
+[ext_resource type="PackedScene" uid="uid://bmtdxdyuwjvym" path="res://model/ship/shipver2.glb" id="1_rdssf"]
+
+[node name="shipver2" instance=ExtResource("1_rdssf")]
+
+[node name="Fix_Opener_F2" parent="." index="10"]
+transform = Transform3D(-0.246184, -1.4466e-07, 0, 9.58676e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)

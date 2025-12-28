@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb2avrf3u67uw"]
+
+[ext_resource type="PackedScene" uid="uid://bkruc1o60n872" path="res://model/level/rooflight.glb" id="1_4dwbo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_158l3"]
+cull_mode = 2
+albedo_color = Color(0.305234, 0.31531808, 0.29133147, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo7wt"]
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+
+[node name="rooflight" instance=ExtResource("1_4dwbo")]
+
+[node name="Circle" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_158l3")
+
+[node name="Light" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yo7wt")

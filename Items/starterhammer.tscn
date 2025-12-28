@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvjlmtlch2jd"]
+
+[ext_resource type="PackedScene" uid="uid://d03b3n3yk58o4" path="res://model/Tool/ham/starterhammer.glb" id="1_04l2r"]
+[ext_resource type="Texture2D" uid="uid://d3xya365kan32" path="res://model/Tool/ham/starterhammer_SteelImphenzia.png" id="2_bhyei"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhyei"]
+albedo_texture = ExtResource("2_bhyei")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfdg0"]
+albedo_texture = ExtResource("2_bhyei")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2fuj"]
+albedo_color = Color(0.75124377, 0.07500783, 0.14227286, 1)
+emission_enabled = true
+emission = Color(0.9893072, 0.3001997, 0.2724224, 1)
+emission_energy_multiplier = 2.0
+
+[node name="starterhammer" instance=ExtResource("1_04l2r")]
+
+[node name="HammerHead" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_bhyei")
+
+[node name="Handle" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_wfdg0")
+
+[node name="Light" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_g2fuj")

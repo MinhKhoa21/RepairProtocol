@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca35gtavi7hqu"]
+
+[ext_resource type="PackedScene" uid="uid://b84ki41cc6quk" path="res://model/level/Table.glb" id="1_0ym54"]
+[ext_resource type="Texture2D" uid="uid://qlacpp3kct5s" path="res://model/Structure/LightPillar/LightPillar_ImphenziaPalette01-256-Gradient.png" id="2_aybbo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1t5g"]
+cull_mode = 2
+albedo_texture = ExtResource("2_aybbo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbh38"]
+albedo_texture = ExtResource("2_aybbo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ym54"]
+albedo_color = Color(0.26107013, 0.7725083, 0.9181207, 1)
+emission_enabled = true
+emission = Color(0.4651584, 0.8646417, 0.9815821, 1)
+emission_energy_multiplier = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yh2b"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ym54"]
+size = Vector3(2.003479, 1.4404297, 5.5111084)
+
+[node name="Table2" instance=ExtResource("1_0ym54")]
+
+[node name="Table" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_n1t5g")
+
+[node name="Engine" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_qbh38")
+
+[node name="EnergyLight" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0ym54")
+
+[node name="Light" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7yh2b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00033569336, 0.52978516, 0.004699707)
+shape = SubResource("BoxShape3D_0ym54")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3565674, 1.7160894)
+omni_range = 1.61

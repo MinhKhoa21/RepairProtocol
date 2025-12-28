@@ -1,10 +1,9 @@
-[gd_scene load_steps=71 format=4 uid="uid://cr0f1nnopyk3m"]
+[gd_scene load_steps=70 format=4 uid="uid://cr0f1nnopyk3m"]
 
 [ext_resource type="Script" uid="uid://3h4ibsx1dysw" path="res://UI/ComputerUI/computer.gd" id="1_kofcl"]
 [ext_resource type="Texture2D" uid="uid://bv2vs8vqlsp34" path="res://model/Tool/AnotherSciFiDeck/SciFiDeck_ImphenziaPalette01-256-Gradient.png" id="2_5itn1"]
-[ext_resource type="Texture2D" uid="uid://wkt1mvic0he3" path="res://picture/damn.jpg" id="3_01f0o"]
+[ext_resource type="PackedScene" uid="uid://3ycb1bvebf4u" path="res://ComputerOS/ui/mail_ui.tscn" id="3_wte0m"]
 [ext_resource type="Shader" uid="uid://cql2vj0ke04gt" path="res://UI/ComputerUI/crt_shader.gdshader" id="4_wte0m"]
-[ext_resource type="Script" uid="uid://nciaopmu405w" path="res://UI/ComputerUI/computer_cam_test.gd" id="5_wte0m"]
 [ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="6_w1dn7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byyxi"]
@@ -694,6 +693,7 @@ play_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xvt7h"]
 graph_offset = Vector2(-717.836, -35.562)
+nodes/output/position = Vector2(760, 160)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_5t43o")
 nodes/Add2/position = Vector2(300, 180)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_u30nr")
@@ -710,8 +710,7 @@ nodes/Animation/position = Vector2(-440, 60)
 "nodes/Animation 4/position" = Vector2(-440, 840)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_cgell")
 nodes/TimeScale/position = Vector2(-160, 280)
-nodes/output/position = Vector2(760, 160)
-node_connections = [&"Add2", 0, &"Add2 3", &"Add2", 1, &"Animation 3", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 4", &"Add2 3", 0, &"Animation", &"Add2 3", 1, &"TimeScale", &"TimeScale", 0, &"Animation 2", &"output", 0, &"Add2 2"]
+node_connections = [&"output", 0, &"Add2 2", &"Add2", 0, &"Add2 3", &"Add2", 1, &"Animation 3", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 4", &"Add2 3", 0, &"Animation", &"Add2 3", 1, &"TimeScale", &"TimeScale", 0, &"Animation 2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_exem2"]
 animation = &"CubeAction_001"
@@ -748,6 +747,7 @@ animation = &"Case_UpperAction"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_04fpr"]
 graph_offset = Vector2(-377.72, -144.579)
+nodes/output/position = Vector2(380, -60)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_onbur")
 nodes/Add2/position = Vector2(-300, 20)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_wte0m")
@@ -764,8 +764,7 @@ nodes/Animation/position = Vector2(-580, 60)
 "nodes/Animation 4/position" = Vector2(-580, 840)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_4u0au")
 nodes/TimeScale/position = Vector2(-300, 800)
-nodes/output/position = Vector2(380, -60)
-node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"Add2 3", 0, &"TimeScale", &"Add2 3", 1, &"Add2 2", &"TimeScale", 0, &"Animation 4", &"output", 0, &"Add2 3"]
+node_connections = [&"output", 0, &"Add2 3", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"Add2 3", 0, &"TimeScale", &"Add2 3", 1, &"Add2 2", &"TimeScale", 0, &"Animation 4"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bf62h"]
 advance_mode = 2
@@ -803,7 +802,7 @@ states/Forward/node = SubResource("AnimationNodeBlendTree_04fpr")
 states/Forward/position = Vector2(348, -57)
 states/Start/position = Vector2(548, 174)
 transitions = ["Start", "CubeAction_001", SubResource("AnimationNodeStateMachineTransition_bf62h"), "CubeAction_001", "Forward", SubResource("AnimationNodeStateMachineTransition_ejdqw"), "Forward", "End", SubResource("AnimationNodeStateMachineTransition_wte0m"), "Start", "Backward", SubResource("AnimationNodeStateMachineTransition_ir7xq"), "Backward", "CubeAction_001 2", SubResource("AnimationNodeStateMachineTransition_k5d0c"), "CubeAction_001 2", "End", SubResource("AnimationNodeStateMachineTransition_x8qio")]
-graph_offset = Vector2(0, -84.5762)
+graph_offset = Vector2(0, -110.89643)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onbur"]
 size = Vector3(1.07178, 0.386246, 1.19434)
@@ -856,7 +855,7 @@ mesh = SubResource("ArrayMesh_owbn5")
 skeleton = NodePath("")
 
 [node name="Cube" type="MeshInstance3D" parent="Computer/SciFiDeck"]
-transform = Transform3D(0.00936927, 0, 0, 0, 0.0829353, 0, 0, 0, 0.0388376, 0.536567, -0.107699, 0.409225)
+transform = Transform3D(0.009369271, 0, 0, 0, 0.0829353, 0, 0, 0, 0.0388376, 0.536567, -0.107699, 0.409225)
 mesh = SubResource("ArrayMesh_tsn88")
 skeleton = NodePath("")
 
@@ -871,7 +870,7 @@ mesh = SubResource("ArrayMesh_pg0e4")
 skeleton = NodePath("")
 
 [node name="Anten" type="MeshInstance3D" parent="Computer/SciFiDeck"]
-transform = Transform3D(0.389736, 0, 0, 0, 0.0266765, 0, 0, 0, 0.0135184, -0.389419, -0.093308, -0.662624)
+transform = Transform3D(0.38973597, 0, 0, 0, 0.0266765, 0, 0, 0, 0.0135184, -0.389419, -0.093308, -0.662624)
 mesh = SubResource("ArrayMesh_5e24e")
 skeleton = NodePath("")
 
@@ -887,7 +886,7 @@ libraries = {
 
 [node name="SubViewport" type="SubViewport" parent="Computer"]
 
-[node name="Control" type="Control" parent="Computer/SubViewport"]
+[node name="ComputerOS" type="Control" parent="Computer/SubViewport"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -895,35 +894,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabContainer" type="TabContainer" parent="Computer/SubViewport/Control"]
+[node name="TabContainer" type="TabContainer" parent="Computer/SubViewport/ComputerOS"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 2
+current_tab = 0
 
-[node name="TextureRect" type="TextureRect" parent="Computer/SubViewport/Control/TabContainer"]
-visible = false
+[node name="Mail" type="TextureButton" parent="Computer/SubViewport/ComputerOS/TabContainer"]
 modulate = Color(0.375377, 0.626426, 0.238241, 1)
 layout_mode = 2
-texture = ExtResource("3_01f0o")
 metadata/_tab_index = 0
 
-[node name="TextureRect2" type="TextureRect" parent="Computer/SubViewport/Control/TabContainer"]
+[node name="MailUI" parent="Computer/SubViewport/ComputerOS/TabContainer/Mail" instance=ExtResource("3_wte0m")]
+layout_mode = 1
+
+[node name="TextureRect2" type="TextureButton" parent="Computer/SubViewport/ComputerOS/TabContainer"]
 visible = false
 modulate = Color(0.906326, 0.326337, 0.678213, 1)
 layout_mode = 2
-texture = ExtResource("3_01f0o")
 metadata/_tab_index = 1
 
-[node name="TextureRect3" type="TextureRect" parent="Computer/SubViewport/Control/TabContainer"]
+[node name="TextureRect3" type="TextureButton" parent="Computer/SubViewport/ComputerOS/TabContainer"]
+visible = false
 layout_mode = 2
-texture = ExtResource("3_01f0o")
 metadata/_tab_index = 2
 
-[node name="ColorRect" type="ColorRect" parent="Computer/SubViewport/Control"]
+[node name="ColorRect" type="ColorRect" parent="Computer/SubViewport/ComputerOS"]
 material = SubResource("ShaderMaterial_kofcl")
 layout_mode = 1
 anchors_preset = 15
@@ -933,10 +932,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_wte0m")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.195553, 0.687362, 0)
-script = ExtResource("5_wte0m")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Computer/SciFiDeck")

@@ -1,0 +1,87 @@
+[gd_scene load_steps=16 format=3 uid="uid://chcfgt8y5r5gl"]
+
+[ext_resource type="PackedScene" uid="uid://cetlcdopvqufy" path="res://model/ship/shipver1.glb" id="1_xv75o"]
+[ext_resource type="Texture2D" uid="uid://cbwbdr0q32j7r" path="res://texture/cybertexture.png" id="2_okj4v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77fce"]
+cull_mode = 2
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eljgk"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v8ao"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elp6c"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kelvt"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs5c0"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju30t"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byxvj"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn77m"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rjso"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fig1i"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq77m"]
+albedo_texture = ExtResource("2_okj4v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebypr"]
+albedo_texture = ExtResource("2_okj4v")
+
+[node name="shipver1" instance=ExtResource("1_xv75o")]
+
+[node name="Body" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_77fce")
+
+[node name="FrontEngine_upper" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_eljgk")
+
+[node name="FrontEngine_lower" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_3v8ao")
+
+[node name="BackEngine_upper_001" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_elp6c")
+
+[node name="BackEngine_lower_001" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_kelvt")
+
+[node name="FDB_H1_L1" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_bs5c0")
+
+[node name="FDB_H1_L2" parent="." index="6"]
+material_override = SubResource("StandardMaterial3D_ju30t")
+
+[node name="FDB_H2_R1" parent="." index="7"]
+material_override = SubResource("StandardMaterial3D_byxvj")
+
+[node name="FDB_H2_R2" parent="." index="8"]
+material_override = SubResource("StandardMaterial3D_bn77m")
+
+[node name="Fix_Opener_F1" parent="." index="9"]
+material_override = SubResource("StandardMaterial3D_0rjso")
+
+[node name="Fix_Opener_F2" parent="." index="10"]
+transform = Transform3D(-0.246184, -1.44659e-07, 0, 9.58677e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
+material_override = SubResource("StandardMaterial3D_fig1i")
+
+[node name="CorePlace" parent="." index="11"]
+material_override = SubResource("StandardMaterial3D_lq77m")
+
+[node name="CoreOpener" parent="." index="12"]
+transform = Transform3D(0, 1, 0, -0.231264, 0, 0, 0, 0, 0.676852, 1.6159, 1.23214, 0.678845)
+material_override = SubResource("StandardMaterial3D_ebypr")

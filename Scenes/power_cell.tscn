@@ -117,7 +117,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75)
 
 [node name="Powercell" parent="MovingPart" instance=ExtResource("3_qpeyf")]
-transform = Transform3D(-4.07, 0, -3.5581073e-07, 0, 4.07, 0, 3.5581073e-07, 0, -4.07, 0, 0, 0)
+transform = Transform3D(-4.07, 0, -3.5581073e-07, 0, 4.07, 0, 3.5581073e-07, 0, -4.07, 0, -0.1458031, -0.046940234)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_qpeyf")

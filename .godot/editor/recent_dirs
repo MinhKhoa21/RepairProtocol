@@ -1,3 +1,8 @@
+res://modelScene/garage
+res://Robotic
+res://ComputerOS/ui
+res://Items
+res://Autoloads
 res://MeshLibrary
 res://Scenes
 res://asset/doggo
@@ -5,11 +10,9 @@ res://modelScene/shipParts
 res://Images
 res://ShaderMaterial
 res://model/Ship
-res://Items
 res://Character/Employee
 D:/GDot/space-garage/RepairProtocol
 res://Character/Player/States
-res://Autoloads
 res://Scripts
 res://Sprites
 res://

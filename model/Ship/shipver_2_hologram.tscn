@@ -1,5 +1,6 @@
-[gd_scene load_steps=54 format=4 uid="uid://bbgorfh5yvce0"]
+[gd_scene load_steps=67 format=4 uid="uid://bbgorfh5yvce0"]
 
+[ext_resource type="Script" uid="uid://01tf2g4xlrhp" path="res://model/Ship/shipver_2_hologram.gd" id="1_21ian"]
 [ext_resource type="Shader" uid="uid://dyjspvl377a1s" path="res://ShaderMaterial/ship_ui.gdshader" id="1_24pv7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1aoud"]
@@ -36,14 +37,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lop3o")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_21ian"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24pv7"]
 render_priority = 0
 shader = ExtResource("1_24pv7")
 shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
 shader_parameter/scanline_speed = -5.41199978207
-shader_parameter/scanline_density = 50.200002337
+shader_parameter/scanline_density = 91.294004288965
 shader_parameter/fresnel_power = 1.15600005165012
 shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_537qx"]
 
@@ -76,6 +79,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f17dw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21ian"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsx2n"]
 
@@ -111,6 +125,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0gg3k")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jx4kw"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.95, 0.59185004, 0.20900002, 0.91764706)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klx8u"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eirfl"]
@@ -142,6 +167,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_eirfl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24j28"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.95, 0.59185004, 0.20900002, 0.91764706)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bc5mx"]
 
@@ -177,6 +213,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xqolu")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_juajg"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.95, 0.59185004, 0.20900002, 0.91764706)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ub14a"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hmm7i"]
@@ -208,6 +255,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hmm7i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scjdl"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na7ji"]
 
@@ -241,6 +299,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m1gsm")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvy6u"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6p2gt"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1m4wo"]
@@ -273,6 +342,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1m4wo")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udc64"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.95, 0.59185004, 0.20900002, 0.91764706)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfedr"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mc7xp"]
@@ -304,6 +384,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mc7xp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pnxf"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx8vb"]
 
@@ -339,6 +430,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j6obe")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48dgx"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3pwe"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mu74q"]
@@ -372,6 +474,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mu74q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hfmk1"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idsg7"]
 
@@ -407,6 +520,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_afwvi")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymo3b"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gik5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_16e01"]
@@ -438,6 +562,17 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_16e01")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1j22f"]
+render_priority = 0
+shader = ExtResource("1_24pv7")
+shader_parameter/base_color = Color(0.90902436, 0.9245509, 0.7897853, 1)
+shader_parameter/scan_color = Color(0.08300002, 0.83, 0, 0.99607843)
+shader_parameter/scanline_speed = -5.41199978207
+shader_parameter/scanline_density = 91.294004288965
+shader_parameter/fresnel_power = 1.15600005165012
+shader_parameter/alpha_intensity = 0.9
+shader_parameter/is_scanned = false
 
 [sub_resource type="Animation" id="Animation_0d53t"]
 resource_name = "BackEngine_Brake"
@@ -1192,12 +1327,13 @@ _data = {
 }
 
 [node name="shipver2Hologram" type="Node3D"]
+script = ExtResource("1_21ian")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.849939, 0, 0, 0, 1, 0, 0, 0, 3.61227, 0, 1.21059, 0)
 mesh = SubResource("ArrayMesh_ckv3l")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_24pv7")
 
 [node name="FrontEngine_upper" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.267167, 0, 0, 0, 1, 0, 0, 0, 0.662664, 2.18382, 1.53227, 2.40525)
@@ -1209,67 +1345,67 @@ surface_material_override/0 = SubResource("ShaderMaterial_21ian")
 transform = Transform3D(0.274589, 0, 0, 0, 0.573969, 0, 0, 0, 0.624031, 2.34358, 1.007, 2.40525)
 mesh = SubResource("ArrayMesh_kapjw")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_jx4kw")
 
 [node name="BackEngine_upper_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.267167, 0, 0, 0, 1, 0, 0, 0, 0.662664, 1.67397, 1.53227, -2.94956)
 mesh = SubResource("ArrayMesh_p4epi")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_24j28")
 
 [node name="BackEngine_lower_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.274589, 0, 0, 0, 0.573969, 0, 0, 0, 0.624031, 1.82428, 1.007, -2.9185)
 mesh = SubResource("ArrayMesh_cc1q3")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_juajg")
 
 [node name="FDB_H1_L1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.882179)
 mesh = SubResource("ArrayMesh_yl2rn")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_scjdl")
 
 [node name="FDB_H1_L2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
 mesh = SubResource("ArrayMesh_vruif")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_lvy6u")
 
 [node name="FDB_H2_R1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0391215, 5.90535e-08, 0, -5.90719e-09, -0.391093, 0, 0, 0, 0.227566, -1.99905, 1.48358, -0.860369)
 mesh = SubResource("ArrayMesh_cxnwg")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_udc64")
 
 [node name="FDB_H2_R2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08, 0, -0.305572, -1.99905, 1.48358, -1.38065)
 mesh = SubResource("ArrayMesh_yu1iv")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_8pnxf")
 
 [node name="Fix_Opener_F1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
 mesh = SubResource("ArrayMesh_p0vqr")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_48dgx")
 
 [node name="Fix_Opener_F2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.246184, -1.21043e-07, 0, 8.0217e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
+transform = Transform3D(-0.246184, -1.4465965e-07, 0, 9.586759e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
 mesh = SubResource("ArrayMesh_03wp2")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_hfmk1")
 
 [node name="CorePlace" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 1.46121, 0, -0.425961, 0, 0, 0, 0, 1, 1.31777, 1.28118, 0.678845)
 mesh = SubResource("ArrayMesh_16q8h")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_ymo3b")
 
 [node name="CoreOpener" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 1, 0, -0.231264, 0, 0, 0, 0, 0.676852, 1.6159, 1.22521, 0.678845)
 mesh = SubResource("ArrayMesh_f8ijs")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_21ian")
+surface_material_override/0 = SubResource("ShaderMaterial_1j22f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

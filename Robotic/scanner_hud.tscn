@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf7umslr34082"]
+
+[ext_resource type="Script" uid="uid://cts45vga6o02e" path="res://Robotic/scanner_hud.gd" id="1_avum1"]
+[ext_resource type="Shader" uid="uid://gbugt80q36j5" path="res://Robotic/cyber_shader.gdshader" id="2_trww1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg8a0"]
+shader = ExtResource("2_trww1")
+shader_parameter/scanning_progress = 0.0
+shader_parameter/visibility = 0.0
+shader_parameter/color = Color(0.27216318, 0.67532486, 0.20649067, 1)
+shader_parameter/initial_outline_pixel_size = 32.0
+shader_parameter/final_outline_pixel_size = 2.0
+shader_parameter/initial_fill_transparency = 2.0
+shader_parameter/final_fill_transparency = 0.15
+shader_parameter/initial_pixelize_power = 9.0
+shader_parameter/final_pixelize_power = 1.0
+
+[node name="ScannerHUD" type="CanvasLayer"]
+script = ExtResource("1_avum1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.049500003, 0.45, 0.28312495, 0.2627451)
+
+[node name="ScreenContainer" type="SubViewportContainer" parent="ColorRect"]
+material = SubResource("ShaderMaterial_bg8a0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="ColorRect/ScreenContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="CyberEyes" type="Camera3D" parent="ColorRect/ScreenContainer/SubViewport"]
+unique_name_in_owner = true
+cull_mask = 8

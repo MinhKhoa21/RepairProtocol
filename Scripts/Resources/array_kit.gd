@@ -25,3 +25,9 @@ static func array_snapi(_int:int, arr:Array) -> int:
 		if abs(_int-arr[i]) < abs(_int-weight):
 			weight = arr[i]
 	return weight
+
+static func join(arr1:Array, arr2:Array) -> Array:
+	var joined:Array = []
+	for i in arr1:
+		if arr2.has(i): joined.append(i)
+	return joined

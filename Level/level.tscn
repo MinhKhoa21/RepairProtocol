@@ -1,19 +1,19 @@
-[gd_scene load_steps=33 format=3 uid="uid://kcd4vy0cuttn"]
+[gd_scene load_steps=31 format=3 uid="uid://kcd4vy0cuttn"]
 
 [ext_resource type="PackedScene" uid="uid://5bybde5xq8dg" path="res://Character/player_controller.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://dt0tmw6s7on5b" path="res://Scripts/garage.gd" id="1_wqlfs"]
-[ext_resource type="Shader" uid="uid://kimc5meeodlx" path="res://shader/sky_shader_level2.gdshader" id="2_nk1il"]
 [ext_resource type="PackedScene" uid="uid://c2ebkvnab70xa" path="res://Level/garage.tscn" id="2_qmtf6"]
 [ext_resource type="Script" uid="uid://c6flvunv6pmk1" path="res://Level/spot_light_3d.gd" id="3_uawph"]
 [ext_resource type="PackedScene" uid="uid://d4lkp273v3aas" path="res://Level/ground_for_repair_protocol.tscn" id="4_52x1o"]
 [ext_resource type="PackedScene" uid="uid://bpe7q4ma1dl8p" path="res://modelScene/light_pillar.tscn" id="7_d6qko"]
-[ext_resource type="Shader" uid="uid://viqy3uwh6ns7" path="res://shader/PixelShader.gdshader" id="8_22cqp"]
 [ext_resource type="PackedScene" uid="uid://b35mxcc3d74di" path="res://Scene/WaterPlane.tscn" id="9_wqlfs"]
 [ext_resource type="PackedScene" uid="uid://ya3wrhlra5vn" path="res://Scenes/power_cell.tscn" id="10_py82k"]
+[ext_resource type="Shader" uid="uid://viqy3uwh6ns7" path="res://shader/PixelShader.gdshader" id="12_dx36h"]
 [ext_resource type="PackedScene" uid="uid://cr0f1nnopyk3m" path="res://UI/ComputerUI/ComputerUI.tscn" id="12_i5g78"]
 [ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="12_q47le"]
+[ext_resource type="PackedScene" uid="uid://ca35gtavi7hqu" path="res://modelScene/garage/tableVer1.tscn" id="13_dx36h"]
 [ext_resource type="Texture2D" uid="uid://nmolea6k5cyd" path="res://trail/particle_sprite_smoke.webp" id="13_q47le"]
-[ext_resource type="PackedScene" uid="uid://dg1tl7uy6bd4f" path="res://Scenes/pipe_puzzle_3d.tscn" id="14_dx36h"]
+[ext_resource type="PackedScene" uid="uid://cb2avrf3u67uw" path="res://modelScene/garage/rooflight.tscn" id="14_dx36h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yfk6w"]
 size = Vector3(20, 0.5, 20)
@@ -21,47 +21,26 @@ size = Vector3(20, 0.5, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6mkr"]
 size = Vector3(19.5471, 1, 19.4685)
 
-[sub_resource type="Gradient" id="Gradient_22cqp"]
-colors = PackedColorArray(0.774773, 0.649, 0.590895, 1, 0.778301, 0.645821, 0.547871, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wqlfs"]
-gradient = SubResource("Gradient_22cqp")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_22cqp"]
-shader = ExtResource("2_nk1il")
-shader_parameter/skyColor = Color(0.825918, 0.654398, 0.662876, 1)
-shader_parameter/horizonColor = Color(0.569346, 0.926332, 0.954325, 1)
-shader_parameter/skyTexture = SubResource("GradientTexture1D_wqlfs")
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i5g78"]
+sky_top_color = Color(0.68355334, 0.5429196, 0.41091648, 1)
+sky_horizon_color = Color(0.9560588, 0.831644, 0.65522075, 1)
 
 [sub_resource type="Sky" id="Sky_wqlfs"]
-sky_material = SubResource("ShaderMaterial_22cqp")
+sky_material = SubResource("ProceduralSkyMaterial_i5g78")
 
 [sub_resource type="Environment" id="Environment_qmtf6"]
 background_mode = 2
 sky = SubResource("Sky_wqlfs")
 ambient_light_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 ambient_light_energy = 2.35
+glow_enabled = true
+glow_intensity = 6.0
+glow_bloom = 0.1
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 volumetric_fog_length = 4.66
 volumetric_fog_detail_spread = 1.41421
 volumetric_fog_ambient_inject = 0.37
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqlfs"]
-render_priority = 0
-shader = ExtResource("8_22cqp")
-shader_parameter/depth_threshold = 0.05
-shader_parameter/reverse_depth_threshold = 0.25
-shader_parameter/normal_threshold = 0.6
-shader_parameter/darken_amount = 0.3
-shader_parameter/lighten_amount = 1.5
-shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
-shader_parameter/light_direction = Vector3(-0.96, -0.18, 0.2)
-
-[sub_resource type="QuadMesh" id="QuadMesh_py82k"]
-material = SubResource("ShaderMaterial_wqlfs")
-flip_faces = true
-size = Vector2(2, 2)
 
 [sub_resource type="Curve" id="Curve_dx36h"]
 _limits = [-360.0, 360.0, 0.0, 1.0]
@@ -120,6 +99,22 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_jghi6"]
 material = SubResource("StandardMaterial3D_cv6tn")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q47le"]
+render_priority = 0
+shader = ExtResource("12_dx36h")
+shader_parameter/depth_threshold = 0.05
+shader_parameter/reverse_depth_threshold = 0.25
+shader_parameter/normal_threshold = 0.6
+shader_parameter/darken_amount = 0.3
+shader_parameter/lighten_amount = 1.5
+shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.96, -0.18, 0.2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_i5g78"]
+material = SubResource("ShaderMaterial_q47le")
+flip_faces = true
+size = Vector2(2, 2)
+
 [node name="Level" type="Node3D" node_paths=PackedStringArray("ship_root", "destination_point")]
 script = ExtResource("1_wqlfs")
 ship_root = NodePath("shipver2")
@@ -143,7 +138,7 @@ shape = SubResource("BoxShape3D_o6mkr")
 transform = Transform3D(1.42, 0, 0, 0, 1.42, 0, 0, 0, 1.42, 0, 2.76513, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1.00005, 0, 0, 0, 0.178999, 0.983896, 0, -0.983896, 0.178999, 0, 2.15799, 0)
+transform = Transform3D(1, 0, 0, 0, 0.17899078, 0.9838508, 0, -0.9838508, 0.17899078, 0, 2.15799, 0)
 light_color = Color(0.830335, 0.830335, 0.830335, 1)
 light_energy = 0.29
 
@@ -172,19 +167,23 @@ light_energy = 3.753
 spot_range = 10.651
 spot_angle = 65.0
 
-[node name="Shader" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -217.588, 0)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_py82k")
-
 [node name="Water" parent="." instance=ExtResource("9_wqlfs")]
 transform = Transform3D(2.525, 0, 0, 0, 2.525, 0, 0, 0, 2.525, 41.1381, -9.54264, 0)
 
 [node name="PowerCell" parent="." instance=ExtResource("10_py82k")]
 transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 2, 3, -8)
+collision_layer = 4
 
-[node name="Laptop" parent="." instance=ExtResource("12_i5g78")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 2.6, 5)
+[node name="BriefCase" parent="." node_paths=PackedStringArray("stand_pos", "ui_cam_pos") instance=ExtResource("12_i5g78")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2.716547, 2.6, 5)
+stand_pos = NodePath("StandPosition")
+ui_cam_pos = NodePath("LookPoseidon")
+
+[node name="LookPoseidon" type="Marker3D" parent="BriefCase"]
+transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, -0.2773373, 0.93047714, 0)
+
+[node name="StandPosition" type="Marker3D" parent="BriefCase"]
+transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 1.4378402, -2.8888888, 0)
 
 [node name="shipver2" parent="." instance=ExtResource("12_q47le")]
 transform = Transform3D(-3.5, 0, -5.284853e-07, 0, 3.5, 0, 5.284853e-07, 0, -3.5, 31, 97, 205)
@@ -203,6 +202,13 @@ collision_base_size = 0.1
 process_material = SubResource("ParticleProcessMaterial_l5n2q")
 draw_pass_1 = SubResource("QuadMesh_jghi6")
 
-[node name="PipePuzzle3D" parent="." instance=ExtResource("14_dx36h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, -4)
-size_mod = 0.5
+[node name="ShaderOutline" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1003, 0)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_i5g78")
+
+[node name="Table2" parent="." instance=ExtResource("13_dx36h")]
+transform = Transform3D(1.395, 0, 0, 0, 1.395, 0, 0, 0, 1.395, -3.3197937, 0.5174202, 6.025442)
+
+[node name="rooflight" parent="." instance=ExtResource("14_dx36h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.287903, 6.8995495, 0.99928784)
