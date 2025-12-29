@@ -9,6 +9,7 @@ var ground_smokes: Array[GPUParticles3D] = []
 
 
 func _ready() -> void:
+	GState.play()
 	var found = destination_point.find_children("*", "GPUParticles3D", true, false)
 	for p in found:
 		if p.name.to_lower().contains("smoke"):

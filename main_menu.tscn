@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://0axl7fohmjgp"]
+
+[ext_resource type="Script" uid="uid://co3x0hsy2a6nt" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://d4lkp273v3aas" path="res://Level/ground_for_repair_protocol.tscn" id="2_fu7sn"]
+[ext_resource type="PackedScene" uid="uid://c2ebkvnab70xa" path="res://Level/garage.tscn" id="3_fu7sn"]
+[ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="4_jix8l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jix8l"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_glbon"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7vrkn"]
+sky_top_color = Color(0.68355334, 0.5429196, 0.41091648, 1)
+sky_horizon_color = Color(0.9560588, 0.831644, 0.65522075, 1)
+
+[sub_resource type="Sky" id="Sky_wqlfs"]
+sky_material = SubResource("ProceduralSkyMaterial_7vrkn")
+
+[sub_resource type="Environment" id="Environment_fu7sn"]
+background_mode = 2
+sky = SubResource("Sky_wqlfs")
+ambient_light_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+ambient_light_energy = 2.35
+glow_enabled = true
+glow_intensity = 6.0
+glow_bloom = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_length = 4.66
+volumetric_fog_detail_spread = 1.41421
+volumetric_fog_ambient_inject = 0.37
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_7vrkn")
+
+[node name="GroundForRepairProtocol" parent="." instance=ExtResource("2_fu7sn")]
+transform = Transform3D(22.69, 0, 0, 0, 22.69, 0, 0, 0, 22.69, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9998477, 0, 0.017452406, 0, 1, 0, -0.017452406, 0, 0.9998477, -5.3530884, 8.150975, 14.518696)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.9996954, -0.017452406, 0.017449742, 0.017452406, -4.371139e-08, -0.9998477, 0.017449748, 0.9998477, 0.0003045427, 0.0043535233, 0, -0.24943066)
+material_override = SubResource("StandardMaterial3D_jix8l")
+mesh = SubResource("PlaneMesh_glbon")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fu7sn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+text = "Start"
+
+[node name="Settings" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Control/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+text = "Exit"
+
+[node name="Garage" parent="." instance=ExtResource("3_fu7sn")]
+transform = Transform3D(-0.51369923, 0, -0.036579117, 0, 0.58699995, 0, 0.036579117, 0, -0.51369923, 27.181053, 2.2305007, 19.47527)
+
+[node name="shipver2" parent="." instance=ExtResource("4_jix8l")]
+transform = Transform3D(-3.5, 0, -5.284853e-07, 0, 3.5, 0, 5.284853e-07, 0, -3.5, -43.71757, 1.8240566, 17.701363)

@@ -7,12 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://d4lkp273v3aas" path="res://Level/ground_for_repair_protocol.tscn" id="4_52x1o"]
 [ext_resource type="PackedScene" uid="uid://bpe7q4ma1dl8p" path="res://modelScene/light_pillar.tscn" id="7_d6qko"]
 [ext_resource type="PackedScene" uid="uid://b35mxcc3d74di" path="res://Scene/WaterPlane.tscn" id="9_wqlfs"]
-[ext_resource type="PackedScene" uid="uid://ya3wrhlra5vn" path="res://Scenes/power_cell.tscn" id="10_py82k"]
 [ext_resource type="Shader" uid="uid://viqy3uwh6ns7" path="res://shader/PixelShader.gdshader" id="12_dx36h"]
 [ext_resource type="PackedScene" uid="uid://cr0f1nnopyk3m" path="res://UI/ComputerUI/ComputerUI.tscn" id="12_i5g78"]
 [ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="12_q47le"]
 [ext_resource type="PackedScene" uid="uid://ca35gtavi7hqu" path="res://modelScene/garage/tableVer1.tscn" id="13_dx36h"]
 [ext_resource type="Texture2D" uid="uid://nmolea6k5cyd" path="res://trail/particle_sprite_smoke.webp" id="13_q47le"]
+[ext_resource type="PackedScene" uid="uid://dbtthghrnffwt" path="res://Scenes/hologram_projector.tscn" id="14_1p6h5"]
 [ext_resource type="PackedScene" uid="uid://cb2avrf3u67uw" path="res://modelScene/garage/rooflight.tscn" id="14_dx36h"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_yfk6w"]
@@ -25,18 +25,17 @@ size = Vector3(19.5471, 1, 19.4685)
 sky_top_color = Color(0.68355334, 0.5429196, 0.41091648, 1)
 sky_horizon_color = Color(0.9560588, 0.831644, 0.65522075, 1)
 
-[sub_resource type="Sky" id="Sky_wqlfs"]
+[sub_resource type="Sky" id="Sky_q47le"]
 sky_material = SubResource("ProceduralSkyMaterial_i5g78")
 
 [sub_resource type="Environment" id="Environment_qmtf6"]
 background_mode = 2
-sky = SubResource("Sky_wqlfs")
+sky = SubResource("Sky_q47le")
 ambient_light_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 ambient_light_energy = 2.35
 glow_enabled = true
 glow_intensity = 6.0
 glow_bloom = 0.1
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 volumetric_fog_length = 4.66
 volumetric_fog_detail_spread = 1.41421
@@ -170,10 +169,6 @@ spot_angle = 65.0
 [node name="Water" parent="." instance=ExtResource("9_wqlfs")]
 transform = Transform3D(2.525, 0, 0, 0, 2.525, 0, 0, 0, 2.525, 41.1381, -9.54264, 0)
 
-[node name="PowerCell" parent="." instance=ExtResource("10_py82k")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 2, 3, -8)
-collision_layer = 4
-
 [node name="BriefCase" parent="." node_paths=PackedStringArray("stand_pos", "ui_cam_pos") instance=ExtResource("12_i5g78")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2.716547, 2.6, 5)
 stand_pos = NodePath("StandPosition")
@@ -212,3 +207,6 @@ transform = Transform3D(1.395, 0, 0, 0, 1.395, 0, 0, 0, 1.395, -3.3197937, 0.517
 
 [node name="rooflight" parent="." instance=ExtResource("14_dx36h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.287903, 6.8995495, 0.99928784)
+
+[node name="HologramProjector" parent="." instance=ExtResource("14_1p6h5")]
+transform = Transform3D(2.74, 0, 0, 0, 2.74, 0, 0, 0, 2.74, -3.068816, 1.13785, -0.2712114)

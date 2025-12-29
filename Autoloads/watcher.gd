@@ -28,6 +28,7 @@ var level:Level
 var player_cam:Camera3D
 var input_hud:Array[Control]
 var scanned_parts: Array[String] = []
+var queued_scene:StringName
 
 
 func _ready() -> void:

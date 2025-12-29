@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space Garage"
-run/main_scene="uid://kcd4vy0cuttn"
+run/main_scene="uid://0axl7fohmjgp"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -3,9 +3,9 @@ class_name Task
 
 enum task_type {SHORT, MEDIUM, LONG}
 static var task_weight:Dictionary[int, float] = {
-	task_type.SHORT:0.15,
-	task_type.MEDIUM:0.25,
-	task_type.LONG:0.35
+	task_type.SHORT:0.1,
+	task_type.MEDIUM:0.2,
+	task_type.LONG:0.3
 }
 signal succeed
 
@@ -34,3 +34,4 @@ static func long() -> float: return task_weight[task_type.LONG]
 static func short_task() -> Task: return Task.new("", task_type.SHORT)
 static func medium_task() -> Task: return Task.new("", task_type.MEDIUM)
 static func long_task() -> Task: return Task.new("", task_type.LONG)
+static func new_rand_task() -> Task: return Task.new("", [task_type.SHORT, task_type.MEDIUM, task_type.LONG].pick_random())

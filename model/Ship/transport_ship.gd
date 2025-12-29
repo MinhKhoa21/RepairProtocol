@@ -8,6 +8,7 @@ extends Vehicle
 var thrusters: Array[MeshInstance3D] = []
 
 func _ready() -> void:
+	Watcher.current_ship = self
 	super()
 	for i:int in one_shot_name.size():
 		ias[i].interacted.connect(func():
@@ -20,10 +21,6 @@ func _ready() -> void:
 		if node.name.to_lower().contains("thruster"):
 			thrusters.append(node)
 			node.visible = false
-	
-	
-	print(tasks.map(func(x): return x.weight))
-	print(status)
 
 func open_door(_one_shot:StringName):
 	ani_tree.set("parameters/Others/%s/request"%[_one_shot], AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)

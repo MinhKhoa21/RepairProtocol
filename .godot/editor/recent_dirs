@@ -1,10 +1,11 @@
+res://Scenes
+res://
 res://modelScene/garage
 res://Robotic
 res://ComputerOS/ui
 res://Items
 res://Autoloads
 res://MeshLibrary
-res://Scenes
 res://asset/doggo
 res://modelScene/shipParts
 res://Images
@@ -15,7 +16,6 @@ D:/GDot/space-garage/RepairProtocol
 res://Character/Player/States
 res://Scripts
 res://Sprites
-res://
 res://Character
 res://Controls/PipePuzzle
 res://Textures

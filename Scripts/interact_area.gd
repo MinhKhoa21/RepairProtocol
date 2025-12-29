@@ -12,3 +12,7 @@ func _ready() -> void:
 func toggle_monitor():
 	monitoring = !monitoring
 	monitorable = !monitorable
+
+func manual_toggel(_bool):
+	monitorable = _bool
+	monitoring = _bool

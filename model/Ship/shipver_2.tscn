@@ -1620,6 +1620,7 @@ script = ExtResource("1_kxc64")
 one_shot_name = Array[StringName]([&"CoreDoor", &"FrontDoorLeft", &"FrontDoorRight", &"RearDoorLeft1", &"RearDoorLeft2", &"RearDoorRight1", &"RearDoorRight2"])
 state_machine_name = Array[StringName]([&"CoreSTM", &"FrontDoorLeftSTM", &"FrontDoorRightSTM", &"RearDoorLeft1STM", &"RearDoorLeft2STM", &"RearDoorRight1STM", &"RearDoorRight2STM"])
 ias = [NodePath("CoreOpener/CoreCoor_ia"), NodePath("Fix_Opener_F1/FrontDoorLeft_ia"), NodePath("Fix_Opener_F2/FrontDoorRight_ia"), NodePath("FDB_H1_L1/RearDoorLeft1_ia"), NodePath("FDB_H1_L2/RearDoorLeft2_ia"), NodePath("FDB_H2_R1/ReadDoorRight1_ia"), NodePath("FDB_H2_R2/RearDoorRight2_ia")]
+main_mesh = &"res://model/Ship/shipver2.glb"
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.849939, 0, 0, 0, 1, 0, 0, 0, 3.61227, 0, 1.21059, 0)
