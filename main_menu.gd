@@ -9,6 +9,7 @@ func set_opacity(a):
 	$Camera3D/MeshInstance3D.material_override.albedo_color += Color(0, 0, 0, a)
 
 func _ready() -> void:
+	$Control.visible = true
 	opacity = 0
 	GState.pause()
 	var cam_pan = func():
@@ -21,6 +22,7 @@ func _ready() -> void:
 	add_child(TimerKit.generate_timer(randf_range(7.0, 8.5), cam_pan, false))
 	cam_pan.call()
 	start.pressed.connect(func():
+		$Control.visible = false
 		var _tween := create_tween()
 		var mat = StandardMaterial3D.new()
 		mat.albedo_color = Color(0, 0, 0, 1)
@@ -29,6 +31,5 @@ func _ready() -> void:
 		_tween.kill()
 		#alpha.material_override = mat
 		#await get_tree().create_timer(1).timeout
-		Watcher.queued_scene = "res://Level/level.tscn"
-		get_tree().change_scene_to_file("res://Scenes/loading.tscn")
+		Watcher.change_scene("res://Level/level.tscn")
 		)

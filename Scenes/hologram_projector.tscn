@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://dbtthghrnffwt"]
+[gd_scene load_steps=21 format=4 uid="uid://dbtthghrnffwt"]
 
 [ext_resource type="Texture2D" uid="uid://qlacpp3kct5s" path="res://model/Structure/LightPillar/LightPillar_ImphenziaPalette01-256-Gradient.png" id="1_jil4v"]
 [ext_resource type="Script" uid="uid://d2s5cnrqw4db4" path="res://Scripts/hologram_projector.gd" id="1_tsuc0"]
 [ext_resource type="PackedScene" uid="uid://bwe85ikwl62si" path="res://model/Ship/shipver2.glb" id="3_254bj"]
 [ext_resource type="Shader" uid="uid://dyjspvl377a1s" path="res://ShaderMaterial/ship_ui.gdshader" id="4_254bj"]
+[ext_resource type="PackedScene" uid="uid://dpdkdpd31bwf7" path="res://Scenes/request_ui.tscn" id="5_7lfdj"]
+[ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="6_ye54s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_24pv7"]
 render_priority = 0
@@ -111,6 +113,14 @@ shader_parameter/fresnel_power = 10.0
 shader_parameter/alpha_intensity = 1.0
 shader_parameter/is_scanned = false
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ye54s"]
+viewport_path = NodePath("Request/Sprite3D/SubViewport")
+
+[sub_resource type="World3D" id="World3D_wnavm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wnavm"]
+size = Vector3(0.5, 0.45715332, 0.5)
+
 [node name="HologramProjector" type="Node3D"]
 script = ExtResource("1_tsuc0")
 hologram_shader = SubResource("ShaderMaterial_24pv7")
@@ -138,12 +148,34 @@ spot_range = 0.9207918
 spot_angle = 38.5
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="Projector"]
-transform = Transform3D(-3.7635504e-09, 0.10972499, 0, -0.0861, -4.796232e-09, 0, 0, 0, 0.105, 0.84841764, 0.052139603, 0.21216944)
+transform = Transform3D(-3.715468e-09, 0.085, 0, -0.085, -3.715468e-09, 0, 0, 0, 0.085, 0.7932117, 0.052139606, 0.22347263)
 mesh = SubResource("ArrayMesh_7lfdj")
 skeleton = NodePath("../../Hologram")
 surface_material_override/0 = SubResource("ShaderMaterial_254bj")
 
 [node name="Hologram" type="Node3D" parent="."]
 transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, -0.05213964, 0.8217778, 0.21216944)
+visible = false
 
 [node name="shipver2" parent="Hologram" instance=ExtResource("3_254bj")]
+visible = false
+
+[node name="Request" type="Node3D" parent="."]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.05213964, 0.8217778, 0.21216944)
+
+[node name="Sprite3D" type="Sprite3D" parent="Request"]
+transform = Transform3D(-4.3711385e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711385e-08, 0, 2.806343, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_ye54s")
+
+[node name="SubViewport" type="SubViewport" parent="Request/Sprite3D"]
+world_3d = SubResource("World3D_wnavm")
+size = Vector2i(1152, 648)
+
+[node name="RequestUi" parent="Request/Sprite3D/SubViewport" instance=ExtResource("5_7lfdj")]
+
+[node name="InteractArea" parent="." instance=ExtResource("6_ye54s")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054255366, 1.0037231, 0.22521508)
+shape = SubResource("BoxShape3D_wnavm")

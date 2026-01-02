@@ -1,17 +1,39 @@
-[gd_scene load_steps=157 format=4 uid="uid://bixxetr8e5eed"]
+[gd_scene load_steps=159 format=4 uid="uid://bstdtik6llqw4"]
 
-[ext_resource type="Texture2D" uid="uid://bsfl6fb165lln" path="res://model/Ship/cybertexture.png" id="1_201up"]
-[ext_resource type="Script" uid="uid://bvavagpxeap7x" path="res://model/Ship/transport_ship.gd" id="1_kxc64"]
-[ext_resource type="Texture2D" uid="uid://n1eyw8x3yeex" path="res://model/level/GroundForRepairProtocol_Meteor Texture.png" id="3_kxc64"]
-[ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="5_enbsd"]
-[ext_resource type="PackedScene" uid="uid://ya3wrhlra5vn" path="res://Scenes/power_cell.tscn" id="5_guwuu"]
-[ext_resource type="Shader" uid="uid://r5hx55iu62s" path="res://model/Ship/ThrusterShader.gdshader" id="6_guwuu"]
-[ext_resource type="PackedScene" uid="uid://dg1tl7uy6bd4f" path="res://Scenes/pipe_puzzle_3d.tscn" id="7_vywj1"]
-[ext_resource type="PackedScene" uid="uid://cpvj50kcm3msx" path="res://Scenes/repair_point.tscn" id="8_c6mn2"]
+[ext_resource type="PackedScene" uid="uid://d4lkp273v3aas" path="res://Level/ground_for_repair_protocol.tscn" id="1_gikag"]
+[ext_resource type="Script" uid="uid://bvavagpxeap7x" path="res://model/Ship/transport_ship.gd" id="2_x6jyd"]
+[ext_resource type="Texture2D" uid="uid://bsfl6fb165lln" path="res://model/Ship/cybertexture.png" id="3_62cxe"]
+[ext_resource type="Texture2D" uid="uid://n1eyw8x3yeex" path="res://model/level/GroundForRepairProtocol_Meteor Texture.png" id="4_dgg1w"]
+[ext_resource type="Shader" uid="uid://r5hx55iu62s" path="res://model/Ship/ThrusterShader.gdshader" id="5_savfn"]
+[ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="6_krtrh"]
+[ext_resource type="PackedScene" uid="uid://ya3wrhlra5vn" path="res://Scenes/power_cell.tscn" id="7_eb4i8"]
+[ext_resource type="PackedScene" uid="uid://dg1tl7uy6bd4f" path="res://Scenes/pipe_puzzle_3d.tscn" id="8_1qhrj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r1u1q"]
+sky_top_color = Color(0.68355334, 0.5429196, 0.41091648, 1)
+sky_horizon_color = Color(0.9560588, 0.831644, 0.65522075, 1)
+
+[sub_resource type="Sky" id="Sky_q47le"]
+sky_material = SubResource("ProceduralSkyMaterial_r1u1q")
+
+[sub_resource type="Environment" id="Environment_52ofs"]
+background_mode = 2
+sky = SubResource("Sky_q47le")
+ambient_light_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+ambient_light_energy = 2.35
+glow_intensity = 6.0
+glow_bloom = 0.1
+volumetric_fog_density = 0.1
+volumetric_fog_length = 4.66
+volumetric_fog_detail_spread = 1.41421
+volumetric_fog_ambient_inject = 0.37
+
+[sub_resource type="World3D" id="World3D_gikag"]
+environment = SubResource("Environment_52ofs")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkdox"]
 cull_mode = 2
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1aoud"]
 
@@ -48,7 +70,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lop3o")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enbsd"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_537qx"]
 
@@ -83,7 +105,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f17dw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_guwuu"]
-albedo_texture = ExtResource("3_kxc64")
+albedo_texture = ExtResource("4_dgg1w")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsx2n"]
 
@@ -145,7 +167,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_48n33"]
 render_priority = 0
-shader = ExtResource("6_guwuu")
+shader = ExtResource("5_savfn")
 shader_parameter/main_color = Color(0, 0, 0, 1)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_c6mn2")
 shader_parameter/emission = Color(0.89853436, 0.51766574, 0.10449622, 1)
@@ -156,7 +178,7 @@ shader_parameter/use_threshold = false
 shader_parameter/invert_boost_direction = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vywj1"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klx8u"]
 
@@ -191,7 +213,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_eirfl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6mn2"]
-albedo_texture = ExtResource("3_kxc64")
+albedo_texture = ExtResource("4_dgg1w")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bc5mx"]
 
@@ -228,7 +250,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xqolu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48n33"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ub14a"]
 
@@ -266,7 +288,7 @@ shadow_mesh = SubResource("ArrayMesh_hmm7i")
 points = PackedVector3Array(1, 0.807557, 1.1068, 1, -0.807753, 1.1068, 1, 1, 0.871495, -1, 0.807557, 1.1068, -1, -0.807753, 1.1068, 1, -1, 0.871495, -1, 1, 0.871495, 1, 1, -0.896681, -1, -1, 0.871495, 1, -1, -0.896681, -1, 1, -0.896681, 1, 0.896437, -1, -1, -1, -0.896681, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alxw5"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_na7ji"]
 
@@ -304,7 +326,7 @@ shadow_mesh = SubResource("ArrayMesh_m1gsm")
 points = PackedVector3Array(1, 0.85141, 1.00771, 1, -0.851605, 1.00771, 1, 1, 0.87152, -1, 0.85141, 1.00771, -1, -0.851605, 1.00771, 1, -1, 0.87152, -1, 1, 0.87152, 1, 1, -0.896627, -1, -1, 0.87152, 1, -1, -0.896627, -1, 1, -0.896627, 1, 0.896437, -1, -1, -1, -0.896627, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnwo8"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6p2gt"]
 
@@ -342,7 +364,7 @@ shadow_mesh = SubResource("ArrayMesh_1m4wo")
 points = PackedVector3Array(1, 0.807557, 1.1068, 1, -0.807753, 1.1068, 1, 1, 0.871495, -1, 0.807557, 1.1068, -1, -0.807753, 1.1068, 1, -1, 0.871495, -1, 1, 0.871495, 1, 1, -0.896681, -1, -1, 0.871495, 1, -1, -0.896681, -1, 1, -0.896681, 1, 0.896437, -1, -1, -1, -0.896681, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pwad"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfedr"]
 
@@ -380,7 +402,7 @@ shadow_mesh = SubResource("ArrayMesh_mc7xp")
 points = PackedVector3Array(1, 0.85141, 1.00771, 1, -0.851605, 1.00771, 1, 1, 0.87152, -1, 0.85141, 1.00771, -1, -0.851605, 1.00771, 1, -1, 0.87152, -1, 1, 0.87152, 1, 1, -0.896627, -1, -1, 0.87152, 1, -1, -0.896627, -1, 1, -0.896627, 1, 0.896437, -1, -1, -1, -0.896627, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al2xl"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jx8vb"]
 
@@ -420,7 +442,7 @@ shadow_mesh = SubResource("ArrayMesh_j6obe")
 points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qa1qe"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3pwe"]
 
@@ -460,7 +482,7 @@ shadow_mesh = SubResource("ArrayMesh_mu74q")
 points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxc64"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idsg7"]
 
@@ -497,7 +519,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_afwvi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hidu"]
-albedo_texture = ExtResource("1_201up")
+albedo_texture = ExtResource("3_62cxe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gik5"]
 
@@ -1617,221 +1639,224 @@ nodes/Others/node = SubResource("AnimationNodeBlendTree_newmb")
 nodes/Others/position = Vector2(-300, 200)
 node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Others", &"Add2", 1, &"Engine"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_48n33"]
-points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
+[node name="SubViewport" type="SubViewport"]
+world_3d = SubResource("World3D_gikag")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_alxw5"]
-points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
+[node name="GroundForRepairProtocol" parent="." instance=ExtResource("1_gikag")]
 
-[node name="shipver2" type="Node3D" node_paths=PackedStringArray("ias")]
-script = ExtResource("1_kxc64")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_52ofs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.98025054, -0.19776002, 0, 0.19776002, 0.98025054, 0, 0.90487784, 0.9104953)
+current = true
+
+[node name="shipver3" type="Node3D" parent="." node_paths=PackedStringArray("ias")]
+transform = Transform3D(0.0026222987, 0.017358366, -0.09844699, -0.05433484, 0.08291097, 0.013171728, 0.08390975, 0.053145632, 0.011605816, -0.025404274, 1.0261704, 0.070660055)
+script = ExtResource("2_x6jyd")
 one_shot_name = Array[StringName]([&"CoreDoor", &"FrontDoorLeft", &"FrontDoorRight", &"RearDoorLeft1", &"RearDoorLeft2", &"RearDoorRight1", &"RearDoorRight2"])
 state_machine_name = Array[StringName]([&"CoreSTM", &"FrontDoorLeftSTM", &"FrontDoorRightSTM", &"RearDoorLeft1STM", &"RearDoorLeft2STM", &"RearDoorRight1STM", &"RearDoorRight2STM"])
 ias = [NodePath("CoreOpener/CoreCoor_ia"), NodePath("Fix_Opener_F1/FrontDoorLeft_ia"), NodePath("Fix_Opener_F2/FrontDoorRight_ia"), NodePath("FDB_H1_L1/RearDoorLeft1_ia"), NodePath("FDB_H1_L2/RearDoorLeft2_ia"), NodePath("FDB_H2_R1/ReadDoorRight1_ia"), NodePath("FDB_H2_R2/RearDoorRight2_ia")]
 main_mesh = &"res://model/Ship/shipver2.glb"
-ship_name = "Paralax_V"
-engine = 4
-energy_core = 3
-hull = 1.0
 
-[node name="Body" type="MeshInstance3D" parent="."]
+[node name="Body" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.849939, 0, 0, 0, 1, 0, 0, 0, 3.61227, 0, 1.21059, 0)
 material_override = SubResource("StandardMaterial3D_rkdox")
 mesh = SubResource("ArrayMesh_ckv3l")
 skeleton = NodePath("")
 
-[node name="FrontEngine_upper" type="MeshInstance3D" parent="."]
+[node name="FrontEngine_upper" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.267167, 0, 0, 0, 1, 0, 0, 0, 0.662664, 2.18382, 1.53227, 2.40525)
 material_override = SubResource("StandardMaterial3D_enbsd")
 mesh = SubResource("ArrayMesh_514of")
 skeleton = NodePath("")
 
-[node name="FrontEngine_lower" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.274589, 0, 0, 0, 0.573969, 0, 0, 0, 0.624031, 2.34358, 1.007, 2.40525)
+[node name="FrontEngine_lower" type="MeshInstance3D" parent="shipver3"]
+transform = Transform3D(0.274589, 0, 0, 0, 0.5143313, -0.2769827, 0, 0.25476214, 0.55919164, 2.34358, 1.007, 2.40525)
 material_override = SubResource("StandardMaterial3D_guwuu")
 mesh = SubResource("ArrayMesh_kapjw")
 skeleton = NodePath("")
 
-[node name="Thruster3" type="MeshInstance3D" parent="FrontEngine_lower"]
+[node name="Thruster3" type="MeshInstance3D" parent="shipver3/FrontEngine_lower"]
 transform = Transform3D(2.545, 0, 0, 0, 1.5700004, 0, 0, 0, 3.085, 0.27427292, -4.2084494, 0.07208204)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="FrontEngine_lower/Thruster3"]
+[node name="OmniLight3D" type="OmniLight3D" parent="shipver3/FrontEngine_lower/Thruster3"]
 light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
-light_energy = 8.0
+light_energy = 4.0
 light_indirect_energy = 2.0
 light_volumetric_fog_energy = 2.0
 light_specular = 1.0
 omni_range = 3.0
 
-[node name="Thruster4" type="MeshInstance3D" parent="FrontEngine_lower"]
+[node name="Thruster4" type="MeshInstance3D" parent="shipver3/FrontEngine_lower"]
 transform = Transform3D(2.545, 0, 0, 0, 1.5700002, 0, 0, 0, 3.085, -16.758, -4.208255, 0.082999945)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="FrontEngine_lower/Thruster4"]
+[node name="OmniLight3D" type="OmniLight3D" parent="shipver3/FrontEngine_lower/Thruster4"]
 light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
-light_energy = 8.0
+light_energy = 4.0
 light_indirect_energy = 2.0
 light_volumetric_fog_energy = 2.0
 light_specular = 1.0
 omni_range = 3.0
 
-[node name="BackEngine_upper_001" type="MeshInstance3D" parent="."]
+[node name="BackEngine_upper_001" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.267167, 0, 0, 0, 1, 0, 0, 0, 0.662664, 1.67397, 1.53227, -2.94956)
 material_override = SubResource("StandardMaterial3D_vywj1")
 mesh = SubResource("ArrayMesh_p4epi")
 skeleton = NodePath("")
 
-[node name="BackEngine_lower_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.274589, 0, 0, 0, 0.573969, 0, 0, 0, 0.624031, 1.82428, 1.007, -2.9185)
+[node name="BackEngine_lower_001" type="MeshInstance3D" parent="shipver3"]
+transform = Transform3D(0.274589, 0, 0, 0, 0.47529182, -0.34983873, 0, 0.3217734, 0.5167471, 1.82428, 1.007, -2.9185)
 material_override = SubResource("StandardMaterial3D_c6mn2")
 mesh = SubResource("ArrayMesh_cc1q3")
 skeleton = NodePath("")
 
-[node name="Thruster1" type="MeshInstance3D" parent="BackEngine_lower_001"]
+[node name="Thruster1" type="MeshInstance3D" parent="shipver3/BackEngine_lower_001"]
 transform = Transform3D(1.6199999, 0, 0, 0, 1.5600001, 0, 0, 0, 3.085, -13.006, -4.299457, -0.07700014)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="BackEngine_lower_001/Thruster1"]
+[node name="OmniLight3D" type="OmniLight3D" parent="shipver3/BackEngine_lower_001/Thruster1"]
 light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
-light_energy = 8.0
+light_energy = 4.0
 light_indirect_energy = 2.0
 light_volumetric_fog_energy = 2.0
 light_specular = 1.0
 omni_range = 3.0
 
-[node name="Thruster2" type="MeshInstance3D" parent="BackEngine_lower_001"]
+[node name="Thruster2" type="MeshInstance3D" parent="shipver3/BackEngine_lower_001"]
 transform = Transform3D(1.6199996, 0, 0, 0, 1.6550004, 0, 0, 0, 3.085, -0.05299902, -4.0535336, -0.07700014)
 mesh = SubResource("TubeTrailMesh_enbsd")
 surface_material_override/0 = SubResource("ShaderMaterial_48n33")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="BackEngine_lower_001/Thruster2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="shipver3/BackEngine_lower_001/Thruster2"]
 light_color = Color(0.9970549, 0.8556639, 0.5544908, 1)
-light_energy = 8.0
+light_energy = 4.0
 light_indirect_energy = 2.0
 light_volumetric_fog_energy = 2.0
 light_specular = 1.0
 omni_range = 3.0
 
-[node name="FDB_H1_L1" type="MeshInstance3D" parent="."]
+[node name="FDB_H1_L1" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.882179)
 layers = 5
 material_override = SubResource("StandardMaterial3D_48n33")
 mesh = SubResource("ArrayMesh_yl2rn")
 skeleton = NodePath("")
 
-[node name="RearDoorLeft1_ia" parent="FDB_H1_L1" instance=ExtResource("5_enbsd")]
+[node name="RearDoorLeft1_ia" parent="shipver3/FDB_H1_L1" instance=ExtResource("6_krtrh")]
 transform = Transform3D(25.561392, 0, 0, 0, 2.5569367, 0, 0, 0, 4.3943295, -50.740383, -3.79342, 3.8765852)
 
-[node name="RearDoorLeft1" type="CollisionShape3D" parent="FDB_H1_L1/RearDoorLeft1_ia"]
+[node name="RearDoorLeft1" type="CollisionShape3D" parent="shipver3/FDB_H1_L1/RearDoorLeft1_ia"]
 transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.882179)
 shape = SubResource("ConvexPolygonShape3D_h6h2g")
 
-[node name="FDB_H1_L2" type="MeshInstance3D" parent="."]
+[node name="FDB_H1_L2" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
 layers = 5
 material_override = SubResource("StandardMaterial3D_alxw5")
 mesh = SubResource("ArrayMesh_vruif")
 skeleton = NodePath("")
 
-[node name="RearDoorLeft2_ia" parent="FDB_H1_L2" instance=ExtResource("5_enbsd")]
+[node name="RearDoorLeft2_ia" parent="shipver3/FDB_H1_L2" instance=ExtResource("6_krtrh")]
 transform = Transform3D(16.448963, 0, 0, 0, -2.3273618, -9.063072e-07, 0, 1.2743778e-06, -3.2725508, -32.651848, 3.4528263, -4.5060425)
 
-[node name="RearDoorLeft2" type="CollisionShape3D" parent="FDB_H1_L2/RearDoorLeft2_ia"]
+[node name="RearDoorLeft2" type="CollisionShape3D" parent="shipver3/FDB_H1_L2/RearDoorLeft2_ia"]
 transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
 shape = SubResource("ConvexPolygonShape3D_55ua2")
 
-[node name="FDB_H2_R1" type="MeshInstance3D" parent="."]
+[node name="FDB_H2_R1" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-0.0391215, 5.90535e-08, 0, -5.90719e-09, -0.391093, 0, 0, 0, 0.227566, -1.99905, 1.48358, -0.860369)
 layers = 5
 material_override = SubResource("StandardMaterial3D_jnwo8")
 mesh = SubResource("ArrayMesh_cxnwg")
 skeleton = NodePath("")
 
-[node name="ReadDoorRight1_ia" parent="FDB_H2_R1" instance=ExtResource("5_enbsd")]
+[node name="ReadDoorRight1_ia" parent="shipver3/FDB_H2_R1" instance=ExtResource("6_krtrh")]
 transform = Transform3D(-25.561392, -3.8596695e-06, 0, 3.860872e-07, -2.5569367, 0, 0, 0, 4.3943295, -51.09849, 3.7934208, 3.780745)
 
-[node name="RearDoorRight1" type="CollisionShape3D" parent="FDB_H2_R1/ReadDoorRight1_ia"]
+[node name="RearDoorRight1" type="CollisionShape3D" parent="shipver3/FDB_H2_R1/ReadDoorRight1_ia"]
 transform = Transform3D(-0.0391215, 5.90535e-08, 0, -5.90719e-09, -0.391093, 0, 0, 0, 0.227566, -1.99905, 1.48358, -0.860369)
 shape = SubResource("ConvexPolygonShape3D_3gbcc")
 
-[node name="FDB_H2_R2" type="MeshInstance3D" parent="."]
+[node name="FDB_H2_R2" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08, 0, -0.305572, -1.99905, 1.48358, -1.38065)
 layers = 5
 material_override = SubResource("StandardMaterial3D_0pwad")
 mesh = SubResource("ArrayMesh_yu1iv")
 skeleton = NodePath("")
 
-[node name="RearDoorRight2_ia" parent="FDB_H2_R2" instance=ExtResource("5_enbsd")]
+[node name="RearDoorRight2_ia" parent="shipver3/FDB_H2_R2" instance=ExtResource("6_krtrh")]
 transform = Transform3D(-16.448963, 0, -6.4054557e-06, 0, 2.3273618, 0, 1.2743785e-06, 0, -3.2725508, -32.88231, -3.4528275, -4.518245)
 
-[node name="RearDoorRight2" type="CollisionShape3D" parent="FDB_H2_R2/RearDoorRight2_ia"]
+[node name="RearDoorRight2" type="CollisionShape3D" parent="shipver3/FDB_H2_R2/RearDoorRight2_ia"]
 transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08, 0, -0.305572, -1.99905, 1.48358, -1.38065)
 shape = SubResource("ConvexPolygonShape3D_3ir81")
 
-[node name="Fix_Opener_F1" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.07610445e-08, 0, -0.0484776, 0, 0.37148, 0, 0.246184, 0, -2.1190232e-09, 1.96775, 1.12391, 3.06792)
+[node name="Fix_Opener_F1" type="MeshInstance3D" parent="shipver3"]
+transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
 layers = 5
 material_override = SubResource("StandardMaterial3D_al2xl")
 mesh = SubResource("ArrayMesh_p0vqr")
 skeleton = NodePath("")
 
-[node name="FrontDoorLeft_ia" parent="Fix_Opener_F1" instance=ExtResource("5_enbsd")]
+[node name="FrontDoorLeft_ia" parent="shipver3/Fix_Opener_F1" instance=ExtResource("6_krtrh")]
 transform = Transform3D(4.062002, 0, 0, 0, 2.6919348, 0, 0, 0, 20.628082, -7.993005, -3.0254924, -63.285305)
 
-[node name="FrontDoorLeft" type="CollisionShape3D" parent="Fix_Opener_F1/FrontDoorLeft_ia"]
+[node name="FrontDoorLeft" type="CollisionShape3D" parent="shipver3/Fix_Opener_F1/FrontDoorLeft_ia"]
 transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
 shape = SubResource("ConvexPolygonShape3D_guwuu")
 
-[node name="Fix_Opener_F2" type="MeshInstance3D" parent="."]
+[node name="Fix_Opener_F2" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-0.246184, -1.4465965e-07, 0, 9.586759e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
 layers = 5
 material_override = SubResource("StandardMaterial3D_qa1qe")
 mesh = SubResource("ArrayMesh_03wp2")
 skeleton = NodePath("")
 
-[node name="FrontDoorRight_ia" parent="Fix_Opener_F2" instance=ExtResource("5_enbsd")]
+[node name="FrontDoorRight_ia" parent="shipver3/Fix_Opener_F2" instance=ExtResource("6_krtrh")]
 transform = Transform3D(-4.0620017, 1.5818018e-06, 0, -1.048278e-06, -2.6919346, 0, 0, -5.8628536e-13, 20.62808, -7.914408, 3.0254896, -63.28531)
 
-[node name="FrontDoorRight" type="CollisionShape3D" parent="Fix_Opener_F2/FrontDoorRight_ia"]
+[node name="FrontDoorRight" type="CollisionShape3D" parent="shipver3/Fix_Opener_F2/FrontDoorRight_ia"]
 transform = Transform3D(-0.246184, -1.44659e-07, 0, 9.58677e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
 shape = SubResource("ConvexPolygonShape3D_otce0")
 
-[node name="CorePlace" type="MeshInstance3D" parent="."]
+[node name="CorePlace" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-1.86193e-08, 1.46121, 0, -0.425961, -6.38713e-08, 0, 0, 0, 1, 1.31777, 1.28118, 0.678845)
 layers = 5
 material_override = SubResource("StandardMaterial3D_kxc64")
 mesh = SubResource("ArrayMesh_16q8h")
 skeleton = NodePath("")
 
-[node name="CoreOpener" type="MeshInstance3D" parent="."]
+[node name="CoreOpener" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-1.01088e-08, 1, 0, -0.231264, -4.37114e-08, 0, 0, 0, 0.676852, 1.6159, 1.22521, 0.678845)
 layers = 5
 material_override = SubResource("StandardMaterial3D_3hidu")
 mesh = SubResource("ArrayMesh_f8ijs")
 skeleton = NodePath("")
 
-[node name="CoreCoor_ia" parent="CoreOpener" instance=ExtResource("5_enbsd")]
+[node name="CoreCoor_ia" parent="shipver3/CoreOpener" instance=ExtResource("6_krtrh")]
 transform = Transform3D(-1.8901082e-07, -4.324063, 0, 1, -4.3711086e-08, 0, 0, 0, 1.4774278, 5.2978854, -1.6159, -1.0029445)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoreOpener/CoreCoor_ia"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="shipver3/CoreOpener/CoreCoor_ia"]
 transform = Transform3D(-1.01088e-08, 1, 0, -0.231264, -4.37114e-08, 0, 0, 0, 0.676852, 1.6159, 1.2252101, 0.6788449)
 shape = SubResource("ConvexPolygonShape3D_vywj1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="shipver3"]
 libraries = {
 &"": SubResource("AnimationLibrary_n0fs1")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="shipver3"]
 tree_root = SubResource("AnimationNodeBlendTree_3gbcc")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Add2/add_amount = 1.0
-parameters/Engine/blend_position = 0.0
+parameters/Engine/blend_position = 1.0
 parameters/Engine/0/Blend2/blend_amount = 1.0
 parameters/Engine/1/Add2/add_amount = 1.0
 parameters/Engine/2/Blend2/blend_amount = 1.0
@@ -1839,8 +1864,8 @@ parameters/Engine/2/TimeScale/scale = 0.0
 parameters/Others/CoreDoor/active = false
 parameters/Others/CoreDoor/internal_active = false
 parameters/Others/CoreDoor/request = 0
-parameters/Others/FrontDoorLeft/active = true
-parameters/Others/FrontDoorLeft/internal_active = true
+parameters/Others/FrontDoorLeft/active = false
+parameters/Others/FrontDoorLeft/internal_active = false
 parameters/Others/FrontDoorLeft/request = 0
 parameters/Others/FrontDoorRight/active = false
 parameters/Others/FrontDoorRight/internal_active = false
@@ -1860,27 +1885,15 @@ parameters/Others/RearDoorRight2/internal_active = false
 parameters/Others/RearDoorRight2/request = 0
 parameters/Others/TimeScale/scale = 0.0
 
-[node name="PowerCell" parent="." instance=ExtResource("5_guwuu")]
+[node name="PowerCell" parent="shipver3" instance=ExtResource("7_eb4i8")]
 transform = Transform3D(-1.3987644e-08, 0, 0.32, 0, 0.32, 0, -0.32, 0, -1.3987644e-08, 1.2221793, 1.208712, 1.2128152)
 
-[node name="LandingPoint" type="Marker3D" parent="."]
+[node name="LandingPoint" type="Marker3D" parent="shipver3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028211176, 0.27220893)
 
-[node name="PipePuzzle3D" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("7_vywj1")]
+[node name="PipePuzzle3D" parent="shipver3" node_paths=PackedStringArray("cam") instance=ExtResource("8_1qhrj")]
 transform = Transform3D(-5.4639235e-09, 0, 0.125, 0, 0.125, 0, -0.125, 0, -5.4639235e-09, 1.959032, 1.7939391, -0.8474133)
 cam = NodePath("../Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="shipver3"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.499551, 1.487, -1.149)
-
-[node name="FrontLeftRepair" parent="." instance=ExtResource("8_c6mn2")]
-
-[node name="FrontDoorLeft" type="CollisionShape3D" parent="FrontLeftRepair"]
-transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
-shape = SubResource("ConvexPolygonShape3D_48n33")
-
-[node name="FrontRightRepair" parent="." instance=ExtResource("8_c6mn2")]
-
-[node name="FrontDoorRight" type="CollisionShape3D" parent="FrontRightRepair"]
-transform = Transform3D(-0.246184, -1.44659e-07, 0, 9.58677e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
-shape = SubResource("ConvexPolygonShape3D_alxw5")

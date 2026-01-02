@@ -72,8 +72,6 @@ func update_game_state():
 	match GState.game_state:
 		GState.gstate_enum.PLAYING:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		GState.gstate_enum.INSPECTING:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		_:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -100,3 +98,7 @@ func register_scan(part_name: String):
 	if not scanned_parts.has(part_name):
 		scanned_parts.append(part_name)
 		print("Data scan saved: ", part_name)
+
+func change_scene(scene_path:StringName):
+	queued_scene = scene_path
+	get_tree().change_scene_to_file("res://Scenes/loading.tscn")

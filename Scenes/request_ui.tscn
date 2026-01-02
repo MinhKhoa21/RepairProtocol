@@ -1,0 +1,200 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpdkdpd31bwf7"]
+
+[ext_resource type="Script" uid="uid://7dskk8fvgdqk" path="res://Scripts/request_ui.gd" id="1_0s0fw"]
+[ext_resource type="PackedScene" uid="uid://bstdtik6llqw4" path="res://Images/ship_img/shipver_2_image.tscn" id="2_dliy0"]
+
+[node name="RequestUi" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0s0fw")
+ship_scenes = Array[StringName]([&""])
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 95.0
+grow_horizontal = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -525.0
+offset_top = -160.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PanelContainer4" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -525.0
+offset_top = 100.0
+offset_bottom = 450.0
+grow_horizontal = 0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DemonstrateContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 600.0
+grow_vertical = 2
+
+[node name="ShipName" type="Label" parent="Control/DemonstrateContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "Paralax_MKII"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/DemonstrateContainer"]
+custom_minimum_size = Vector2(600, 500)
+layout_mode = 2
+size_flags_horizontal = 0
+stretch = true
+
+[node name="SubViewport" parent="Control/DemonstrateContainer/SubViewportContainer" instance=ExtResource("2_dliy0")]
+handle_input_locally = false
+size = Vector2i(600, 500)
+render_target_update_mode = 4
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Accept" type="Button" parent="Control/ChoiceContainer"]
+custom_minimum_size = Vector2(525, 77)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Accept"
+
+[node name="Deny" type="Button" parent="Control/ChoiceContainer"]
+custom_minimum_size = Vector2(525, 77)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Deny"
+
+[node name="StatusContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -500.0
+offset_top = 100.0
+offset_bottom = 450.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Control/StatusContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "Info"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Engine" type="Label" parent="Control/StatusContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Engine: 1"
+
+[node name="EnergyCore" type="Label" parent="Control/StatusContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Energy Core: 1"
+
+[node name="Hull" type="Label" parent="Control/StatusContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Hull: 100%"
+
+[node name="Shield" type="Label" parent="Control/StatusContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Shield: 100%"
+
+[node name="Type" type="Label" parent="Control/StatusContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Type: Carrier"
+
+[node name="Pending" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Pending"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -11.5
+offset_right = 71.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Fetching request..."
+
+[node name="Close" type="Button" parent="."]
+custom_minimum_size = Vector2(95, 95)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "X"

@@ -6,9 +6,10 @@ extends Level
 @export var landing_duration: float = 8.0
 @export var brake_time: float = 2.0
 var ground_smokes: Array[GPUParticles3D] = []
-
+var ship_spawn_point:Transform3D
 
 func _ready() -> void:
+	ship_spawn_point = ship_root.global_transform
 	GState.play()
 	var found = destination_point.find_children("*", "GPUParticles3D", true, false)
 	for p in found:
@@ -16,10 +17,12 @@ func _ready() -> void:
 			ground_smokes.append(p)
 			p.emitting = false # Tắt lúc đầu
 			
-	perform_landing()
+	#perform_landing()
 
 func perform_landing():
-	var ship_leg = ship_root.get_node("LandingPoint")
+	for i in ship_root.get_childrn(): i.queue_free()
+	ship_root.add_child(Watcher.current_ship.duplicate())
+	var ship_leg = ship_root.get_child(0).get_node("LandingPoint")
 	var offset_vector = ship_root.global_position - ship_leg.global_position
 	var final_pos = destination_point.global_position + offset_vector
 	var target_rot = destination_point.global_rotation
@@ -45,25 +48,25 @@ func stop_ground_smoke():
 	for p in ground_smokes:
 		p.emitting = false
 	Watcher.cargo.clear()
-	Watcher.cargo.append({"ship_hologram":ship_root})
+	Watcher.cargo.append({"ship_hologram":ship_root.get_child(0)})
 
 func play_push_anims():
-	if "thrusters" in ship_root:
-		for t in ship_root.thrusters:
+	if "thrusters" in ship_root.get_child(0):
+		for t in ship_root.get_child(0).thrusters:
 			if t is MeshInstance3D:
 				t.visible = true
 
 func play_brake_anims():
-	if "thrusters" in ship_root:
-		for t in ship_root.thrusters:
+	if "thrusters" in ship_root.get_child(0):
+		for t in ship_root.get_child(0).thrusters:
 			if "brake" in t.name.to_lower():
 				t.visible = true
 	
 	for p in ground_smokes:
 		p.emitting = true
 func reset_anims():
-	if "thrusters" in ship_root:
-		for t in ship_root.thrusters:
+	if "thrusters" in ship_root.get_child(0):
+		for t in ship_root.get_child(0).thrusters:
 			t.visible = false
 			
 	print("Landed")

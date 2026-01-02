@@ -10,4 +10,3 @@ func set_scanned(a):
 
 func _ready() -> void:
 	manual_toggel(false)
-	

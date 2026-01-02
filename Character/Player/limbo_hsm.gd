@@ -7,12 +7,13 @@ var is_falling:bool = false
 var hit:bool = false
 @export var ground_default:GroundState
 @export var air_default:AirState
+@onready var ani_tree: AnimationTree = $"../AnimationTree"
 var is_holding:bool = true
 var interact:bool = false
 var tool_hit:bool = false
 var tool_action:StringName = ""
 var interact_action:StringName = ""
-@onready var ani_tree: AnimationTree = $"../AnimationTree"
+var can_run:bool = false
 
 func _ready() -> void:
 	character = get_parent()

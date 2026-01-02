@@ -1,5 +1,4 @@
-extends Node3D
-class_name Puzzle
+extends Puzzle3D
 
 @export var grid_size:Vector2i = Vector2i(5, 5)
 @onready var points: Node3D = $Points
@@ -85,6 +84,16 @@ func _input(event: InputEvent) -> void:
 		can_draw = true
 		draw_queue.append(get_cell())
 		#print("Can draw now.")
+	if GState.is_solving() && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && hit_cell():
+		var cell = get_cell()
+		if cell_to_point(cell)[p_head]:
+			var point = cell_to_point(cell)
+			point[p_traveled] = false
+			while drew[-1] != start_point || !drew[-1][p_checkpoint]:
+				point = cell_to_point(drew.pop_back())
+				point[p_traveled] = false
+				point[p_line] = null
+			
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.is_released():
 		can_draw = false
 		while !draw_queue.is_empty():
@@ -222,8 +231,7 @@ func project_mouse() -> void:
 					prev_point[p_line] = Direction.spe_dir_gen(dir)
 				cur_point[p_line] = Direction.spe_dir_gen(rev_dir)
 			if cur_point[p_goal]:
-				print("Victory!")
-				add_child(TimerKit.generate_timer(1, puzzle_gen))
+				complete.emit()
 			grid_ui_update()
 
 func generate_solution(_point:Array, _traveled:Array, _avoids:Array, _fuel:int = 2):

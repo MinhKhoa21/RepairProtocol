@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://kcd4vy0cuttn"]
+[gd_scene load_steps=30 format=3 uid="uid://kcd4vy0cuttn"]
 
 [ext_resource type="PackedScene" uid="uid://5bybde5xq8dg" path="res://Character/player_controller.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://dt0tmw6s7on5b" path="res://Scripts/garage.gd" id="1_wqlfs"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://b35mxcc3d74di" path="res://Scene/WaterPlane.tscn" id="9_wqlfs"]
 [ext_resource type="Shader" uid="uid://viqy3uwh6ns7" path="res://shader/PixelShader.gdshader" id="12_dx36h"]
 [ext_resource type="PackedScene" uid="uid://cr0f1nnopyk3m" path="res://UI/ComputerUI/ComputerUI.tscn" id="12_i5g78"]
-[ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="12_q47le"]
 [ext_resource type="PackedScene" uid="uid://ca35gtavi7hqu" path="res://modelScene/garage/tableVer1.tscn" id="13_dx36h"]
 [ext_resource type="Texture2D" uid="uid://nmolea6k5cyd" path="res://trail/particle_sprite_smoke.webp" id="13_q47le"]
 [ext_resource type="PackedScene" uid="uid://dbtthghrnffwt" path="res://Scenes/hologram_projector.tscn" id="14_1p6h5"]
@@ -25,12 +24,12 @@ size = Vector3(19.5471, 1, 19.4685)
 sky_top_color = Color(0.68355334, 0.5429196, 0.41091648, 1)
 sky_horizon_color = Color(0.9560588, 0.831644, 0.65522075, 1)
 
-[sub_resource type="Sky" id="Sky_q47le"]
+[sub_resource type="Sky" id="Sky_dx36h"]
 sky_material = SubResource("ProceduralSkyMaterial_i5g78")
 
 [sub_resource type="Environment" id="Environment_qmtf6"]
 background_mode = 2
-sky = SubResource("Sky_q47le")
+sky = SubResource("Sky_dx36h")
 ambient_light_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 ambient_light_energy = 2.35
 glow_enabled = true
@@ -116,7 +115,7 @@ size = Vector2(2, 2)
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("ship_root", "destination_point")]
 script = ExtResource("1_wqlfs")
-ship_root = NodePath("shipver2")
+ship_root = NodePath("ShipNode")
 destination_point = NodePath("DestinationPoint")
 
 [node name="Geometry" type="Node3D" parent="."]
@@ -180,9 +179,6 @@ transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, -0
 [node name="StandPosition" type="Marker3D" parent="BriefCase"]
 transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 1.4378402, -2.8888888, 0)
 
-[node name="shipver2" parent="." instance=ExtResource("12_q47le")]
-transform = Transform3D(-3.5, 0, -5.284853e-07, 0, 3.5, 0, 5.284853e-07, 0, -3.5, 31, 97, 205)
-
 [node name="DestinationPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1, 0)
 
@@ -208,5 +204,16 @@ transform = Transform3D(1.395, 0, 0, 0, 1.395, 0, 0, 0, 1.395, -3.3197937, 0.517
 [node name="rooflight" parent="." instance=ExtResource("14_dx36h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.287903, 6.8995495, 0.99928784)
 
-[node name="HologramProjector" parent="." instance=ExtResource("14_1p6h5")]
+[node name="HologramProjector" parent="." node_paths=PackedStringArray("stand_look_point") instance=ExtResource("14_1p6h5")]
 transform = Transform3D(2.74, 0, 0, 0, 2.74, 0, 0, 0, 2.74, -3.068816, 1.13785, -0.2712114)
+stand_look_point = [NodePath("../Marker3D"), NodePath("../Marker3D2")]
+
+[node name="ShipNode" type="Node3D" parent="."]
+transform = Transform3D(-3.5, 0, -5.284853e-07, 0, 3.5, 0, 5.284853e-07, 0, -3.5, 31, 97, 205)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.811, 0, 0.308)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(-4.2221952e-08, 0.258819, 0.9659257, 1.1313339e-08, 0.9659258, -0.258819, -0.9999999, 0, -4.371138e-08, -1.8541863, 3.5634186, 0.30840343)
+gizmo_extents = 2.0

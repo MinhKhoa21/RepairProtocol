@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cebsn8n4uvoab"]
+[gd_scene load_steps=14 format=3 uid="uid://dnpb8dajgjrab"]
 
 [ext_resource type="Script" uid="uid://b0c284d0x6hly" path="res://Character/Player/player.gd" id="1_3c51y"]
 [ext_resource type="Script" uid="uid://cd8cfoifptibm" path="res://Character/Player/limbo_hsm.gd" id="2_2brrg"]
 [ext_resource type="Script" uid="uid://dmxkbutq67sry" path="res://Scripts/Resources/character_stats.gd" id="2_o1rx4"]
 [ext_resource type="PackedScene" uid="uid://drdx0bj6kg3n0" path="res://Scenes/cube.tscn" id="3_2h1g1"]
 [ext_resource type="Script" uid="uid://lj5gpwv8jvmw" path="res://Character/Player/States/ground_default.gd" id="3_7t67c"]
-[ext_resource type="Script" uid="uid://jg26nf4w5w2" path="res://Scripts/Resources/ani_kit.gd" id="4_1spju"]
 [ext_resource type="Script" uid="uid://bd6tqx4sfrb3x" path="res://Character/Player/States/air_default.gd" id="5_ta2qq"]
 [ext_resource type="PackedScene" uid="uid://ck1behjui6ns2" path="res://Scenes/fps_cam.tscn" id="8_frffh"]
 [ext_resource type="PackedScene" uid="uid://b05aqjfhy72fe" path="res://Scenes/hot_bar_ui.tscn" id="9_3jy5p"]
@@ -19,25 +18,15 @@ metadata/_custom_type_script = "uid://dmxkbutq67sry"
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_o1rx4"]
 
-[sub_resource type="Resource" id="Resource_ta2qq"]
-script = ExtResource("4_1spju")
-metadata/_custom_type_script = "uid://jg26nf4w5w2"
-
-[sub_resource type="Resource" id="Resource_o1rx4"]
-script = ExtResource("4_1spju")
-ani_name = &"walk"
-metadata/_custom_type_script = "uid://jg26nf4w5w2"
-
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7t67c"]
 points = PackedVector3Array(-0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5)
 
-[node name="RepairMan" type="CharacterBody3D" node_paths=PackedStringArray("fps_cam", "look_ray", "pointer_label", "neck", "ani")]
+[node name="RepairMan" type="CharacterBody3D" node_paths=PackedStringArray("fps_cam", "look_ray", "pointer_label", "ani")]
 collision_layer = 2
 script = ExtResource("1_3c51y")
 fps_cam = NodePath("Neck/Camera3D")
 look_ray = NodePath("Neck/Camera3D/LookRay")
 pointer_label = NodePath("Control/Label")
-neck = NodePath("Neck")
 ani = NodePath("Cube/AnimationPlayer")
 limbo_path = NodePath("LimboHSM")
 stat = SubResource("Resource_frffh")
@@ -49,8 +38,6 @@ script = ExtResource("2_2brrg")
 
 [node name="GroundDefault" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("can_dispatch_to")]
 script = ExtResource("3_7t67c")
-idle_ani = SubResource("Resource_ta2qq")
-walk_ani = SubResource("Resource_o1rx4")
 can_dispatch_to = {
 "air": NodePath("../AirDefault")
 }
@@ -120,7 +107,6 @@ script = ExtResource("11_dldcg")
 
 [node name="Camera3D" parent="Neck" instance=ExtResource("8_frffh")]
 current = true
-pan_limit_y = Vector2(-70, 85)
 
 [node name="LookRay" type="RayCast3D" parent="Neck/Camera3D"]
 target_position = Vector3(0, 0, -3)

@@ -1,8 +1,6 @@
 extends Character
 class_name Player
 
-
-
 @onready var cam_controller: CameraController = $Neck
 
 @onready var arm_ik: SkeletonIK3D = $RepairEmployeeVer3/rig_001/Skeleton3D/armIK
@@ -38,14 +36,16 @@ func _ready() -> void:
 	
 	limbo_player.set_active(true)
 	(limbo_player as LimboHSM).blackboard.bind_var_to_property(BBNames.direction, self, "dir")
+	$AnimationTree.set("parameters/Movement/4/blend_position", -1)
 
 func _process(delta: float) -> void:
 	fps_cam.process_mode = ReferKit.flow(GState.game_state, [GState.gstate_enum.INSPECTING, GState.gstate_enum.PLAYING], [Node.PROCESS_MODE_DISABLED, Node.PROCESS_MODE_INHERIT])
 
 func _physics_process(delta: float) -> void:
+	#print(camera_controller_anchor.global_rotation)
 	if GState.is_playing():
-		$AnimationTree.set("parameters/Movement/blend_position", input_dir)
 		movement_input()
+		$AnimationTree.set("parameters/Movement/blend_position", input_dir)
 		limbo_player.update(delta)
 	
 	display_pointer_safe() 
@@ -70,9 +70,17 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("mouse1"):
 		hit = false
 
-	if event.is_action_pressed("tab"):
-		if GState.is_playing(): GState.check()
-		elif GState.is_checking(): GState.play()
+	if event.is_action_pressed("run"):
+		limbo_player.can_run = true
+		$AnimationTree.set("parameters/Movement/4/blend_position", 1)
+
+	if event.is_action_released("run"):
+		limbo_player.can_run = false
+		$AnimationTree.set("parameters/Movement/4/blend_position", -1)
+
+	#if event.is_action_pressed("tab"):
+		#if GState.is_playing(): GState.check()
+		#elif GState.is_checking(): GState.play()
 
 	if event.is_action_pressed("toggle_scan"):
 		print("DEBUG: Activated Scanning!")
@@ -89,11 +97,14 @@ func movement_input():
 		input_dir = Vector2.ZERO
 		velocity = Vector3.ZERO
 		return
-	
+
 	input_dir = Input.get_vector("move_left", "move_right", "move_down", "move_up")
 	
 	var move_dir = (fps_cam.get_forward() * input_dir.y + fps_cam.get_right() * input_dir.x).normalized()
-	velocity = Vector3(move_dir.x, 0, move_dir.z) * stat.speed
+	var speed:float = 1
+	if limbo_player.can_run: speed = stat.run_speed
+	else: speed = stat.speed
+	velocity = Vector3(move_dir.x, 0, move_dir.z) * speed
 
 func set_visual_layer_recursive(node: Node, layer_num: int, enable: bool):
 	if node is VisualInstance3D:
@@ -217,7 +228,7 @@ func sequence_open_briefcase(target_tf: Transform3D, look_target_pos: Vector3, b
 	tween.tween_property(cam_controller, "input_rotation:y", final_yaw, 0.5)
 	
 	await tween.finished
-	
+	tween.kill()
 	cam_controller.input_rotation.x = target_pitch
 	cam_controller.input_rotation.y = final_yaw
 	

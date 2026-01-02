@@ -8,7 +8,7 @@ extends Vehicle
 var thrusters: Array[MeshInstance3D] = []
 
 func _ready() -> void:
-	Watcher.current_ship = self
+	#Watcher.current_ship = self
 	super()
 	for i:int in one_shot_name.size():
 		ias[i].interacted.connect(func():
