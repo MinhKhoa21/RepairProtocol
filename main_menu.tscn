@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://0axl7fohmjgp"]
+[gd_scene load_steps=9 format=3 uid="uid://0axl7fohmjgp"]
 
 [ext_resource type="Script" uid="uid://co3x0hsy2a6nt" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://d4lkp273v3aas" path="res://Level/ground_for_repair_protocol.tscn" id="2_fu7sn"]
 [ext_resource type="PackedScene" uid="uid://c2ebkvnab70xa" path="res://Level/garage.tscn" id="3_fu7sn"]
-[ext_resource type="PackedScene" uid="uid://bixxetr8e5eed" path="res://model/Ship/shipver_2.tscn" id="4_jix8l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jix8l"]
 transparency = 1
@@ -91,6 +90,3 @@ text = "Exit"
 
 [node name="Garage" parent="." instance=ExtResource("3_fu7sn")]
 transform = Transform3D(-0.51369923, 0, -0.036579117, 0, 0.58699995, 0, 0.036579117, 0, -0.51369923, 27.181053, 2.2305007, 19.47527)
-
-[node name="shipver2" parent="." instance=ExtResource("4_jix8l")]
-transform = Transform3D(-3.5, 0, -5.284853e-07, 0, 3.5, 0, 5.284853e-07, 0, -3.5, -43.71757, 1.8240566, 17.701363)

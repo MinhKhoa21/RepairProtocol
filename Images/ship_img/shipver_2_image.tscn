@@ -1,13 +1,9 @@
-[gd_scene load_steps=159 format=4 uid="uid://bstdtik6llqw4"]
+[gd_scene load_steps=148 format=4 uid="uid://bstdtik6llqw4"]
 
 [ext_resource type="PackedScene" uid="uid://d4lkp273v3aas" path="res://Level/ground_for_repair_protocol.tscn" id="1_gikag"]
-[ext_resource type="Script" uid="uid://bvavagpxeap7x" path="res://model/Ship/transport_ship.gd" id="2_x6jyd"]
 [ext_resource type="Texture2D" uid="uid://bsfl6fb165lln" path="res://model/Ship/cybertexture.png" id="3_62cxe"]
 [ext_resource type="Texture2D" uid="uid://n1eyw8x3yeex" path="res://model/level/GroundForRepairProtocol_Meteor Texture.png" id="4_dgg1w"]
 [ext_resource type="Shader" uid="uid://r5hx55iu62s" path="res://model/Ship/ThrusterShader.gdshader" id="5_savfn"]
-[ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="6_krtrh"]
-[ext_resource type="PackedScene" uid="uid://ya3wrhlra5vn" path="res://Scenes/power_cell.tscn" id="7_eb4i8"]
-[ext_resource type="PackedScene" uid="uid://dg1tl7uy6bd4f" path="res://Scenes/pipe_puzzle_3d.tscn" id="8_1qhrj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r1u1q"]
 sky_top_color = Color(0.68355334, 0.5429196, 0.41091648, 1)
@@ -284,9 +280,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hmm7i")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h6h2g"]
-points = PackedVector3Array(1, 0.807557, 1.1068, 1, -0.807753, 1.1068, 1, 1, 0.871495, -1, 0.807557, 1.1068, -1, -0.807753, 1.1068, 1, -1, 0.871495, -1, 1, 0.871495, 1, 1, -0.896681, -1, -1, 0.871495, 1, -1, -0.896681, -1, 1, -0.896681, 1, 0.896437, -1, -1, -1, -0.896681, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_alxw5"]
 albedo_texture = ExtResource("3_62cxe")
 
@@ -321,9 +314,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_m1gsm")
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_55ua2"]
-points = PackedVector3Array(1, 0.85141, 1.00771, 1, -0.851605, 1.00771, 1, 1, 0.87152, -1, 0.85141, 1.00771, -1, -0.851605, 1.00771, 1, -1, 0.87152, -1, 1, 0.87152, 1, 1, -0.896627, -1, -1, 0.87152, 1, -1, -0.896627, -1, 1, -0.896627, 1, 0.896437, -1, -1, -1, -0.896627, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnwo8"]
 albedo_texture = ExtResource("3_62cxe")
@@ -360,9 +350,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1m4wo")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3gbcc"]
-points = PackedVector3Array(1, 0.807557, 1.1068, 1, -0.807753, 1.1068, 1, 1, 0.871495, -1, 0.807557, 1.1068, -1, -0.807753, 1.1068, 1, -1, 0.871495, -1, 1, 0.871495, 1, 1, -0.896681, -1, -1, 0.871495, 1, -1, -0.896681, -1, 1, -0.896681, 1, 0.896437, -1, -1, -1, -0.896681, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0pwad"]
 albedo_texture = ExtResource("3_62cxe")
 
@@ -397,9 +384,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mc7xp")
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3ir81"]
-points = PackedVector3Array(1, 0.85141, 1.00771, 1, -0.851605, 1.00771, 1, 1, 0.87152, -1, 0.85141, 1.00771, -1, -0.851605, 1.00771, 1, -1, 0.87152, -1, 1, 0.87152, 1, 1, -0.896627, -1, -1, 0.87152, 1, -1, -0.896627, -1, 1, -0.896627, 1, 0.896437, -1, -1, -1, -0.896627, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al2xl"]
 albedo_texture = ExtResource("3_62cxe")
@@ -438,9 +422,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j6obe")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_guwuu"]
-points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qa1qe"]
 albedo_texture = ExtResource("3_62cxe")
 
@@ -477,9 +458,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mu74q")
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_otce0"]
-points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxc64"]
 albedo_texture = ExtResource("3_62cxe")
@@ -552,9 +530,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_16e01")
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vywj1"]
-points = PackedVector3Array(-1, 0, -1, -1, 0.06039943, -1, 1, 0, -1, -1, 0, 1, -1, 0.06039943, 1, 1, 0.06039943, -1, 1, 0, 1, 1, 0.06039943, 1)
 
 [sub_resource type="Animation" id="Animation_0d53t"]
 resource_name = "BackEngine_Brake"
@@ -1630,7 +1605,7 @@ nodes/default/position = Vector2(-1280, 5200)
 node_connections = [&"output", 0, &"MainTimeScale", &"CoreDoor", 0, &"TimeScale", &"CoreDoor", 1, &"CoreSTM", &"FrontDoorLeft", 0, &"CoreDoor", &"FrontDoorLeft", 1, &"FrontDoorLeftSTM", &"FrontDoorRight", 0, &"FrontDoorLeft", &"FrontDoorRight", 1, &"FrontDoorRightSTM", &"MainTimeScale", 0, &"RearDoorRight2", &"RearDoorLeft1", 0, &"FrontDoorRight", &"RearDoorLeft1", 1, &"RearDoorLeft1STM", &"RearDoorLeft2", 0, &"RearDoorLeft1", &"RearDoorLeft2", 1, &"RearDoorLeft2STM", &"RearDoorRight1", 0, &"RearDoorLeft2", &"RearDoorRight1", 1, &"RearDoorRight1STM", &"RearDoorRight2", 0, &"RearDoorRight1", &"RearDoorRight2", 1, &"RearDoorRight2STM", &"TimeScale", 0, &"default"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3gbcc"]
-graph_offset = Vector2(-841.0696, 450.06952)
+graph_offset = Vector2(-841.0696, 324.57233)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_enbsd")
 nodes/Add2/position = Vector2(40, 260)
 nodes/Engine/node = SubResource("AnimationNodeBlendSpace1D_gb3wm")
@@ -1651,13 +1626,8 @@ environment = SubResource("Environment_52ofs")
 transform = Transform3D(1, 0, 0, 0, 0.98025054, -0.19776002, 0, 0.19776002, 0.98025054, 0, 0.90487784, 0.9104953)
 current = true
 
-[node name="shipver3" type="Node3D" parent="." node_paths=PackedStringArray("ias")]
+[node name="shipver3" type="Node3D" parent="."]
 transform = Transform3D(0.0026222987, 0.017358366, -0.09844699, -0.05433484, 0.08291097, 0.013171728, 0.08390975, 0.053145632, 0.011605816, -0.025404274, 1.0261704, 0.070660055)
-script = ExtResource("2_x6jyd")
-one_shot_name = Array[StringName]([&"CoreDoor", &"FrontDoorLeft", &"FrontDoorRight", &"RearDoorLeft1", &"RearDoorLeft2", &"RearDoorRight1", &"RearDoorRight2"])
-state_machine_name = Array[StringName]([&"CoreSTM", &"FrontDoorLeftSTM", &"FrontDoorRightSTM", &"RearDoorLeft1STM", &"RearDoorLeft2STM", &"RearDoorRight1STM", &"RearDoorRight2STM"])
-ias = [NodePath("CoreOpener/CoreCoor_ia"), NodePath("Fix_Opener_F1/FrontDoorLeft_ia"), NodePath("Fix_Opener_F2/FrontDoorRight_ia"), NodePath("FDB_H1_L1/RearDoorLeft1_ia"), NodePath("FDB_H1_L2/RearDoorLeft2_ia"), NodePath("FDB_H2_R1/ReadDoorRight1_ia"), NodePath("FDB_H2_R2/RearDoorRight2_ia")]
-main_mesh = &"res://model/Ship/shipver2.glb"
 
 [node name="Body" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.849939, 0, 0, 0, 1, 0, 0, 0, 3.61227, 0, 1.21059, 0)
@@ -1748,26 +1718,12 @@ material_override = SubResource("StandardMaterial3D_48n33")
 mesh = SubResource("ArrayMesh_yl2rn")
 skeleton = NodePath("")
 
-[node name="RearDoorLeft1_ia" parent="shipver3/FDB_H1_L1" instance=ExtResource("6_krtrh")]
-transform = Transform3D(25.561392, 0, 0, 0, 2.5569367, 0, 0, 0, 4.3943295, -50.740383, -3.79342, 3.8765852)
-
-[node name="RearDoorLeft1" type="CollisionShape3D" parent="shipver3/FDB_H1_L1/RearDoorLeft1_ia"]
-transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.882179)
-shape = SubResource("ConvexPolygonShape3D_h6h2g")
-
 [node name="FDB_H1_L2" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
 layers = 5
 material_override = SubResource("StandardMaterial3D_alxw5")
 mesh = SubResource("ArrayMesh_vruif")
 skeleton = NodePath("")
-
-[node name="RearDoorLeft2_ia" parent="shipver3/FDB_H1_L2" instance=ExtResource("6_krtrh")]
-transform = Transform3D(16.448963, 0, 0, 0, -2.3273618, -9.063072e-07, 0, 1.2743778e-06, -3.2725508, -32.651848, 3.4528263, -4.5060425)
-
-[node name="RearDoorLeft2" type="CollisionShape3D" parent="shipver3/FDB_H1_L2/RearDoorLeft2_ia"]
-transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
-shape = SubResource("ConvexPolygonShape3D_55ua2")
 
 [node name="FDB_H2_R1" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-0.0391215, 5.90535e-08, 0, -5.90719e-09, -0.391093, 0, 0, 0, 0.227566, -1.99905, 1.48358, -0.860369)
@@ -1776,26 +1732,12 @@ material_override = SubResource("StandardMaterial3D_jnwo8")
 mesh = SubResource("ArrayMesh_cxnwg")
 skeleton = NodePath("")
 
-[node name="ReadDoorRight1_ia" parent="shipver3/FDB_H2_R1" instance=ExtResource("6_krtrh")]
-transform = Transform3D(-25.561392, -3.8596695e-06, 0, 3.860872e-07, -2.5569367, 0, 0, 0, 4.3943295, -51.09849, 3.7934208, 3.780745)
-
-[node name="RearDoorRight1" type="CollisionShape3D" parent="shipver3/FDB_H2_R1/ReadDoorRight1_ia"]
-transform = Transform3D(-0.0391215, 5.90535e-08, 0, -5.90719e-09, -0.391093, 0, 0, 0, 0.227566, -1.99905, 1.48358, -0.860369)
-shape = SubResource("ConvexPolygonShape3D_3gbcc")
-
 [node name="FDB_H2_R2" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08, 0, -0.305572, -1.99905, 1.48358, -1.38065)
 layers = 5
 material_override = SubResource("StandardMaterial3D_0pwad")
 mesh = SubResource("ArrayMesh_yu1iv")
 skeleton = NodePath("")
-
-[node name="RearDoorRight2_ia" parent="shipver3/FDB_H2_R2" instance=ExtResource("6_krtrh")]
-transform = Transform3D(-16.448963, 0, -6.4054557e-06, 0, 2.3273618, 0, 1.2743785e-06, 0, -3.2725508, -32.88231, -3.4528275, -4.518245)
-
-[node name="RearDoorRight2" type="CollisionShape3D" parent="shipver3/FDB_H2_R2/RearDoorRight2_ia"]
-transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08, 0, -0.305572, -1.99905, 1.48358, -1.38065)
-shape = SubResource("ConvexPolygonShape3D_3ir81")
 
 [node name="Fix_Opener_F1" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
@@ -1804,26 +1746,12 @@ material_override = SubResource("StandardMaterial3D_al2xl")
 mesh = SubResource("ArrayMesh_p0vqr")
 skeleton = NodePath("")
 
-[node name="FrontDoorLeft_ia" parent="shipver3/Fix_Opener_F1" instance=ExtResource("6_krtrh")]
-transform = Transform3D(4.062002, 0, 0, 0, 2.6919348, 0, 0, 0, 20.628082, -7.993005, -3.0254924, -63.285305)
-
-[node name="FrontDoorLeft" type="CollisionShape3D" parent="shipver3/Fix_Opener_F1/FrontDoorLeft_ia"]
-transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
-shape = SubResource("ConvexPolygonShape3D_guwuu")
-
 [node name="Fix_Opener_F2" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-0.246184, -1.4465965e-07, 0, 9.586759e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
 layers = 5
 material_override = SubResource("StandardMaterial3D_qa1qe")
 mesh = SubResource("ArrayMesh_03wp2")
 skeleton = NodePath("")
-
-[node name="FrontDoorRight_ia" parent="shipver3/Fix_Opener_F2" instance=ExtResource("6_krtrh")]
-transform = Transform3D(-4.0620017, 1.5818018e-06, 0, -1.048278e-06, -2.6919346, 0, 0, -5.8628536e-13, 20.62808, -7.914408, 3.0254896, -63.28531)
-
-[node name="FrontDoorRight" type="CollisionShape3D" parent="shipver3/Fix_Opener_F2/FrontDoorRight_ia"]
-transform = Transform3D(-0.246184, -1.44659e-07, 0, 9.58677e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
-shape = SubResource("ConvexPolygonShape3D_otce0")
 
 [node name="CorePlace" type="MeshInstance3D" parent="shipver3"]
 transform = Transform3D(-1.86193e-08, 1.46121, 0, -0.425961, -6.38713e-08, 0, 0, 0, 1, 1.31777, 1.28118, 0.678845)
@@ -1838,13 +1766,6 @@ layers = 5
 material_override = SubResource("StandardMaterial3D_3hidu")
 mesh = SubResource("ArrayMesh_f8ijs")
 skeleton = NodePath("")
-
-[node name="CoreCoor_ia" parent="shipver3/CoreOpener" instance=ExtResource("6_krtrh")]
-transform = Transform3D(-1.8901082e-07, -4.324063, 0, 1, -4.3711086e-08, 0, 0, 0, 1.4774278, 5.2978854, -1.6159, -1.0029445)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="shipver3/CoreOpener/CoreCoor_ia"]
-transform = Transform3D(-1.01088e-08, 1, 0, -0.231264, -4.37114e-08, 0, 0, 0, 0.676852, 1.6159, 1.2252101, 0.6788449)
-shape = SubResource("ConvexPolygonShape3D_vywj1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="shipver3"]
 libraries = {
@@ -1884,16 +1805,3 @@ parameters/Others/RearDoorRight2/active = false
 parameters/Others/RearDoorRight2/internal_active = false
 parameters/Others/RearDoorRight2/request = 0
 parameters/Others/TimeScale/scale = 0.0
-
-[node name="PowerCell" parent="shipver3" instance=ExtResource("7_eb4i8")]
-transform = Transform3D(-1.3987644e-08, 0, 0.32, 0, 0.32, 0, -0.32, 0, -1.3987644e-08, 1.2221793, 1.208712, 1.2128152)
-
-[node name="LandingPoint" type="Marker3D" parent="shipver3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028211176, 0.27220893)
-
-[node name="PipePuzzle3D" parent="shipver3" node_paths=PackedStringArray("cam") instance=ExtResource("8_1qhrj")]
-transform = Transform3D(-5.4639235e-09, 0, 0.125, 0, 0.125, 0, -0.125, 0, -5.4639235e-09, 1.959032, 1.7939391, -0.8474133)
-cam = NodePath("../Camera3D")
-
-[node name="Camera3D" type="Camera3D" parent="shipver3"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.499551, 1.487, -1.149)

@@ -28,7 +28,7 @@ var goal_point
 
 func _ready() -> void:
 	$Boardholder.visible = false
-	await puzzle_gen(true)
+	#await puzzle_gen(true)
 	i_area.interacted.connect(func():
 		GState.solve()
 		cam.make_current()

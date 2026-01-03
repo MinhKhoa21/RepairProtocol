@@ -12,7 +12,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0s0fw")
-ship_scenes = Array[StringName]([&""])
+ship_path_img = Dictionary[StringName, StringName]({
+&"res://model/Ship/shipver_2.tscn": &"res://Images/ship_img/shipver_2_image.tscn"
+})
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

@@ -29,6 +29,7 @@ var player_cam:Camera3D
 var input_hud:Array[Control]
 var scanned_parts: Array[String] = []
 var queued_scene:StringName
+var garage:Node3D
 
 
 func _ready() -> void:
@@ -99,6 +100,12 @@ func register_scan(part_name: String):
 		scanned_parts.append(part_name)
 		print("Data scan saved: ", part_name)
 
-func change_scene(scene_path:StringName):
-	queued_scene = scene_path
+func change_scene(path:StringName):
+	queued_scene = path
 	get_tree().change_scene_to_file("res://Scenes/loading.tscn")
+
+func load_ship(path:StringName):
+	var ship = load(path).instantiate()
+	current_ship = ship
+	#garage.get_node("ShipNode").add_child(ship)
+	garage.perform_landing()

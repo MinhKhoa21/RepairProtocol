@@ -28,10 +28,12 @@ func _ready() -> void:
 		player.cam_controller.set_cutscene_mode(stand_look_point[1])
 		GState.check()
 		#show_ui(preload("res://Scenes/request_ui.tscn").instantiate())\
-		show_ui()
+		if !Watcher.current_ship: show_ui()
+		else: hologram.visible = true
 		)
 	Watcher.game_state_changed.connect(func(a):
 		if a != GState.gstate_enum.CHECKING:
+			if hologram.visible: hologram.rotation = Vector3.ZERO
 			hide_ui()
 			Watcher.player.cam_controller.reset_camera_mode()
 		)
@@ -40,8 +42,7 @@ func _physics_process(delta: float) -> void:
 	var cur_ship_mesh
 	if Watcher.current_ship:
 		cur_ship_mesh = Watcher.current_ship.main_mesh
-	else: cur_ship_mesh = null
-	request.visible = true
+		
 	if ship_mesh != cur_ship_mesh:
 		if cur_ship_mesh == null:
 			hologram.visible = false
@@ -55,9 +56,6 @@ func _physics_process(delta: float) -> void:
 			project()
 
 func convert_hologram(arr:Array):
-	#var mat := ShaderMaterial.new()
-	#mat.shader = preload("res://ShaderMaterial/ship_ui.gdshader")
-	
 	for i:MeshInstance3D in arr:
 		i.set_surface_override_material(0, hologram_shader)
 
@@ -69,18 +67,16 @@ func project():
 func hologram_cache():
 	for i in hologram.get_children(): i.queue_free()
 
-#func _input(event: InputEvent) -> void:
-	#if !(event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && GState.is_checking()): return
-	#var vp := get_viewport()
-	#var mouse_pos := vp.get_mouse_position()
-	#var cam := vp.get_camera_3d()
-	#var from := cam.project_ray_origin(mouse_pos)
-	#var dir := cam.project_ray_normal(mouse_pos)
-	#var to := from + dir*(cam.far if cam.far > 0 else 100000.0)
-	#var query := PhysicsRayQueryParameters3D.create(from, to)
-	#var result = get_world_3d().direct_space_state.intersect_ray(query)
-	#print(result)
-
+func _input(event: InputEvent) -> void:
+	
+	if !hologram.visible: return
+	#var pressed := false
+	#if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed(): pressed = true
+	#if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.is_released(): pressed = false
+	if event is InputEventMouseMotion && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && GState.is_checking():
+		var mouse_pan := (event as InputEventMouseMotion).screen_relative*0.01
+		hologram.rotation+=Vector3(0, mouse_pan.x, -mouse_pan.y)
+		print(mouse_pan)
 #func create_ui():
 	#var shown_ui:Control = request_ui.duplicate()
 	#var scale_offset = global_transform.basis.x.length()

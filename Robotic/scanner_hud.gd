@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		
 
 func toggle_scan(is_scanning: bool):
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	
 	if is_scanning:
 		if hud_wrapper: 
@@ -44,6 +44,7 @@ func toggle_scan(is_scanning: bool):
 			if hud_wrapper: 
 				hud_wrapper.visible = false
 		)
+	tween.finished.connect(tween.kill)
 
 func set_param(value, param_name):
 	if screen_container and screen_container.material:

@@ -9,20 +9,23 @@ extends Control
 @onready var shield: Label = $Control/StatusContainer/Shield
 @onready var type: Label = $Control/StatusContainer/Type
 @onready var ship_name: Label = $Control/DemonstrateContainer/ShipName
-@onready var sub_viewport_container: SubViewportContainer = $Control/DemonstrateContainer/SubViewportContainer
+@onready var ship_img_par: SubViewportContainer = $Control/DemonstrateContainer/SubViewportContainer
 @onready var pending: Control = $Pending
 @onready var not_pending: Control = $Control
 
-@export var ship_scenes:Array[StringName]
+@export var ship_path_img:Dictionary[StringName, StringName]
 
-var request:Array = [] #[ship_image:Scene, ship_path:Vehicle]
+var request:Array = [] #[ship_image:StringName, ship_path:StringName]
 
 func _ready() -> void:
 	accept.pressed.connect(func():
-		Watcher.current_ship = preload("res://model/Ship/shipver_2.tscn").instantiate()
+		Watcher.load_ship("res://model/Ship/shipver_2.tscn")
+		close.pressed.emit()
 		)
 	deny.pressed.connect(func():
 		pend(true)
+		for i in ship_img_par.get_children(): i.queue_free()
+		ship_img_par.add_child(load(ship_path_img[ship_path_img.keys().pick_random()]).instantiate())
 		await get_tree().create_timer(randf_range(2, 4)).timeout
 		pend(false)
 		)

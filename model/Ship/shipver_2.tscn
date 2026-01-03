@@ -1569,7 +1569,7 @@ transitions = ["Start", "FDB_H2_R2Action", SubResource("AnimationNodeStateMachin
 animation = &"CoreOpenerAction"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_newmb"]
-graph_offset = Vector2(-493.16666, 4145.4297)
+graph_offset = Vector2(-744.1129, 2019.3335)
 nodes/output/position = Vector2(1180, 4900)
 nodes/CoreDoor/node = SubResource("AnimationNodeOneShot_enbsd")
 nodes/CoreDoor/position = Vector2(-740, 5140)
@@ -1608,7 +1608,7 @@ nodes/default/position = Vector2(-1280, 5200)
 node_connections = [&"output", 0, &"MainTimeScale", &"CoreDoor", 0, &"TimeScale", &"CoreDoor", 1, &"CoreSTM", &"FrontDoorLeft", 0, &"CoreDoor", &"FrontDoorLeft", 1, &"FrontDoorLeftSTM", &"FrontDoorRight", 0, &"FrontDoorLeft", &"FrontDoorRight", 1, &"FrontDoorRightSTM", &"MainTimeScale", 0, &"RearDoorRight2", &"RearDoorLeft1", 0, &"FrontDoorRight", &"RearDoorLeft1", 1, &"RearDoorLeft1STM", &"RearDoorLeft2", 0, &"RearDoorLeft1", &"RearDoorLeft2", 1, &"RearDoorLeft2STM", &"RearDoorRight1", 0, &"RearDoorLeft2", &"RearDoorRight1", 1, &"RearDoorRight1STM", &"RearDoorRight2", 0, &"RearDoorRight1", &"RearDoorRight2", 1, &"RearDoorRight2STM", &"TimeScale", 0, &"default"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3gbcc"]
-graph_offset = Vector2(-841.0696, 450.06952)
+graph_offset = Vector2(-669.3909, 170.28316)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_enbsd")
 nodes/Add2/position = Vector2(40, 260)
 nodes/Engine/node = SubResource("AnimationNodeBlendSpace1D_gb3wm")
@@ -1617,10 +1617,10 @@ nodes/Others/node = SubResource("AnimationNodeBlendTree_newmb")
 nodes/Others/position = Vector2(-300, 200)
 node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Others", &"Add2", 1, &"Engine"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_48n33"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c6mn2"]
 points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_alxw5"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_48n33"]
 points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
 
 [node name="shipver2" type="Node3D" node_paths=PackedStringArray("ias")]
@@ -1773,7 +1773,7 @@ transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08
 shape = SubResource("ConvexPolygonShape3D_3ir81")
 
 [node name="Fix_Opener_F1" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.07610445e-08, 0, -0.0484776, 0, 0.37148, 0, 0.246184, 0, -2.1190232e-09, 1.96775, 1.12391, 3.06792)
+transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
 layers = 5
 material_override = SubResource("StandardMaterial3D_al2xl")
 mesh = SubResource("ArrayMesh_p0vqr")
@@ -1839,8 +1839,8 @@ parameters/Engine/2/TimeScale/scale = 0.0
 parameters/Others/CoreDoor/active = false
 parameters/Others/CoreDoor/internal_active = false
 parameters/Others/CoreDoor/request = 0
-parameters/Others/FrontDoorLeft/active = true
-parameters/Others/FrontDoorLeft/internal_active = true
+parameters/Others/FrontDoorLeft/active = false
+parameters/Others/FrontDoorLeft/internal_active = false
 parameters/Others/FrontDoorLeft/request = 0
 parameters/Others/FrontDoorRight/active = false
 parameters/Others/FrontDoorRight/internal_active = false
@@ -1873,14 +1873,16 @@ cam = NodePath("../Camera3D")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.499551, 1.487, -1.149)
 
-[node name="FrontLeftRepair" parent="." instance=ExtResource("8_c6mn2")]
+[node name="Fixpoint" type="Node3D" parent="."]
 
-[node name="FrontDoorLeft" type="CollisionShape3D" parent="FrontLeftRepair"]
+[node name="FrontLeftRepair" parent="Fixpoint" instance=ExtResource("8_c6mn2")]
+
+[node name="FrontDoorLeft" type="CollisionShape3D" parent="Fixpoint/FrontLeftRepair"]
 transform = Transform3D(0.246184, 0, 0, 0, 0.37148, 0, 0, 0, 0.0484776, 1.96775, 1.12391, 3.06792)
-shape = SubResource("ConvexPolygonShape3D_48n33")
+shape = SubResource("ConvexPolygonShape3D_c6mn2")
 
-[node name="FrontRightRepair" parent="." instance=ExtResource("8_c6mn2")]
+[node name="FrontRightRepair" parent="Fixpoint" instance=ExtResource("8_c6mn2")]
 
-[node name="FrontDoorRight" type="CollisionShape3D" parent="FrontRightRepair"]
+[node name="FrontDoorRight" type="CollisionShape3D" parent="Fixpoint/FrontRightRepair"]
 transform = Transform3D(-0.246184, -1.44659e-07, 0, 9.58677e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
-shape = SubResource("ConvexPolygonShape3D_alxw5")
+shape = SubResource("ConvexPolygonShape3D_48n33")

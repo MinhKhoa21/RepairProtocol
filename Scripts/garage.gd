@@ -9,6 +9,7 @@ var ground_smokes: Array[GPUParticles3D] = []
 var ship_spawn_point:Transform3D
 
 func _ready() -> void:
+	Watcher.garage = self
 	ship_spawn_point = ship_root.global_transform
 	GState.play()
 	var found = destination_point.find_children("*", "GPUParticles3D", true, false)
@@ -20,8 +21,9 @@ func _ready() -> void:
 	#perform_landing()
 
 func perform_landing():
-	for i in ship_root.get_childrn(): i.queue_free()
-	ship_root.add_child(Watcher.current_ship.duplicate())
+	ship_root.global_transform = ship_spawn_point
+	for i in ship_root.get_children(): i.queue_free()
+	ship_root.add_child(Watcher.current_ship)
 	var ship_leg = ship_root.get_child(0).get_node("LandingPoint")
 	var offset_vector = ship_root.global_position - ship_leg.global_position
 	var final_pos = destination_point.global_position + offset_vector

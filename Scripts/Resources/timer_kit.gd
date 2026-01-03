@@ -22,3 +22,10 @@ static func delta_timer(duration:float, delta:float, funcs:Callable, node:Node):
 	var stop:Timer = generate_timer(duration, func1)
 	node.add_child(stop)
 	node.add_child(tim)
+
+static func tween_method_oneshot(node:Node, call:Callable, from_var, to_var, duration:float = 1):
+	var tween = node.create_tween()
+	tween.tween_method(call, from_var, to_var, duration)
+	tween.finished.connect(tween.kill)
+	
+	

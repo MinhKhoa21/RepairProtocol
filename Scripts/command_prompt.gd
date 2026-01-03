@@ -2,12 +2,12 @@ extends Node
 
 const cp = "cmd"
 
-@onready var pos_x: TextEdit = $Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer/XEdit
-@onready var pos_y: TextEdit = $Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer/YEdit
-@onready var pos_z: TextEdit = $Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer/ZEdit
-@onready var rot_x: TextEdit = $Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2/XEdit
-@onready var rot_y: TextEdit = $Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2/YEdit
-@onready var rot_z: TextEdit = $Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2/ZEdit
+@onready var pos_x: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer/XEdit
+@onready var pos_y: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer/YEdit
+@onready var pos_z: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer/ZEdit
+@onready var rot_x: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/XEdit
+@onready var rot_y: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/YEdit
+@onready var rot_z: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/ZEdit
 
 
 var stored_keys:String = "":
@@ -113,11 +113,11 @@ func edit_node(node):
 	$Control/VBoxContainer2/Control/EditContainer.visible = true
 	$Control/VBoxContainer2/Control/EditContainer/NodeName.text = node.name
 	if node is Node3D:
-		$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer.visible = true
-		$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2.visible = true
+		$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer.visible = true
+		$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2.visible = true
 	else:
-		$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer.visible = false
-		$Control/VBoxContainer2/Control/EditContainer/VBoxContainer2/HBoxContainer2.visible = false
+		$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer.visible = false
+		$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2.visible = false
 
 
 

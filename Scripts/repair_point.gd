@@ -10,3 +10,4 @@ func set_scanned(a):
 
 func _ready() -> void:
 	manual_toggel(false)
+	RayKit.hide_from_ray(self)
