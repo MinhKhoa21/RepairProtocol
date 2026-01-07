@@ -10,6 +10,7 @@ var ship_spawn_point:Transform3D
 
 func _ready() -> void:
 	Watcher.garage = self
+	Watcher.current_root = "garage"
 	ship_spawn_point = ship_root.global_transform
 	GState.play()
 	var found = destination_point.find_children("*", "GPUParticles3D", true, false)
@@ -22,8 +23,16 @@ func _ready() -> void:
 
 func perform_landing():
 	ship_root.global_transform = ship_spawn_point
+	ship_root.scale = Vector3(1, 1, 1)
 	for i in ship_root.get_children(): i.queue_free()
 	ship_root.add_child(Watcher.current_ship)
+	ship_root.scale *= Watcher.current_ship.level_scale
+	Watcher.current_ship.rotate_y(deg_to_rad(180))
+	
+	var ship := Watcher.current_ship
+	if ship.ship_name.to_lower() == "manticore":
+		ship.get_children().filter(func(x): return x is AnimationPlayer)[0].play("Flying")
+	
 	var ship_leg = ship_root.get_child(0).get_node("LandingPoint")
 	var offset_vector = ship_root.global_position - ship_leg.global_position
 	var final_pos = destination_point.global_position + offset_vector
@@ -45,6 +54,11 @@ func perform_landing():
 	tween.parallel().tween_callback(stop_ground_smoke).set_delay(smoke_stop_delay)
 	
 	tween.chain().tween_callback(reset_anims)
+	tween.finished.connect(func():
+		tween.kill()
+		if ship.ship_name.to_lower() == "manticore":
+			ship.get_children().filter(func(x): return x is AnimationPlayer)[0].play("Landing")
+		)
 
 func stop_ground_smoke():
 	for p in ground_smokes:

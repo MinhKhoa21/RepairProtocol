@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=4 uid="uid://dbtthghrnffwt"]
+[gd_scene load_steps=22 format=4 uid="uid://dbtthghrnffwt"]
 
 [ext_resource type="Texture2D" uid="uid://qlacpp3kct5s" path="res://model/Structure/LightPillar/LightPillar_ImphenziaPalette01-256-Gradient.png" id="1_jil4v"]
 [ext_resource type="Script" uid="uid://d2s5cnrqw4db4" path="res://Scripts/hologram_projector.gd" id="1_tsuc0"]
 [ext_resource type="PackedScene" uid="uid://bwe85ikwl62si" path="res://model/Ship/shipver2.glb" id="3_254bj"]
 [ext_resource type="Shader" uid="uid://dyjspvl377a1s" path="res://ShaderMaterial/ship_ui.gdshader" id="4_254bj"]
 [ext_resource type="PackedScene" uid="uid://dpdkdpd31bwf7" path="res://Scenes/request_ui.tscn" id="5_7lfdj"]
+[ext_resource type="PackedScene" uid="uid://brc8if8678t7u" path="res://Scenes/cubeship_mesh.tscn" id="5_wnavm"]
 [ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="6_ye54s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_24pv7"]
@@ -124,6 +125,10 @@ size = Vector3(0.5, 0.45715332, 0.5)
 [node name="HologramProjector" type="Node3D"]
 script = ExtResource("1_tsuc0")
 hologram_shader = SubResource("ShaderMaterial_24pv7")
+hologram_scale = Dictionary[StringName, float]({
+&"res://Scenes/cubeship_mesh.tscn": 0.015,
+&"res://model/Ship/shipver2.glb": 0.1
+})
 
 [node name="Projector" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -154,10 +159,13 @@ skeleton = NodePath("../../Hologram")
 surface_material_override/0 = SubResource("ShaderMaterial_254bj")
 
 [node name="Hologram" type="Node3D" parent="."]
-transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, -0.05213964, 0.8217778, 0.21216944)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05213964, 0.8217778, 0.21216944)
 
 [node name="shipver2" parent="Hologram" instance=ExtResource("3_254bj")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="CubeshipMesh" parent="Hologram" instance=ExtResource("5_wnavm")]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
 
 [node name="Request" type="Node3D" parent="."]
 transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -0.05213964, 0.8217778, 0.21216944)

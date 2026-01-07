@@ -9,11 +9,11 @@ func set_opacity(a):
 	$Camera3D/MeshInstance3D.material_override.albedo_color += Color(0, 0, 0, a)
 
 func _ready() -> void:
+	Watcher.current_root = "main_menu"
 	$Control.visible = true
 	opacity = 0
 	GState.pause()
 	var cam_pan = func():
-		print("bleh!")
 		var _tween:Tween = create_tween()
 		var cam:Node3D = $Camera3D
 		_tween.tween_property(cam, "global_rotation", $Camera3D.global_rotation+Vector3(0, deg_to_rad(90), 0), 5)
@@ -33,3 +33,4 @@ func _ready() -> void:
 		#await get_tree().create_timer(1).timeout
 		Watcher.change_scene("res://Level/level.tscn")
 		)
+	exit.pressed.connect(get_tree().quit)

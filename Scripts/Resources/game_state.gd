@@ -9,7 +9,8 @@ enum gstate_enum {
 	SOLVING,
 	CARRYING,
 	CHECKING,
-	COMPUTING
+	COMPUTING,
+	WARE
 }
 
 static var game_state:int = 0
@@ -22,6 +23,7 @@ static func is_solving() -> bool: return game_state == gstate_enum.SOLVING
 static func is_carrying() -> bool: return game_state == gstate_enum.CARRYING
 static func is_checking() -> bool: return game_state == gstate_enum.CHECKING
 static func is_computing() -> bool: return game_state == gstate_enum.COMPUTING
+static func is_ware() -> bool: return game_state == gstate_enum.WARE
 
 
 static func pause(): game_state = gstate_enum.PAUSED
@@ -32,3 +34,4 @@ static func solve(): game_state = gstate_enum.SOLVING
 static func carry(): game_state = gstate_enum.CARRYING
 static func check(): game_state = gstate_enum.CHECKING
 static func compute(): game_state = gstate_enum.COMPUTING
+static func ware(): game_state = gstate_enum.WARE

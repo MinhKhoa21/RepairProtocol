@@ -78,9 +78,9 @@ func _input(event: InputEvent) -> void:
 		limbo_player.can_run = false
 		$AnimationTree.set("parameters/Movement/4/blend_position", -1)
 
-	#if event.is_action_pressed("tab"):
-		#if GState.is_playing(): GState.check()
-		#elif GState.is_checking(): GState.play()
+	if event.is_action_pressed("tab"):
+		if GState.is_playing(): GState.ware()
+		elif GState.is_ware(): GState.play()
 
 	if event.is_action_pressed("toggle_scan"):
 		print("DEBUG: Activated Scanning!")

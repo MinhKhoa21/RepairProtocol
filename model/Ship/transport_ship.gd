@@ -4,7 +4,6 @@ extends Vehicle
 @export var one_shot_name:Array[StringName]
 @export var state_machine_name:Array[StringName]
 @export var ias:Array[InteractArea]
-@export var repair_point:Array[Area3D]
 @export var engine_toggle:bool = false
 var thrusters: Array[MeshInstance3D] = []
 
@@ -36,8 +35,19 @@ func close_door(_stm:StringName):
 	togge_fix_points()
 
 func togge_fix_points():
-	RayKit.hide_from_ray($Fixpoint/FrontLeftRepair, !$Fix_Opener_F1/FrontDoorLeft_ia.flip)
-	RayKit.hide_from_ray($Fixpoint/FrontRightRepair, !$Fix_Opener_F2/FrontDoorRight_ia.flip)
-	
-	
-	
+	var front_left_repair: RepairPoint = $Fixpoint/FrontLeftRepair
+	var front_right_repair: RepairPoint = $Fixpoint/FrontRightRepair
+	var rear_left_repair: RepairPoint = $Fixpoint/RearLeftRepair
+	var rear_right_repair: RepairPoint = $Fixpoint/RearRightRepair
+
+	var front_door_left_ia: InteractArea = $Fix_Opener_F1/FrontDoorLeft_ia
+	var front_door_right_ia: InteractArea = $Fix_Opener_F2/FrontDoorRight_ia
+	var rear_door_left_2_ia: InteractArea = $FDB_H1_L2/RearDoorLeft2_ia
+	var rear_door_left_1_ia: InteractArea = $FDB_H1_L1/RearDoorLeft1_ia
+	var read_door_right_1_ia: InteractArea = $FDB_H2_R1/ReadDoorRight1_ia
+	var rear_door_right_2_ia: InteractArea = $FDB_H2_R2/RearDoorRight2_ia
+
+	ColKit.set_interact(front_left_repair, front_door_left_ia.flip)
+	ColKit.set_interact(front_right_repair, front_door_right_ia.flip)
+	ColKit.set_interact(rear_left_repair, (rear_door_left_1_ia.flip && rear_door_left_2_ia.flip))
+	ColKit.set_interact(rear_right_repair, (read_door_right_1_ia.flip && rear_door_right_2_ia.flip))

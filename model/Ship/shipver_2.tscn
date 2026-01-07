@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=4 uid="uid://bixxetr8e5eed"]
+[gd_scene load_steps=159 format=4 uid="uid://bixxetr8e5eed"]
 
 [ext_resource type="Texture2D" uid="uid://bsfl6fb165lln" path="res://model/Ship/cybertexture.png" id="1_201up"]
 [ext_resource type="Script" uid="uid://bvavagpxeap7x" path="res://model/Ship/transport_ship.gd" id="1_kxc64"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="5_enbsd"]
 [ext_resource type="PackedScene" uid="uid://ya3wrhlra5vn" path="res://Scenes/power_cell.tscn" id="5_guwuu"]
 [ext_resource type="Shader" uid="uid://r5hx55iu62s" path="res://model/Ship/ThrusterShader.gdshader" id="6_guwuu"]
-[ext_resource type="PackedScene" uid="uid://dg1tl7uy6bd4f" path="res://Scenes/pipe_puzzle_3d.tscn" id="7_vywj1"]
 [ext_resource type="PackedScene" uid="uid://cpvj50kcm3msx" path="res://Scenes/repair_point.tscn" id="8_c6mn2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkdox"]
@@ -1623,16 +1622,27 @@ points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.5651
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_48n33"]
 points = PackedVector3Array(2.09104, 0.981203, 2.56517, 2.09104, -1.0188, 2.56517, 2.09104, 0.981203, 0.56517, 0.090878, 0.981203, 2.56517, 2.09104, -1.0188, 0.56517, 0.090878, -1.0188, 2.56517, 0.090878, 0.981203, 0.56517, -0.0918095, 0.939112, 2.23941, 0.090878, -1.0188, 0.56517, -0.0918095, -0.976902, 2.23941, -0.0918095, 0.939112, 1.51995, -0.0918095, -0.976902, 1.51995)
 
-[node name="shipver2" type="Node3D" node_paths=PackedStringArray("ias")]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_alxw5"]
+points = PackedVector3Array(1, 0.807557, 1.1068, 1, -0.807753, 1.1068, 1, 1, 0.871495, -1, 0.807557, 1.1068, -1, -0.807753, 1.1068, 1, -1, 0.871495, -1, 1, 0.871495, 1, 1, -0.896681, -1, -1, 0.871495, 1, -1, -0.896681, -1, 1, -0.896681, 1, 0.896437, -1, -1, -1, -0.896681, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jnwo8"]
+points = PackedVector3Array(1, 0.85141, 1.00771, 1, -0.851605, 1.00771, 1, 1, 0.87152, -1, 0.85141, 1.00771, -1, -0.851605, 1.00771, 1, -1, 0.87152, -1, 1, 0.87152, 1, 1, -0.896627, -1, -1, 0.87152, 1, -1, -0.896627, -1, 1, -0.896627, 1, 0.896437, -1, -1, -1, -0.896627, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0pwad"]
+points = PackedVector3Array(1, 0.807557, 1.1068, 1, -0.807753, 1.1068, 1, 1, 0.871495, -1, 0.807557, 1.1068, -1, -0.807753, 1.1068, 1, -1, 0.871495, -1, 1, 0.871495, 1, 1, -0.896681, -1, -1, 0.871495, 1, -1, -0.896681, -1, 1, -0.896681, 1, 0.896437, -1, -1, -1, -0.896681, 1, -0.896633, -1, -1, 0.896437, -1, -1, -0.896633, -1)
+
+[node name="shipver2" type="Node3D" node_paths=PackedStringArray("ias", "repair_point")]
 script = ExtResource("1_kxc64")
 one_shot_name = Array[StringName]([&"CoreDoor", &"FrontDoorLeft", &"FrontDoorRight", &"RearDoorLeft1", &"RearDoorLeft2", &"RearDoorRight1", &"RearDoorRight2"])
 state_machine_name = Array[StringName]([&"CoreSTM", &"FrontDoorLeftSTM", &"FrontDoorRightSTM", &"RearDoorLeft1STM", &"RearDoorLeft2STM", &"RearDoorRight1STM", &"RearDoorRight2STM"])
 ias = [NodePath("CoreOpener/CoreCoor_ia"), NodePath("Fix_Opener_F1/FrontDoorLeft_ia"), NodePath("Fix_Opener_F2/FrontDoorRight_ia"), NodePath("FDB_H1_L1/RearDoorLeft1_ia"), NodePath("FDB_H1_L2/RearDoorLeft2_ia"), NodePath("FDB_H2_R1/ReadDoorRight1_ia"), NodePath("FDB_H2_R2/RearDoorRight2_ia")]
+level_scale = 3.5
 main_mesh = &"res://model/Ship/shipver2.glb"
 ship_name = "Paralax_V"
 engine = 4
 energy_core = 3
 hull = 1.0
+repair_point = [NodePath("Fixpoint/FrontLeftRepair"), NodePath("Fixpoint/FrontRightRepair"), NodePath("Fixpoint/RearLeftRepair"), NodePath("Fixpoint/RearRightRepair")]
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.849939, 0, 0, 0, 1, 0, 0, 0, 3.61227, 0, 1.21059, 0)
@@ -1866,10 +1876,6 @@ transform = Transform3D(-1.3987644e-08, 0, 0.32, 0, 0.32, 0, -0.32, 0, -1.398764
 [node name="LandingPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028211176, 0.27220893)
 
-[node name="PipePuzzle3D" parent="." node_paths=PackedStringArray("cam") instance=ExtResource("7_vywj1")]
-transform = Transform3D(-5.4639235e-09, 0, 0.125, 0, 0.125, 0, -0.125, 0, -5.4639235e-09, 1.959032, 1.7939391, -0.8474133)
-cam = NodePath("../Camera3D")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.499551, 1.487, -1.149)
 
@@ -1886,3 +1892,23 @@ shape = SubResource("ConvexPolygonShape3D_c6mn2")
 [node name="FrontDoorRight" type="CollisionShape3D" parent="Fixpoint/FrontRightRepair"]
 transform = Transform3D(-0.246184, -1.44659e-07, 0, 9.58677e-08, -0.37148, 0, 0, 0, 0.0484776, -1.9484, 1.12391, 3.06792)
 shape = SubResource("ConvexPolygonShape3D_48n33")
+
+[node name="RearLeftRepair" parent="Fixpoint" instance=ExtResource("8_c6mn2")]
+
+[node name="RearDoorLeft1" type="CollisionShape3D" parent="Fixpoint/RearLeftRepair"]
+transform = Transform3D(0.0391215, 0, 0, 0, 0.391093, 0, 0, 0, 0.227566, 1.98504, 1.48358, -0.882179)
+shape = SubResource("ConvexPolygonShape3D_alxw5")
+
+[node name="RearDoorLeft2" type="CollisionShape3D" parent="Fixpoint/RearLeftRepair"]
+transform = Transform3D(0.0607941, 0, 0, 0, -0.429671, 1.18994e-07, 0, -1.6732e-07, -0.305572, 1.98504, 1.48358, -1.37692)
+shape = SubResource("ConvexPolygonShape3D_jnwo8")
+
+[node name="RearRightRepair" parent="Fixpoint" instance=ExtResource("8_c6mn2")]
+
+[node name="RearDoorRight1" type="CollisionShape3D" parent="Fixpoint/RearRightRepair"]
+transform = Transform3D(-0.0391215, 5.90535e-08, 0, -5.90719e-09, -0.391093, 0, 0, 0, 0.227566, -1.99905, 1.48358, -0.860369)
+shape = SubResource("ConvexPolygonShape3D_0pwad")
+
+[node name="RearDoorRight2" type="CollisionShape3D" parent="Fixpoint/RearRightRepair"]
+transform = Transform3D(-0.0607941, 0, 1.18994e-07, 0, 0.429671, 0, -2.36741e-08, 0, -0.305572, -1.99905, 1.48358, -1.38065)
+shape = SubResource("ConvexPolygonShape3D_0pwad")

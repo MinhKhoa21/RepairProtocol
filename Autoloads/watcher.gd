@@ -23,13 +23,13 @@ var player:Player
 var player_ani_remaining_dur:float
 var tool_nodes:Array[Node] = []
 var current_ship:Vehicle
-var ship_in_queue:Array[Vehicle]
 var level:Level
 var player_cam:Camera3D
 var input_hud:Array[Control]
 var scanned_parts: Array[String] = []
 var queued_scene:StringName
 var garage:Node3D
+var current_root:String
 
 
 func _ready() -> void:
@@ -102,6 +102,7 @@ func register_scan(part_name: String):
 
 func change_scene(path:StringName):
 	queued_scene = path
+	current_root = ""
 	get_tree().change_scene_to_file("res://Scenes/loading.tscn")
 
 func load_ship(path:StringName):

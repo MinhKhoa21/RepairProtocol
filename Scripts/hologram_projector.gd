@@ -2,6 +2,7 @@ extends Node3D
 
 @export var hologram_shader:ShaderMaterial
 @export var stand_look_point:Array[Node3D]
+@export var hologram_scale:Dictionary[StringName, float]
 @onready var hologram: Node3D = $Hologram
 @onready var sub_viewport: SubViewport = $Request/Sprite3D/SubViewport
 @onready var request: Node3D = $Request
@@ -52,7 +53,9 @@ func _physics_process(delta: float) -> void:
 			request.visible = false
 			ship_mesh = cur_ship_mesh
 			hologram_cache()
-			hologram.add_child(load(ship_mesh).instantiate())
+			var mesh = load(ship_mesh).instantiate()
+			hologram.add_child(mesh)
+			mesh.scale*=hologram_scale[ship_mesh]
 			project()
 
 func convert_hologram(arr:Array):
@@ -76,7 +79,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && GState.is_checking():
 		var mouse_pan := (event as InputEventMouseMotion).screen_relative*0.01
 		hologram.rotation+=Vector3(0, mouse_pan.x, -mouse_pan.y)
-		print(mouse_pan)
 #func create_ui():
 	#var shown_ui:Control = request_ui.duplicate()
 	#var scale_offset = global_transform.basis.x.length()
