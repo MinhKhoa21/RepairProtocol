@@ -3,6 +3,6 @@
 [ext_resource type="Script" uid="uid://bfhhebxehrwdn" path="res://Scripts/repair_point.gd" id="1_jnmjl"]
 
 [node name="RepairPoint" type="Area3D"]
-collision_layer = 16
+collision_layer = 48
 collision_mask = 0
 script = ExtResource("1_jnmjl")

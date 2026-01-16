@@ -9,10 +9,12 @@ class_name Player
 @onready var arm_marker: Marker3D = $Neck/FPSCam/ArmMarker
 @onready var cutscene_eyes: Marker3D = $RepairEmployeeVer3/rig_001/Skeleton3D/EyesBone/CutSceneEyes
 @onready var scanner_hud = $ScannerHUD
+@onready var hud: Control = $Control
 
 @export var inventory:Storage
 @export var fps_cam: FPSCam
 @export var look_ray:RayCast3D
+@export var scan_ray: RayCast3D
 @export var pointer_label:Label
 @export var camera_controller_anchor: Node3D
 
@@ -33,6 +35,7 @@ func _ready() -> void:
 	Watcher.player_cam = fps_cam
 	Watcher.carry = carry_marker
 	Watcher.right_hand = holding_tool
+	Watcher.player_hud = hud
 	
 	limbo_player.set_active(true)
 	(limbo_player as LimboHSM).blackboard.bind_var_to_property(BBNames.direction, self, "dir")
@@ -83,6 +86,8 @@ func _input(event: InputEvent) -> void:
 		elif GState.is_ware(): GState.play()
 
 	if event.is_action_pressed("toggle_scan"):
+		#ray_scan()
+		#return
 		print("DEBUG: Activated Scanning!")
 		
 		if scanner_hud:
@@ -115,29 +120,18 @@ func set_visual_layer_recursive(node: Node, layer_num: int, enable: bool):
 
 
 func handle_scanning():
-	if not look_ray.enabled: look_ray.enabled = true
-	look_ray.collide_with_bodies = true 
+	if not scan_ray.enabled: scan_ray.enabled = true
+	#look_ray.collide_with_bodies = true 
 	
-	if look_ray.is_colliding():
-		var collider = look_ray.get_collider()
-		var target_obj = null 
+	if scan_ray.is_colliding():
+		var collider:Area3D = scan_ray.get_collider()
+		var target_obj = null
 		
-		if collider.get_collision_layer_value(3):
-			target_obj = collider
-		
-		elif collider is InteractArea:
-			var parent = collider.get_parent()
-			
-			if parent is CollisionObject3D and parent.get_collision_layer_value(3):
-				target_obj = parent
-			
-			elif parent is VisualInstance3D and (parent.get_layer_mask_value(3) or parent.get_layer_mask_value(4)):
-				target_obj = parent 
+		if collider.get_collision_layer_value(6): target_obj = (collider as RepairPoint).highlight_meshes[0]
 		
 		if target_obj:
 			if current_scanned_object != target_obj:
 				print(">>> New Scanned: ", target_obj.name)
-				
 				reset_scanned_object()
 				
 				current_scanned_object = target_obj
@@ -145,6 +139,9 @@ func handle_scanning():
 				
 				Watcher.register_scan(current_scanned_object.name) 
 				Watcher.scan_hit.emit(current_scanned_object.name)
+				
+				scanner_hud.scan_init()
+				ray_scan()
 		else:
 			reset_scanned_object()
 	else:
@@ -152,7 +149,7 @@ func handle_scanning():
 
 func highlight_object(obj):
 	if obj:
-		set_visual_layer_recursive(obj, 3, false) 
+		set_visual_layer_recursive(obj, 3, false)
 		set_visual_layer_recursive(obj, 4, true)
 
 func reset_scanned_object():
@@ -174,9 +171,9 @@ func display_pointer_safe() -> bool:
 			pointer_label.text = collider.par.name
 			return true
 		
-		elif is_scan_active and current_scanned_object == collider:
-			pointer_label.text = "Scanning: " + collider.name 
-			return true
+		#if is_scan_active and current_scanned_object == scan_ray.get_collider():
+			#pointer_label.text = "Scanning: " + collider.name 
+			#return true
 			
 	pointer_label.text = ""
 	return false
@@ -258,3 +255,21 @@ func quit_briefcase_sequence():
 	ik_tween.tween_property(arm_ik, "interpolation", 1.0, 0.5)
 	
 	GState.game_state = GState.gstate_enum.PLAYING
+
+func ray_scan():
+	var cam  = get_viewport().get_camera_3d()
+	var point = get_viewport().get_visible_rect().get_center()
+	var from = cam.project_ray_origin(point)
+	var dir = cam.project_ray_normal(point)
+	var to = from + dir*(cam.far if cam.far > 0 else 100000)
+	var layer = 1<<7
+	var query = PhysicsRayQueryParameters3D.create(from, to, layer)
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	var space := get_world_3d().direct_space_state
+	var result = space.intersect_ray(query)
+	if !result.is_empty():
+		var col = result.collider
+		if col is RepairPoint:
+			col.scanned = true
+			Watcher.hologram_update()

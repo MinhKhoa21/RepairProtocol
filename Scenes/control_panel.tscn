@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://duljflehr7512"]
+[gd_scene load_steps=7 format=3 uid="uid://duljflehr7512"]
 
 [ext_resource type="Script" uid="uid://cf5lok1rodhdq" path="res://Scenes/control_panel.gd" id="1_84xqn"]
+[ext_resource type="PackedScene" uid="uid://c22cpq2nu60rs" path="res://Scenes/control_panel_img.tscn" id="2_af86p"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_23m4l"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_1pmly"]
 color = Color(1, 1, 0, 1)
@@ -14,7 +18,13 @@ thickness = 10
 color = Color(0.52, 0.52, 0.52, 1)
 thickness = 10
 
-[node name="ControlPanel" type="Control"]
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_84xqn")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_23m4l")
+
+[node name="ControlPanel" type="Control" parent="."]
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 3
 anchors_preset = 8
@@ -24,9 +34,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_84xqn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="ControlPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,61 +43,123 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Energy:"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="ControlPanel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_constants/center_grabber = 1
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_1pmly")
+step = 5.0
+page = 5.0
 value = 30.0
+rounded = true
+allow_greater = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ControlPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Coolant:"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+[node name="HSlider" type="HSlider" parent="ControlPanel/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 1
 theme_override_constants/center_grabber = 1
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_84xqn")
+step = 5.0
+page = 5.0
 value = 30.0
+rounded = true
+allow_greater = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ControlPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Gear:"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer3"]
+[node name="HSlider" type="HSlider" parent="ControlPanel/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 1
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_af86p")
+step = 25.0
 page = 25.0
 value = 25.0
 rounded = true
+allow_greater = true
 tick_count = 5
 ticks_on_borders = true
+ticks_position = 3
+
+[node name="Label2" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "0"
+
+[node name="Readings" type="HBoxContainer" parent="ControlPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Readings" type="Label" parent="ControlPanel/Readings"]
+layout_mode = 2
+text = "Readings:"
+
+[node name="Energy" type="Label" parent="ControlPanel/Readings"]
+layout_mode = 2
+text = "0"
+
+[node name="Coolant" type="Label" parent="ControlPanel/Readings"]
+layout_mode = 2
+text = "0"
+
+[node name="Gear" type="Label" parent="ControlPanel/Readings"]
+layout_mode = 2
+text = "0"
+
+[node name="SubViewport" parent="." instance=ExtResource("2_af86p")]

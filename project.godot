@@ -137,7 +137,10 @@ run={
 3d_physics/layer_3="Scannable_Passive"
 3d_physics/layer_4="Scannable_Active"
 3d_physics/layer_5="Interactable"
+3d_physics/layer_6="RepairPoint"
 3d_physics/layer_7="RayHidden"
+3d_physics/layer_8="Scannable"
+3d_physics/layer_9="GridCell"
 
 [rendering]
 

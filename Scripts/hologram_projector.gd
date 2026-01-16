@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var hologram_shader:ShaderMaterial
+#@export var hologram_shader:ShaderMaterial
 @export var stand_look_point:Array[Node3D]
 @export var hologram_scale:Dictionary[StringName, float]
 @onready var hologram: Node3D = $Hologram
@@ -9,7 +9,7 @@ extends Node3D
 @onready var request_ui: Control = $Request/Sprite3D/SubViewport/RequestUi
 @onready var interact_area: InteractArea = $InteractArea
 @onready var sprite_3d: Sprite3D = $Request/Sprite3D
-var meshes:Array
+var meshes:Array[MeshInstance3D]
 var ship_mesh
 var ui:Control
 
@@ -38,34 +38,44 @@ func _ready() -> void:
 			hide_ui()
 			Watcher.player.cam_controller.reset_camera_mode()
 		)
-
-func _physics_process(delta: float) -> void:
-	var cur_ship_mesh
-	if Watcher.current_ship:
-		cur_ship_mesh = Watcher.current_ship.main_mesh
-		
-	if ship_mesh != cur_ship_mesh:
-		if cur_ship_mesh == null:
-			hologram.visible = false
+	Watcher.ship_changed.connect(func():
+		if !Watcher.current_ship:
 			request.visible = true
+			hologram.visible = false
 		else:
-			hologram.visible = true
 			request.visible = false
-			ship_mesh = cur_ship_mesh
-			hologram_cache()
-			var mesh = load(ship_mesh).instantiate()
-			hologram.add_child(mesh)
-			mesh.scale*=hologram_scale[ship_mesh]
-			project()
+			hologram.visible = true
+			hologram.add_child(Watcher.current_hologram)
+			hologram.scale*=Watcher.current_ship_file.hologram_scale
+		)
 
-func convert_hologram(arr:Array):
-	for i:MeshInstance3D in arr:
-		i.set_surface_override_material(0, hologram_shader)
+#func _physics_process(delta: float) -> void:
+	#var cur_ship_mesh
+	#if Watcher.current_ship:
+		#cur_ship_mesh = Watcher.current_ship.main_mesh
+		#
+	#if ship_mesh != cur_ship_mesh:
+		#if cur_ship_mesh == null:
+			#hologram.visible = false
+			#request.visible = true
+		#else:
+			#hologram.visible = true
+			#request.visible = false
+			#hologram_cache()
+			#var hologram_mesh = Watcher.current_hologram
+			#hologram.add_child(hologram_mesh)
+			#hologram_mesh.scale*=hologram_scale[ship_mesh]
+			#project()
 
-func project():
-	#hologram_cache()
-	meshes = hologram.get_child(0).get_children(true).filter(func(x): return x is MeshInstance3D)
-	convert_hologram(meshes)
+#func convert_hologram(arr:Array):
+	#for i:MeshInstance3D in arr:
+		#i.set_surface_override_material(0, hologram_shader)
+
+#func project():
+	##hologram_cache()
+	#meshes = hologram.get_child(0).get_children(true).filter(func(x): return x is MeshInstance3D)
+	#convert_hologram(meshes)
+	#Watcher.current_hologram = meshes
 
 func hologram_cache():
 	for i in hologram.get_children(): i.queue_free()

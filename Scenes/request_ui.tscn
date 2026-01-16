@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpdkdpd31bwf7"]
+[gd_scene load_steps=5 format=3 uid="uid://dpdkdpd31bwf7"]
 
 [ext_resource type="Script" uid="uid://7dskk8fvgdqk" path="res://Scripts/request_ui.gd" id="1_0s0fw"]
+[ext_resource type="Script" uid="uid://csl0p2iyie0nw" path="res://Scripts/Resources/ship_file.gd" id="2_0v3ta"]
 [ext_resource type="PackedScene" uid="uid://bstdtik6llqw4" path="res://Images/ship_img/shipver_2_image.tscn" id="2_dliy0"]
+[ext_resource type="Resource" uid="uid://clnwxkpnjpok1" path="res://ShipFiles/paralax_v.tres" id="3_hb0u6"]
 
 [node name="RequestUi" type="Control"]
 clip_contents = true
@@ -12,9 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0s0fw")
-ship_img_path = Dictionary[StringName, StringName]({
-&"res://Images/ship_img/shipver_2_image.tscn": &"res://model/Ship/shipver_2.tscn"
-})
+ship_files = Array[ExtResource("2_0v3ta")]([ExtResource("3_hb0u6")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

@@ -180,7 +180,7 @@ transform = Transform3D(-4.3711392e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711392e-08, -0
 transform = Transform3D(1.1111112, 0, 0, 0, 1.1111112, 0, 0, 0, 1.1111112, 1.4378402, -2.8888888, 0)
 
 [node name="DestinationPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.972656, -0.35494614, 8.654911)
 
 [node name="Smoke" type="GPUParticles3D" parent="DestinationPoint"]
 transform = Transform3D(0.11705004, -0.9690933, -0.21715686, -0.92919815, -0.029681403, -0.36839008, 0.35055888, 0.2449019, -0.9039538, -9.56897, 1.31883, -0.4954)

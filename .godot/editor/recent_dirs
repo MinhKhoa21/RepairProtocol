@@ -1,4 +1,6 @@
 res://Scenes
+res://Worlds
+res://ShipFiles
 res://Images/ship_img
 res://
 res://modelScene/garage
@@ -18,5 +20,3 @@ res://Character/Player/States
 res://Scripts
 res://Sprites
 res://Character
-res://Controls/PipePuzzle
-res://Textures

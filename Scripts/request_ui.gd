@@ -13,12 +13,12 @@ extends Control
 @onready var pending: Control = $Pending
 @onready var not_pending: Control = $Control
 
-@export var ship_img_path:Dictionary[StringName, StringName]
-var selected_img
+@export var ship_files:Array[ShipFile]
+var selected_file:ShipFile
 
 func _ready() -> void:
 	accept.pressed.connect(func():
-		Watcher.load_ship(ship_img_path[selected_img])
+		Watcher.current_ship_file = selected_file
 		close.pressed.emit()
 		)
 	deny.pressed.connect(func():
@@ -45,9 +45,10 @@ func pend(_bool:bool = true):
 
 func fetch_request():
 	for i in ship_img_par.get_children(): i.queue_free()
-	var img = ship_img_path.keys().pick_random()
-	var ship = load(ship_img_path[img]).instantiate() as Vehicle
+	var rand_file:ShipFile = ship_files.pick_random()
+	var img = rand_file.ship_img
+	var ship = load(rand_file.ship_path).instantiate()
 	ship_name.text = ship.ship_name
-	ship.queue_free()
 	ship_img_par.add_child(load(img).instantiate())
-	selected_img = img
+	ship.queue_free()
+	selected_file = rand_file

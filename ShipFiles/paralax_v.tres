@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ShipFile" load_steps=2 format=3 uid="uid://clnwxkpnjpok1"]
+
+[ext_resource type="Script" uid="uid://csl0p2iyie0nw" path="res://Scripts/Resources/ship_file.gd" id="1_71dhx"]
+
+[resource]
+script = ExtResource("1_71dhx")
+ship_path = &"res://model/Ship/shipver_2.tscn"
+ship_hologram = &"res://model/Ship/shipver_2_hologram.tscn"
+ship_img = &"res://Images/ship_img/shipver_2_image.tscn"
+level_scale = 3.5
+hologram_scale = 0.1
+metadata/_custom_type_script = "uid://csl0p2iyie0nw"

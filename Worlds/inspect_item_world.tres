@@ -1,0 +1,7 @@
+[gd_resource type="World3D" load_steps=2 format=3 uid="uid://cwiccwb2fyofj"]
+
+[sub_resource type="Environment" id="Environment_wnwrq"]
+background_mode = 1
+
+[resource]
+environment = SubResource("Environment_wnwrq")

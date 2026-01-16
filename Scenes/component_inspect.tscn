@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://mopx6t1nha2p"]
+
+[ext_resource type="Script" uid="uid://cexs64dmc3enu" path="res://Scripts/component_inspect.gd" id="1_ws4h3"]
+[ext_resource type="PackedScene" uid="uid://ccw0uli27aj3g" path="res://Scenes/component_image.tscn" id="2_km5q5"]
+
+[node name="ComponentInspect" type="Control"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_ws4h3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Item1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ComponentImage" parent="VBoxContainer/Item1" instance=ExtResource("2_km5q5")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Item1"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="VBoxContainer/Item1/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "item_name"
+
+[node name="ItemStatus" type="Label" parent="VBoxContainer/Item1/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "item_status"
+
+[node name="Item2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ComponentImage" parent="VBoxContainer/Item2" instance=ExtResource("2_km5q5")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Item2"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="VBoxContainer/Item2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "item_name"
+
+[node name="ItemStatus" type="Label" parent="VBoxContainer/Item2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "item_status"

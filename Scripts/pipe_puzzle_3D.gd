@@ -1,9 +1,8 @@
-extends Puzzle3D
+extends Puzzle
 
 @export var grid_size:Vector2i = Vector2i(5, 5)
 @onready var points: Node3D = $Points
 @export var i_area:InteractArea
-@export var cam:Camera3D
 
 var grid:Array[Array] #[grid_position, is_check_point, route_direction, is_head, is_traveled, p_line, start, goal]
 const p_pos = 0
@@ -25,18 +24,19 @@ var fuel:int = 2:
 var hover_cell
 var start_point
 var goal_point
+var first:bool = true
+var cell_layer = 1<<8
 
 func _ready() -> void:
+	super()
 	$Boardholder.visible = false
+	create_puzzle.connect(puzzle_gen)
+	open_puzzle.connect(func(): visible = true)
 	#await puzzle_gen(true)
-	i_area.interacted.connect(func():
-		GState.solve()
-		cam.make_current()
-		)
-	Watcher.game_state_changed.connect(func(a):
-		if a != GState.gstate_enum.SOLVING:
-			Watcher.player_cam.make_current()
-		)
+	#Watcher.game_state_changed.connect(func(a):
+		#if a != GState.gstate_enum.SOLVING:
+			#Watcher.player_cam.make_current()
+		#)
 
 func grid_gen():
 	grid.clear()
@@ -63,6 +63,7 @@ func grid_gen():
 	goal_point[p_goal] = true
 
 func grid3D_gen():
+	print("3D called")
 	var cell_size = $Boardholder.mesh.size.x/grid_size.x
 	for i in grid:
 		var j = load("res://Scenes/grid_cell.tscn").instantiate()
@@ -79,8 +80,25 @@ func _input(event: InputEvent) -> void:
 			hover_cell.get_child(4).visible = false
 		hover_cell = get_cell()
 		hover_cell.get_child(4).visible = true
-	if GState.is_solving() && !can_draw && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && hit_cell() && cell_to_point(get_cell())[p_checkpoint] && !cell_to_point(get_cell())[p_traveled]: cell_to_point(get_cell())[p_route].rotate(false); grid_ui_update()
-	if GState.is_solving() && event is InputEventMouseButton && (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT && event.is_pressed() && hit_cell() && cell_to_point(get_cell())[p_head]:
+	if (GState.is_solving() &&
+	!can_draw &&
+	event is InputEventMouseButton &&
+	event.button_index == MOUSE_BUTTON_LEFT &&
+	event.is_pressed() &&
+	hit_cell()):
+		var cell = get_cell()
+		var point = cell_to_point(cell)
+		if !point.is_empty() && point[p_checkpoint] && !point[p_traveled]:
+			point[p_route].rotate(false)
+			grid_ui_update()
+	if (GState.is_solving() &&
+	event is InputEventMouseButton &&
+	(event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT &&
+	event.is_pressed() &&
+	hit_cell()):
+		var cell = get_cell()
+		var point = cell_to_point(cell)
+		if point.is_empty() || !point[p_head]: return 
 		can_draw = true
 		draw_queue.append(get_cell())
 		#print("Can draw now.")
@@ -124,7 +142,9 @@ func _input(event: InputEvent) -> void:
 		#i.position = Vector3(point[p_pos].y, point[p_pos].x, 0)*cell_size
 
 func cell_to_point(cell) -> Array:
-	return grid[points.get_children().find(cell)]
+	var _int = points.get_children().find(cell)
+	if _int == -1: return []
+	return grid[_int]
 
 func point_to_cell(point) -> Node3D:
 	return points.get_children()[grid.find(point)]
@@ -158,8 +178,8 @@ func hit_cell() -> bool:
 	var temp_cam := get_viewport().get_camera_3d()
 	var from = temp_cam.project_ray_origin(mouse_pos)
 	var ray_dir = temp_cam.project_ray_normal(mouse_pos)
-	var to = from + ray_dir*(temp_cam.far if temp_cam.far > 0 else 100000.0)
-	var query = PhysicsRayQueryParameters3D.create(from, to, 1<<6)
+	var to = from + ray_dir*(temp_cam.far if temp_cam.far > 0 else 10000.0)
+	var query = PhysicsRayQueryParameters3D.create(from, to, cell_layer)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	var col = get_world_3d().direct_space_state.intersect_ray(query)
@@ -171,8 +191,8 @@ func get_cell() -> Node3D:
 	var temp_cam := get_viewport().get_camera_3d()
 	var from = temp_cam.project_ray_origin(mouse_pos)
 	var ray_dir = temp_cam.project_ray_normal(mouse_pos)
-	var to = from + ray_dir*(temp_cam.far if temp_cam.far > 0 else 100000.0)
-	var query = PhysicsRayQueryParameters3D.create(from, to, 1<<6)
+	var to = from + ray_dir*(temp_cam.far if temp_cam.far > 0 else 10000.0)
+	var query = PhysicsRayQueryParameters3D.create(from, to, cell_layer)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
 	var col = get_world_3d().direct_space_state.intersect_ray(query)
@@ -190,13 +210,12 @@ func project_mouse() -> void:
 	# Build ray
 	var from := cam2.project_ray_origin(mouse_pos)
 	var dir2  := cam2.project_ray_normal(mouse_pos)
-	var to   := from + dir2 * (cam.far if cam.far > 0.0 else 100000.0)
+	var to   := from + dir2 * (cam2.far if cam2.far > 0.0 else 100000.0)
 
 	# Raycast
-	var query := PhysicsRayQueryParameters3D.create(from, to)
+	var query := PhysicsRayQueryParameters3D.create(from, to, cell_layer)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
-	query.collision_mask = 1<<6
 	
 	var hit2 = get_world_3d().direct_space_state.intersect_ray(query)
 	
@@ -301,7 +320,8 @@ func grid_randomize():
 		if i[p_checkpoint]:
 			i[p_route].rotate(true, [0, 1, 2, 3].pick_random())
 
-func puzzle_gen(first:bool = false):
+func puzzle_gen():
+	print("Yeet")
 	fuel = 2
 	start_point = null
 	goal_point = null
@@ -310,8 +330,20 @@ func puzzle_gen(first:bool = false):
 	grid_revalid()
 	generate_solution(start_point, [], [], fuel)
 	grid_randomize()
-	if first: grid3D_gen()
+	if first:
+		grid3D_gen()
+		first = false
 	grid_ui_update()
 
 func grid_revalid():
 	if grid.map(func(x): return x[p_head]).is_empty(): start_point[p_head] = true
+
+func untravel(cell):
+	var point = cell_to_point(cell)
+	point[p_head] = false
+	point[p_line] = null
+	point[p_traveled] = false
+	
+
+func point_init(point:Array, pos:Vector2):
+	pass

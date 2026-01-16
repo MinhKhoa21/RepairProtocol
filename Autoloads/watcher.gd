@@ -10,6 +10,8 @@ signal hand_swapped(_item:Item)
 signal cargo_assigned
 signal scan_hit(part_name: String)
 signal scan_cleared()
+signal ship_changed
+signal repaired(rp)
 
 
 var cargo:Array:
@@ -22,15 +24,30 @@ var carry:Node3D
 var player:Player
 var player_ani_remaining_dur:float
 var tool_nodes:Array[Node] = []
-var current_ship:Vehicle
 var level:Level
 var player_cam:Camera3D
 var input_hud:Array[Control]
 var scanned_parts: Array[String] = []
 var queued_scene:StringName
 var garage:Node3D
+var player_hud
+var current_ship_file:ShipFile:
+	set(val):
+		current_ship_file = val
+		if val:
+			load_hologram(val.ship_hologram)
+			load_ship(val.ship_path)
+var current_ship:Vehicle:
+	set(val):
+		current_ship = val
+		ship_changed.emit()
+var current_hologram:ShipHologram
 var current_root:String
-
+var warning_color:Dictionary = {
+	"good": Color(0, 1, 0, 1),
+	"not_good": Color(1, 1, 0, 1),
+	"bad": Color(1, 0, 0, 1)
+}
 
 func _ready() -> void:
 	GState.play()
@@ -42,6 +59,7 @@ func _ready() -> void:
 			right_hand.add_child(item_node)
 			tool_nodes.append(item_node)
 		)
+	repaired.connect(func(x): hologram_update())
 
 func _process(delta: float) -> void:
 	game_state_watcher = GState.game_state
@@ -110,3 +128,19 @@ func load_ship(path:StringName):
 	current_ship = ship
 	#garage.get_node("ShipNode").add_child(ship)
 	garage.perform_landing()
+
+func load_hologram(path:StringName):
+	var hol = load(path).instantiate()
+	current_hologram = hol
+
+func hologram_update():
+	for i:RepairPoint in current_ship.repair_point.filter(func(x): return x.scanned):
+		for j:MeshInstance3D in i.highlight_meshes:
+			current_hologram.set_override_color(j, (i as RepairPoint).severity)
+			var ci_hud:ComponentInspectHud = player_hud.get_children().filter(func(x): return x is ComponentInspectHud)[0]
+			ci_hud.add_item(j.mesh, i.severity, j.name)
+
+func remove_ship():
+	current_ship = null
+	current_hologram = null
+	current_ship_file = null

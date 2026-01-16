@@ -21,12 +21,21 @@ func _ready() -> void:
 			
 	#perform_landing()
 
+func yeet():
+	print("yeeet")
+	#var tween = create_tween()
+	#tween.tween_property(ship_root, "global_position", ship_spawn_point, 0.3)
+	#await tween.finished
+	#tween.kill()
+	ship_root.get_child(0).queue_free()
+	Watcher.remove_ship()
+
 func perform_landing():
 	ship_root.global_transform = ship_spawn_point
 	ship_root.scale = Vector3(1, 1, 1)
 	for i in ship_root.get_children(): i.queue_free()
 	ship_root.add_child(Watcher.current_ship)
-	ship_root.scale *= Watcher.current_ship.level_scale
+	ship_root.scale *= Watcher.current_ship_file.level_scale
 	Watcher.current_ship.rotate_y(deg_to_rad(180))
 	
 	var ship := Watcher.current_ship
@@ -41,7 +50,6 @@ func perform_landing():
 	play_push_anims()
 	
 	var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	
 	tween.tween_property(ship_root, "global_position", final_pos, landing_duration)
 	tween.parallel().tween_property(ship_root, "global_rotation", target_rot, landing_duration)
 	
@@ -55,7 +63,7 @@ func perform_landing():
 	
 	tween.chain().tween_callback(reset_anims)
 	tween.finished.connect(func():
-		tween.kill()
+		#tween.kill()
 		if ship.ship_name.to_lower() == "manticore":
 			ship.get_children().filter(func(x): return x is AnimationPlayer)[0].play("Landing")
 		)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://5bybde5xq8dg"]
+[gd_scene load_steps=54 format=3 uid="uid://5bybde5xq8dg"]
 
 [ext_resource type="Script" uid="uid://b0c284d0x6hly" path="res://Character/Player/player.gd" id="1_8uuqx"]
 [ext_resource type="Script" uid="uid://d21cix2tkc7uj" path="res://Character/camera_control.gd" id="2_7fot2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cd8cfoifptibm" path="res://Character/Player/limbo_hsm.gd" id="9_psvgc"]
 [ext_resource type="Script" uid="uid://lj5gpwv8jvmw" path="res://Character/Player/States/ground_default.gd" id="10_gr1hu"]
 [ext_resource type="PackedScene" uid="uid://c33kbg5i8lyn3" path="res://Autoloads/command_prompt.tscn" id="11_f4vm8"]
+[ext_resource type="PackedScene" uid="uid://mopx6t1nha2p" path="res://Scenes/component_inspect.tscn" id="11_o80jl"]
 [ext_resource type="PackedScene" uid="uid://c3fuh5bjckp7m" path="res://Scenes/ware.tscn" id="11_tclw8"]
 [ext_resource type="Script" uid="uid://bd6tqx4sfrb3x" path="res://Character/Player/States/air_default.gd" id="12_4lde1"]
 [ext_resource type="PackedScene" uid="uid://bbddso8w0pbnd" path="res://Character/Employee/repair_employee_ver_3.tscn" id="12_psvgc"]
@@ -178,12 +179,13 @@ node_connections = [&"output", 0, &"InteractShot", &"Blend2", 0, &"Hand", &"Blen
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_wrpkx"]
 
-[node name="Player_Controller" type="CharacterBody3D" node_paths=PackedStringArray("fps_cam", "look_ray", "pointer_label", "camera_controller_anchor", "ani")]
+[node name="Player_Controller" type="CharacterBody3D" node_paths=PackedStringArray("fps_cam", "look_ray", "scan_ray", "pointer_label", "camera_controller_anchor", "ani")]
 collision_layer = 2
 script = ExtResource("1_8uuqx")
 inventory = SubResource("Resource_4lde1")
 fps_cam = NodePath("Neck/FPSCam")
 look_ray = NodePath("Neck/FPSCam/LookRay")
+scan_ray = NodePath("Neck/FPSCam/ScanRay")
 pointer_label = NodePath("Control/Label")
 camera_controller_anchor = NodePath("CameraControllerAnchor")
 ani = NodePath("RepairEmployeeVer3/AnimationPlayer")
@@ -214,7 +216,13 @@ transform = Transform3D(0.85314137, -0.5216798, 0, 0.5216798, 0.85314137, 0, 0, 
 
 [node name="LookRay" type="RayCast3D" parent="Neck/FPSCam"]
 target_position = Vector3(0, 0, -6.38)
-collision_mask = 20
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ScanRay" type="RayCast3D" parent="Neck/FPSCam"]
+target_position = Vector3(0, 0, -6.38)
+collision_mask = 128
 collide_with_areas = true
 collide_with_bodies = false
 
@@ -297,6 +305,11 @@ grow_vertical = 1
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="ComponentInspect" parent="Control" instance=ExtResource("11_o80jl")]
+layout_mode = 1
+offset_left = -400.0
+offset_bottom = 200.0
+
 [node name="Ware" parent="Control" instance=ExtResource("11_tclw8")]
 layout_mode = 1
 
@@ -374,13 +387,13 @@ bones/32/rotation = Quaternion(0.16337746, -0.002753969, 0.016628273, 0.9864197)
 bones/33/rotation = Quaternion(-0.0055684377, -5.722056e-05, -0.043963537, 0.9990177)
 bones/47/position = Vector3(-0.0154813435, 1.3578745, 0.03759396)
 bones/48/position = Vector3(-0.13621846, 1.3252689, -0.022587648)
-bones/48/rotation = Quaternion(0.2169289, 0.19795127, 0.8617418, 0.41371274)
+bones/48/rotation = Quaternion(0.21581197, 0.19500393, 0.86276567, 0.4135628)
 bones/48/scale = Vector3(1.0194939, 0.9621233, 1.019494)
 bones/49/rotation = Quaternion(2.2432948e-07, 0.08681514, -1.134318e-06, 0.9962245)
-bones/50/rotation = Quaternion(0.54875207, 0.085646294, -0.057081573, 0.829625)
-bones/50/scale = Vector3(1.0020667, 0.94853866, 1.0529904)
+bones/50/rotation = Quaternion(0.5548699, 0.08543358, -0.057880532, 0.8255121)
+bones/50/scale = Vector3(1.0020863, 0.9478966, 1.0536501)
 bones/51/rotation = Quaternion(4.053148e-07, -0.11723999, -2.7912142e-07, 0.9931036)
-bones/52/rotation = Quaternion(0.27672043, -0.11534742, -0.058854163, 0.9521854)
+bones/52/rotation = Quaternion(0.27432233, -0.11518487, -0.05784671, 0.95296043)
 bones/52/scale = Vector3(0.9808694, 1.0250481, 0.9963587)
 bones/60/position = Vector3(0.0037745482, 0.08197674, -0.0063315625)
 bones/64/position = Vector3(-0.007372652, 0.07860239, -0.016693043)
@@ -397,7 +410,7 @@ target_node = NodePath("../../../../Neck/FPSCam/ArmMarker")
 min_distance = 0.2
 
 [node name="HandBone" type="BoneAttachment3D" parent="RepairEmployeeVer3/rig_001/Skeleton3D" index="3"]
-transform = Transform3D(-0.37243056, 0.47834253, 0.8239679, 0.87022454, 0.50801295, 0.13480893, -0.31472036, 0.746343, -0.52616626, -0.29234698, 1.2128999, 0.3006529)
+transform = Transform3D(-0.37245277, 0.47923928, 0.82360804, 0.8697635, 0.50891495, 0.13363218, -0.3165276, 0.74374837, -0.5284152, -0.29203537, 1.2133483, 0.29889634)
 bone_name = "DEF-hand.R"
 bone_idx = 52
 

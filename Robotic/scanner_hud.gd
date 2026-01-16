@@ -35,7 +35,7 @@ func toggle_scan(is_scanning: bool):
 		
 		set_param(0.0, "scanning_progress")
 		tween.tween_method(set_param.bind("visibility"), 0.0, 1.0, 0.2)
-		tween.parallel().tween_method(set_param.bind("scanning_progress"), 0.0, 1.0, 1.2)
+		tween.parallel().tween_method(set_param.bind("scanning_progress"), 0.0, 1.0, 2)
 		
 	else:
 		tween.tween_method(set_param.bind("visibility"), 1.0, 0.0, 0.2)
@@ -54,3 +54,13 @@ func get_param(param_name):
 	if screen_container and screen_container.material:
 		return screen_container.material.get_shader_parameter(param_name)
 	return 0.0
+
+func scan_init():
+	var tween = create_tween()
+	if hud_wrapper:
+		hud_wrapper.visible = true
+		
+	set_param(0.0, "scanning_progress")
+	tween.tween_method(set_param.bind("visibility"), 0.0, 1.0, 0.2)
+	tween.parallel().tween_method(set_param.bind("scanning_progress"), 0.0, 1.0, 2)
+	tween.finished.connect(tween.kill)

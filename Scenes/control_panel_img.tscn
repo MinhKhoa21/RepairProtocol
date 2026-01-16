@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://c22cpq2nu60rs"]
+
+[ext_resource type="Texture2D" uid="uid://bx3nub3mc7rfo" path="res://texture/SecondWallTexture.png" id="1_0hn0l"]
+
+[sub_resource type="World3D" id="World3D_0hn0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuvnp"]
+albedo_texture = ExtResource("1_0hn0l")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hov5j"]
+size = Vector2(2, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krhi4"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hgjxi"]
+size = Vector2(1.8, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui1io"]
+albedo_color = Color(0.427493, 0.42749307, 0.42749307, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4wj5s"]
+size = Vector2(0.05, 0.15)
+
+[node name="SubViewport" type="SubViewport"]
+world_3d = SubResource("World3D_0hn0l")
+handle_input_locally = false
+size = Vector2i(300, 400)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1.7423352)
+material_override = SubResource("StandardMaterial3D_fuvnp")
+mesh = SubResource("PlaneMesh_hov5j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, -0.8)
+material_override = SubResource("StandardMaterial3D_krhi4")
+mesh = SubResource("PlaneMesh_hgjxi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88167524, 0.00999999, 0)
+material_override = SubResource("StandardMaterial3D_ui1io")
+mesh = SubResource("PlaneMesh_4wj5s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, -0.5)
+material_override = SubResource("StandardMaterial3D_krhi4")
+mesh = SubResource("PlaneMesh_hgjxi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88167524, 0.00999999, 0)
+material_override = SubResource("StandardMaterial3D_ui1io")
+mesh = SubResource("PlaneMesh_4wj5s")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00999999, -0.19999999)
+material_override = SubResource("StandardMaterial3D_krhi4")
+mesh = SubResource("PlaneMesh_hgjxi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88167524, 0.00999999, 0)
+material_override = SubResource("StandardMaterial3D_ui1io")
+mesh = SubResource("PlaneMesh_4wj5s")
