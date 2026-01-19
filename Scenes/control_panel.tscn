@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://duljflehr7512"]
+[gd_scene load_steps=8 format=3 uid="uid://duljflehr7512"]
 
 [ext_resource type="Script" uid="uid://cf5lok1rodhdq" path="res://Scenes/control_panel.gd" id="1_84xqn"]
+[ext_resource type="Script" uid="uid://deys2t6hmie5v" path="res://Scripts/Resources/custom_control.gd" id="2_23m4l"]
 [ext_resource type="PackedScene" uid="uid://c22cpq2nu60rs" path="res://Scenes/control_panel_img.tscn" id="2_af86p"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_23m4l"]
@@ -32,8 +33,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_23m4l")
+metadata/_custom_type_script = "uid://deys2t6hmie5v"
 
 [node name="PanelContainer" type="PanelContainer" parent="ControlPanel"]
 layout_mode = 1

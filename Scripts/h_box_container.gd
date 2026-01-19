@@ -1,13 +1,20 @@
 extends HBoxContainer
 
-func _process(delta: float) -> void:
-	visible = GState.is_playing()
-	if visible: draw_hands()
+func _ready() -> void:
+	Watcher.game_state_changed.connect(func():
+		visible = GState.is_idling()
+		)
 
-func draw_hands():
-	for i in HotBar.hands:
-		var main_text_rect:TextureRect = (get_child(i).get_child(0) as TextureRect)
-		var selected_text_rect:TextureRect = get_child(i).get_child(1)
-		if HotBar.slots[i] == null || !HotBar.slots[i].item_texture: main_text_rect.texture = $None.get_texture()
-		else: main_text_rect.texture = HotBar.slots[i].item_texture
-		selected_text_rect.visible = i == HotBar.active_idx
+func add_slot():
+	var cell_size = Vector2(60, 60)
+	var slot:Control = Control.new()
+	slot.custom_minimum_size = cell_size
+	var c_panel:PanelContainer = PanelContainer.new()
+	c_panel.custom_minimum_size = cell_size
+	var item_txture:TextureRect = TextureRect.new()
+	item_txture.custom_minimum_size = cell_size
+	item_txture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	
+
+func set_slot(idx:int, item:Item):
+	pass

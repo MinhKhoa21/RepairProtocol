@@ -1,4 +1,5 @@
 extends Node3D
+class_name HologramProjector
 
 #@export var hologram_shader:ShaderMaterial
 @export var stand_look_point:Array[Node3D]
@@ -14,9 +15,10 @@ var ship_mesh
 var ui:Control
 
 func _ready() -> void:
+	Watcher.hp = self
 	hologram_cache()
 	request_ui.close.pressed.connect(func():
-		GState.play()
+		GState.idle()
 		)
 	interact_area.interacted.connect(func():
 		var player = Watcher.player
@@ -32,21 +34,18 @@ func _ready() -> void:
 		if !Watcher.current_ship: show_ui()
 		else: hologram.visible = true
 		)
-	Watcher.game_state_changed.connect(func(a):
-		if a != GState.gstate_enum.CHECKING:
+	Watcher.game_state_changed.connect(func():
+		if !GState.is_checking():
 			if hologram.visible: hologram.rotation = Vector3.ZERO
 			hide_ui()
 			Watcher.player.cam_controller.reset_camera_mode()
 		)
 	Watcher.ship_changed.connect(func():
 		if !Watcher.current_ship:
-			request.visible = true
-			hologram.visible = false
+			show_hologram(false)
 		else:
-			request.visible = false
-			hologram.visible = true
-			hologram.add_child(Watcher.current_hologram)
-			hologram.scale*=Watcher.current_ship_file.hologram_scale
+			show_hologram(true)
+			assign_hologram(Watcher.current_hologram)
 		)
 
 #func _physics_process(delta: float) -> void:
@@ -112,3 +111,29 @@ func hide_ui():
 	request_ui.scale = Vector2(1, 1)
 	request_ui.position = Vector2.ZERO
 	sprite_3d.visible = true
+
+func show_hologram(_bool:bool):
+	if _bool:
+		view_request(false)
+		hologram.visible = true
+		request.visible = false
+	else: #shows request
+		hologram.visible = false
+		request.visible = true
+
+func view_request(_bool:bool):
+	if _bool:
+		show_ui()
+	else:
+		hide_ui()
+
+func assign_hologram(ship_hologram:Node3D):
+	for i in hologram.get_children(): i.queue_free()
+	
+	if ship_hologram:
+		hologram.add_child(ship_hologram)
+		hologram.scale = Vector3(1, 1, 1) * Watcher.current_ship_file.hologram_scale
+	
+
+#func queue_draw(cell):
+	#pass

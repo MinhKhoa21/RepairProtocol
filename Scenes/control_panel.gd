@@ -7,7 +7,7 @@ extends Puzzle
 @onready var coolant_label: Label = $ControlPanel/VBoxContainer/HBoxContainer2/Label2
 @onready var gear_label: Label = $ControlPanel/VBoxContainer/HBoxContainer3/Label2
 
-@onready var control_panel: Control = $ControlPanel
+@onready var control_panel: CControl = $ControlPanel
 var goal_energy_val:float = 100
 var goal_coolant_val:float = 100
 var goal_gear_val:float = 100
@@ -22,8 +22,8 @@ func _ready() -> void:
 			check_win()
 			)
 	create_puzzle.connect(puzzle_gen)
-	open_puzzle.connect(control_panel.show)
-	close_puzzle.connect(control_panel.hide)
+	open_puzzle.connect(control_panel.ease_show.bind(1, 0.4))
+	close_puzzle.connect(control_panel.ease_hide.bind(3, 0.4))
 
 func puzzle_gen():
 	energy_slider.value = snappedf(randf_range(0, 100), 5)

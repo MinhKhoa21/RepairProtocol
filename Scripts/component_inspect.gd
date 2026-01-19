@@ -26,8 +26,8 @@ func _ready() -> void:
 		if !item.is_empty():
 			set_severity(item, x.severity)
 		)
-	Watcher.game_state_changed.connect(func(a):
-		if a != GState.gstate_enum.PLAYING:
+	Watcher.game_state_changed.connect(func():
+		if !GState.is_idling():
 			hide()
 		else:
 			show()

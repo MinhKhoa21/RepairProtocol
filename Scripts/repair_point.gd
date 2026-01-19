@@ -23,8 +23,8 @@ func _ready() -> void:
 		tween.kill()
 		player.cam_controller.set_cutscene_mode(cam)
 		)
-	Watcher.game_state_changed.connect(func(a):
-		if a != GState.gstate_enum.SOLVING: Watcher.player.cam_controller.reset_camera_mode()
+	Watcher.game_state_changed.connect(func():
+		if !GState.is_solving() && Watcher.player: Watcher.player.cam_controller.reset_camera_mode()
 		)
 
 func set_damaged_and_unscanned():
@@ -37,7 +37,7 @@ func repair():
 	if severity <= 0:
 		damaged = false
 		ColKit.set_interact(self, false)
-		GState.play()
+		GState.idle()
 	else:
 		puzzle.create_puzzle.emit()
 	Watcher.repaired.emit(self)

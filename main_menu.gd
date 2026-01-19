@@ -3,16 +3,18 @@ extends Level
 @onready var start: Button = $Control/PanelContainer/VBoxContainer/Start
 @onready var settings: Button = $Control/PanelContainer/VBoxContainer/Settings
 @onready var exit: Button = $Control/PanelContainer/VBoxContainer/Exit
+@onready var menu: Control = $Control
 var opacity:float = 0:
 	set = set_opacity
 func set_opacity(a):
 	$Camera3D/MeshInstance3D.material_override.albedo_color += Color(0, 0, 0, a)
 
 func _ready() -> void:
-	Watcher.current_root = "main_menu"
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	Watcher.current_root = Watcher.root_enum.MAIN_MENU
 	$Control.visible = true
 	opacity = 0
-	GState.pause()
+	GState.none()
 	var cam_pan = func():
 		var _tween:Tween = create_tween()
 		var cam:Node3D = $Camera3D
@@ -33,4 +35,9 @@ func _ready() -> void:
 		#await get_tree().create_timer(1).timeout
 		Watcher.change_scene("res://Level/level.tscn")
 		)
+	Watcher.game_state_changed.connect(func():
+		if !GState.is_none(): menu.hide()
+		else: menu.show()
+		)
+	settings.pressed.connect(GState.settings)
 	exit.pressed.connect(get_tree().quit)

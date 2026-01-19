@@ -24,7 +24,7 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	Inventory.inv_init()
-	Inventory.add_item(Tool.new(ItemNames.wrench))
+	#Inventory.add_item(Tool.new(ItemNames.wrench))
 	#print(Inventory.slots.map(func(x): return x.item_name))
 
 func _process(delta: float) -> void:

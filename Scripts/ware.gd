@@ -4,8 +4,8 @@ extends Control
 
 func _ready() -> void:
 	for i in i_con.get_children(): i.queue_free()
-	Watcher.game_state_changed.connect(func(a):
-		if a == GState.gstate_enum.WARE:
+	Watcher.game_state_changed.connect(func():
+		if GState.is_ware():
 			show()
 		else: hide()
 		)

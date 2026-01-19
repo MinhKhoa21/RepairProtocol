@@ -32,6 +32,7 @@ volumetric_fog_detail_spread = 1.41421
 volumetric_fog_ambient_inject = 0.37
 
 [node name="MainMenu" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_7vrkn")
 
 [node name="GroundForRepairProtocol" parent="." instance=ExtResource("2_fu7sn")]

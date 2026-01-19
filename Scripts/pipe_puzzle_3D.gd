@@ -2,7 +2,7 @@ extends Puzzle
 
 @export var grid_size:Vector2i = Vector2i(5, 5)
 @onready var points: Node3D = $Points
-@export var i_area:InteractArea
+#@export var i_area:InteractArea
 
 var grid:Array[Array] #[grid_position, is_check_point, route_direction, is_head, is_traveled, p_line, start, goal]
 const p_pos = 0
@@ -65,6 +65,7 @@ func grid_gen():
 func grid3D_gen():
 	print("3D called")
 	var cell_size = $Boardholder.mesh.size.x/grid_size.x
+	for i in points.get_children(): i.queue_free()
 	for i in grid:
 		var j = load("res://Scenes/grid_cell.tscn").instantiate()
 		points.add_child(j)
@@ -102,7 +103,11 @@ func _input(event: InputEvent) -> void:
 		can_draw = true
 		draw_queue.append(get_cell())
 		#print("Can draw now.")
-	if GState.is_solving() && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && hit_cell():
+	if (GState.is_solving() &&
+	event is InputEventMouseButton &&
+	event.button_index == MOUSE_BUTTON_RIGHT &&
+	event.is_pressed() &&
+	hit_cell()):
 		var cell = get_cell()
 		if cell_to_point(cell)[p_head]:
 			var point = cell_to_point(cell)
@@ -112,7 +117,10 @@ func _input(event: InputEvent) -> void:
 				point[p_traveled] = false
 				point[p_line] = null
 			
-	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.is_released():
+	if (event is InputEventMouseButton &&
+	event.button_index == MOUSE_BUTTON_LEFT &&
+	event.is_released() &&
+	can_draw):
 		can_draw = false
 		while !draw_queue.is_empty():
 			var cell = draw_queue.pop_back()
@@ -322,6 +330,7 @@ func grid_randomize():
 
 func puzzle_gen():
 	print("Yeet")
+	can_draw = false
 	fuel = 2
 	start_point = null
 	goal_point = null

@@ -28,7 +28,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if override_target != null: return
 	
-	if !GState.is_playing() and !GState.is_inspecting(): return
+	if !(GState.is_idling() || GState.is_inspecting()): return
 	
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

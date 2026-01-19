@@ -11,10 +11,3 @@ class_name Item
 
 @export var manifest_path:StringName = ""
 @export var one_shot_name:StringName = ""
-
-func _init(_item_name:StringName = "", _stackable:bool = false, _max_stack:int = 1, _quantity:int = 1) -> void:
-	item_name = _item_name
-	stackable = _stackable
-	if stackable:
-		max_stack = _max_stack
-		quantity = _quantity

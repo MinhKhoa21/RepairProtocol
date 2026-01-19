@@ -12,7 +12,7 @@ signal create_puzzle
 
 func _ready():
 	open_puzzle.connect(GState.solve)
-	Watcher.game_state_changed.connect(func(a):
-		if a != GState.gstate_enum.SOLVING:
+	Watcher.game_state_changed.connect(func():
+		if !GState.is_solving():
 			close_puzzle.emit()
 		)

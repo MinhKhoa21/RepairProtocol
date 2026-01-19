@@ -10,9 +10,10 @@ var ship_spawn_point:Transform3D
 
 func _ready() -> void:
 	Watcher.garage = self
-	Watcher.current_root = "garage"
+	Watcher.current_root = Watcher.root_enum.GARAGE
 	ship_spawn_point = ship_root.global_transform
 	GState.play()
+	GState.idle()
 	var found = destination_point.find_children("*", "GPUParticles3D", true, false)
 	for p in found:
 		if p.name.to_lower().contains("smoke"):

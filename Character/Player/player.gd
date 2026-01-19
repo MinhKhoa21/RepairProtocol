@@ -41,8 +41,8 @@ func _ready() -> void:
 	(limbo_player as LimboHSM).blackboard.bind_var_to_property(BBNames.direction, self, "dir")
 	$AnimationTree.set("parameters/Movement/4/blend_position", -1)
 
-func _process(delta: float) -> void:
-	fps_cam.process_mode = ReferKit.flow(GState.game_state, [GState.gstate_enum.INSPECTING, GState.gstate_enum.PLAYING], [Node.PROCESS_MODE_DISABLED, Node.PROCESS_MODE_INHERIT])
+#func _process(delta: float) -> void:
+	#fps_cam.process_mode = ReferKit.flow(GState.game_state, [GState.gstate_enum.INSPECTING, GState.gstate_enum.PLAYING], [Node.PROCESS_MODE_DISABLED, Node.PROCESS_MODE_INHERIT])
 
 func _physics_process(delta: float) -> void:
 	#print(camera_controller_anchor.global_rotation)
@@ -67,7 +67,7 @@ func _input(event: InputEvent) -> void:
 				var ia:InteractArea = collider
 				if !ia.on_cd: ia.interacted.emit()
 
-	if event.is_action_pressed("mouse1") && GState.is_playing():
+	if event.is_action_pressed("mouse1") && GState.is_idling():
 		hit = true
 
 	if event.is_action_released("mouse1"):
@@ -82,8 +82,8 @@ func _input(event: InputEvent) -> void:
 		$AnimationTree.set("parameters/Movement/4/blend_position", -1)
 
 	if event.is_action_pressed("tab"):
-		if GState.is_playing(): GState.ware()
-		elif GState.is_ware(): GState.play()
+		if GState.is_idling(): GState.ware()
+		elif GState.is_ware(): GState.idle()
 
 	if event.is_action_pressed("toggle_scan"):
 		#ray_scan()
@@ -98,7 +98,7 @@ func _input(event: InputEvent) -> void:
 
 
 func movement_input():
-	if !GState.is_playing():
+	if !GState.is_idling():
 		input_dir = Vector2.ZERO
 		velocity = Vector3.ZERO
 		return
@@ -164,7 +164,7 @@ func reset_scanned_object():
 
 
 func display_pointer_safe() -> bool:
-	if look_ray.is_colliding() && GState.is_playing():
+	if look_ray.is_colliding() && GState.is_idling():
 		var collider = look_ray.get_collider()
 		
 		if collider is InteractArea:
@@ -193,8 +193,8 @@ func hand_snap_back():
 	arm_ik.start()
 
 func sequence_open_briefcase(target_tf: Transform3D, look_target_pos: Vector3, box_anim: AnimationPlayer, ui_marker: Node3D):
-	var prev_state = GState.game_state
-	GState.game_state = GState.gstate_enum.INSPECTING
+	var prev_state = GState.player_state
+	GState.inspect()
 	
 	arm_ik.stop()
 	
@@ -244,7 +244,7 @@ func sequence_open_briefcase(target_tf: Transform3D, look_target_pos: Vector3, b
 	else:
 		cam_controller.reset_camera_mode() 
 		arm_ik.start()
-		GState.play()
+		GState.idle()
 
 func quit_briefcase_sequence():
 	cam_controller.reset_camera_mode()
@@ -254,7 +254,7 @@ func quit_briefcase_sequence():
 	var ik_tween = create_tween()
 	ik_tween.tween_property(arm_ik, "interpolation", 1.0, 0.5)
 	
-	GState.game_state = GState.gstate_enum.PLAYING
+	GState.idle()
 
 func ray_scan():
 	var cam  = get_viewport().get_camera_3d()
