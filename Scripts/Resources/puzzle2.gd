@@ -16,3 +16,5 @@ func _ready():
 		if !GState.is_solving():
 			close_puzzle.emit()
 		)
+	complete
+	create_puzzle

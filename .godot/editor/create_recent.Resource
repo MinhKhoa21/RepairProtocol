@@ -1,3 +1,4 @@
+ViewportTexture
 World3D
 ShipFile
 AtlasTexture

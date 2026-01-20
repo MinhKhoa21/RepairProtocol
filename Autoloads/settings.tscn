@@ -13,6 +13,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y1qia")
+show_seconds_box = NodePath("PanelContainer/VBoxContainer/ShowSeconds/__")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -33,7 +34,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Show seconds on the timer"
 
-[node name="CheckButton" type="CheckButton" parent="PanelContainer/VBoxContainer/ShowSeconds"]
+[node name="__" type="CheckBox" parent="PanelContainer/VBoxContainer/ShowSeconds"]
 layout_mode = 2
 
 [node name="Back" type="Button" parent="PanelContainer"]

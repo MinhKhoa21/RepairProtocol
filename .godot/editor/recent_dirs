@@ -1,3 +1,4 @@
+res://Images
 res://Autoloads
 res://Scenes
 res://Worlds
@@ -11,7 +12,6 @@ res://Items
 res://MeshLibrary
 res://asset/doggo
 res://modelScene/shipParts
-res://Images
 res://ShaderMaterial
 res://model/Ship
 res://Character/Employee

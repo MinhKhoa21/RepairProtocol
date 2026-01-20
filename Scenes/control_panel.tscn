@@ -26,16 +26,16 @@ script = ExtResource("1_84xqn")
 texture = SubResource("ViewportTexture_23m4l")
 
 [node name="ControlPanel" type="Control" parent="."]
-custom_minimum_size = Vector2(600, 400)
+custom_minimum_size = Vector2(700, 400)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
+offset_left = -350.0
 offset_top = -200.0
-offset_right = 300.0
+offset_right = 350.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -55,14 +55,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ControlPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-alignment = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -76,6 +75,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_constants/center_grabber = 1
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_1pmly")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_1pmly")
 step = 5.0
 page = 5.0
 value = 30.0
@@ -89,7 +89,7 @@ text = "0"
 [node name="HBoxContainer2" type="HBoxContainer" parent="ControlPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-alignment = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -102,6 +102,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 1
 theme_override_constants/center_grabber = 1
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_84xqn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_84xqn")
 step = 5.0
 page = 5.0
 value = 30.0
@@ -115,7 +116,7 @@ text = "0"
 [node name="HBoxContainer3" type="HBoxContainer" parent="ControlPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-alignment = 2
+alignment = 1
 
 [node name="Label" type="Label" parent="ControlPanel/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -159,14 +160,17 @@ text = "Readings:"
 
 [node name="Energy" type="Label" parent="ControlPanel/Readings"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 text = "0"
 
 [node name="Coolant" type="Label" parent="ControlPanel/Readings"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 1, 1)
 text = "0"
 
 [node name="Gear" type="Label" parent="ControlPanel/Readings"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.50928617, 0.50928617, 0.50928617, 1)
 text = "0"
 
 [node name="SubViewport" parent="." instance=ExtResource("2_af86p")]

@@ -218,7 +218,7 @@ func project_mouse() -> void:
 	# Build ray
 	var from := cam2.project_ray_origin(mouse_pos)
 	var dir2  := cam2.project_ray_normal(mouse_pos)
-	var to   := from + dir2 * (cam2.far if cam2.far > 0.0 else 100000.0)
+	var to   := from + dir2 * (cam2.far if cam2.far > 0.0 else 10000.0)
 
 	# Raycast
 	var query := PhysicsRayQueryParameters3D.create(from, to, cell_layer)
@@ -353,6 +353,3 @@ func untravel(cell):
 	point[p_line] = null
 	point[p_traveled] = false
 	
-
-func point_init(point:Array, pos:Vector2):
-	pass

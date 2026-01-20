@@ -22,19 +22,19 @@ signal save_progress
 signal back
 
 var total_game_time:float = 11*3600
-var total_real_time:float = 5*60
+var total_real_time:float = 15*60
 var head_start_time:float = 6*3600
 var elapsed_real_time:float = 0
 var elapsed_game_time:float = 0
 @onready var time_scale = total_game_time/total_real_time
 
-const a_hour = 0
-const a_minute = 1
-const a_second = 2
-const hour_cap = 23
-const minute_cap = 59
-const second_cap = 59
-var ui_playtime:int = 1700
+#const a_hour = 0
+#const a_minute = 1
+#const a_second = 2
+#const hour_cap = 23
+#const minute_cap = 59
+#const second_cap = 59
+#var ui_playtime:int = 1700
 var cargo:Array:
 	set = set_cargo
 func set_cargo(a):
