@@ -24,7 +24,7 @@ func _ready() -> void:
 	deny.pressed.connect(func():
 		pend(true)
 		fetch_request()
-		await get_tree().create_timer(randf_range(1, 3)).timeout
+		await get_tree().create_timer(1.5).timeout
 		pend(false)
 		)
 	deny.pressed.emit()

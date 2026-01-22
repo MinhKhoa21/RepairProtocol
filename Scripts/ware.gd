@@ -11,8 +11,8 @@ func _ready() -> void:
 		)
 	#add_ui_item("res://Images/straight_pipe.png", "Wires")
 	#add_ui_item("res://Images/junction(activated).jpg", "Routers")
-	add_ui_item(preload("res://Images/pipe_l_img.tscn").instantiate().get_texture(), "Router L")
-	add_ui_item(preload("res://Images/pipe_i_img.tscn").instantiate().get_texture(), "Router I")
+	add_ui_item(preload("res://Images/EditorBaked/pipe_i_img.png"), "Router I")
+	add_ui_item(preload("res://Images/EditorBaked/pipe_l_img.png"), "Router L")
 
 func add_ui_item(png:Texture, iname:String):
 	var hbox := HBoxContainer.new()
@@ -20,6 +20,7 @@ func add_ui_item(png:Texture, iname:String):
 	var texture:TextureRect = TextureRect.new()
 	panel_con.custom_minimum_size = Vector2(100, 100)
 	texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	texture.texture = png
 	var label:Label = Label.new()
 	label.text = iname

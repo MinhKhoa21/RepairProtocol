@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	match GState.game_state:
 		GState.gstate_enum.PLAYING:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		GState.gstate_enum.INSPECTING:
+		GState.pstate_enum.INSPECTING:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		_:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

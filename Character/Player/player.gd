@@ -164,7 +164,7 @@ func reset_scanned_object():
 
 
 func display_pointer_safe() -> bool:
-	if look_ray.is_colliding() && GState.is_idling():
+	if look_ray.is_colliding() && GState.is_idling() && GState.is_playing():
 		var collider = look_ray.get_collider()
 		
 		if collider is InteractArea:

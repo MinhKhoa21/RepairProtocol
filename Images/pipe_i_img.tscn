@@ -1,12 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://14723moc65yx"]
+[gd_scene load_steps=24 format=3 uid="uid://14723moc65yx"]
 
 [ext_resource type="Texture2D" uid="uid://bx3nub3mc7rfo" path="res://texture/SecondWallTexture.png" id="1_xqq4n"]
 [ext_resource type="Texture2D" uid="uid://bv2vs8vqlsp34" path="res://model/Tool/AnotherSciFiDeck/SciFiDeck_ImphenziaPalette01-256-Gradient.png" id="2_ujkxn"]
 [ext_resource type="Texture2D" uid="uid://c2jnxaadih8al" path="res://shader/Univer2.png" id="3_1ippe"]
 [ext_resource type="Texture2D" uid="uid://clp8ag7ej3cy7" path="res://Images/powered.jpg" id="4_jw0pl"]
 [ext_resource type="Texture2D" uid="uid://6q0g4k578nkr" path="res://Images/unpowered.jpg" id="5_tgu7l"]
-
-[sub_resource type="World3D" id="World3D_b7d8b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_xb01k"]
 size = Vector2(0.3, 0.3)
@@ -71,11 +69,9 @@ size = Vector2(1.6, 1.6)
 size = Vector3(1.6, 1.6, 0.3)
 
 [node name="SubViewport" type="SubViewport"]
-world_3d = SubResource("World3D_b7d8b")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
-render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)

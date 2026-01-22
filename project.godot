@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Watcher="*res://Autoloads/watcher.gd"
 Settings="*res://Autoloads/settings.tscn"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/viewportbaker/plugin.cfg")
+
 [input]
 
 ui_left={

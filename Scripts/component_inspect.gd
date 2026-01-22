@@ -27,7 +27,7 @@ func _ready() -> void:
 			set_severity(item, x.severity)
 		)
 	Watcher.game_state_changed.connect(func():
-		if !GState.is_idling():
+		if !GState.is_idling() || !GState.is_playing():
 			hide()
 		else:
 			show()
