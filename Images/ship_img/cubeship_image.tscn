@@ -88,6 +88,6 @@ mesh = SubResource("ArrayMesh_fcebx")
 transform = Transform3D(0.98813206, 0.15057307, -0.030377269, -0.15295815, 0.982681, -0.1046038, 0.014100649, 0.10800882, 0.99404997, -0.24906707, 1.1170013, 0.18870401)
 current = true
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-light_energy = 3.0
-spot_range = 15.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_specular = 0.0
+sky_mode = 1

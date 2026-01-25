@@ -1,8 +1,9 @@
 TextureRect
-PanelContainer
 DirectionalLight3D
+Node3D
 Camera3D
 SubViewport
+PanelContainer
 SubViewportContainer
 CheckBox
 Timer
@@ -11,5 +12,3 @@ Button
 Label
 HBoxContainer
 VBoxContainer
-CControl
-Sprite3D

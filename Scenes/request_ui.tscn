@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://7dskk8fvgdqk" path="res://Scripts/request_ui.gd" id="1_0s0fw"]
 [ext_resource type="Script" uid="uid://csl0p2iyie0nw" path="res://Scripts/Resources/ship_file.gd" id="2_0v3ta"]
-[ext_resource type="PackedScene" uid="uid://bstdtik6llqw4" path="res://Images/ship_img/shipver_2_image.tscn" id="2_dliy0"]
 [ext_resource type="Resource" uid="uid://clnwxkpnjpok1" path="res://ShipFiles/paralax_v.tres" id="3_hb0u6"]
+[ext_resource type="Texture2D" uid="uid://ddwvvnjirv3ae" path="res://Images/EditorBaked/paralax_v_img.png" id="4_0v3ta"]
 
 [node name="RequestUi" type="Control"]
 clip_contents = true
@@ -76,16 +76,12 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 70
 text = "Paralax_MKII"
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/DemonstrateContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/DemonstrateContainer"]
 custom_minimum_size = Vector2(600, 500)
 layout_mode = 2
-size_flags_horizontal = 0
-stretch = true
-
-[node name="SubViewport" parent="Control/DemonstrateContainer/SubViewportContainer" instance=ExtResource("2_dliy0")]
-handle_input_locally = false
-size = Vector2i(600, 500)
-render_target_update_mode = 4
+texture = ExtResource("4_0v3ta")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="Control"]
 custom_minimum_size = Vector2(500, 200)

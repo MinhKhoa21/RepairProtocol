@@ -6,7 +6,7 @@
 script = ExtResource("1_71dhx")
 ship_path = &"res://model/Ship/shipver_2.tscn"
 ship_hologram = &"res://model/Ship/shipver_2_hologram.tscn"
-ship_img = &"res://Images/ship_img/shipver_2_image.tscn"
+ship_img = &"res://Images/EditorBaked/paralax_v_img.png"
 level_scale = 3.5
 hologram_scale = 0.1
 metadata/_custom_type_script = "uid://csl0p2iyie0nw"

@@ -18,6 +18,7 @@ func extract():
 	await tim.timeout
 	$AnimationPlayer.play("extract", -1, MathKit.stretch($AnimationPlayer.get_animation("extract").length, AniTimes.take_powercell_short_full-AniTimes.take_powercell_start)*AniTimes.take_powercell_speed)
 	#$AnimationPlayer.play("extract", -1, 0.33)
+	@warning_ignore("unused_parameter")
 	$AnimationPlayer.animation_changed.connect(func(a, b):
 		Watcher.player.hand_snap_back()
 		relocate()

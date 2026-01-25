@@ -9,7 +9,7 @@ extends Control
 @onready var shield: Label = $Control/StatusContainer/Shield
 @onready var type: Label = $Control/StatusContainer/Type
 @onready var ship_name: Label = $Control/DemonstrateContainer/ShipName
-@onready var ship_img_par: SubViewportContainer = $Control/DemonstrateContainer/SubViewportContainer
+@onready var ship_trect: TextureRect = $Control/DemonstrateContainer/TextureRect
 @onready var pending: Control = $Pending
 @onready var not_pending: Control = $Control
 
@@ -44,11 +44,9 @@ func pend(_bool:bool = true):
 		$PanelContainer4.show()
 
 func fetch_request():
-	for i in ship_img_par.get_children(): i.queue_free()
 	var rand_file:ShipFile = ship_files.pick_random()
-	var img = rand_file.ship_img
+	ship_trect.texture = load(rand_file.ship_img)
 	var ship = load(rand_file.ship_path).instantiate()
 	ship_name.text = ship.ship_name
-	ship_img_par.add_child(load(img).instantiate())
 	ship.queue_free()
 	selected_file = rand_file
