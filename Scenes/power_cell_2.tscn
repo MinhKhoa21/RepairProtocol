@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://bahcaxkfcu5ic"]
+
+[ext_resource type="Script" uid="uid://chn3ra40xgb7k" path="res://Scripts/power_cell_2.gd" id="1_gp8en"]
+[ext_resource type="PackedScene" uid="uid://df4p4t8qbhp8w" path="res://modelScene/shipParts/powercell.tscn" id="1_oqamy"]
+[ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="3_jnhvr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gp8en"]
+size = Vector3(0.46069336, 0.45751953, 1.3033447)
+
+[sub_resource type="Animation" id="Animation_jnhvr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gp8en"]
+resource_name = "extract"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 3.6050036, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.10153175, 1.0000005, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.5707964), Vector3(0, 0, -1.5707964)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3uruc"]
+_data = {
+&"RESET": SubResource("Animation_jnhvr"),
+&"extract": SubResource("Animation_gp8en")
+}
+
+[node name="PowerCell2" type="Node3D"]
+script = ExtResource("1_gp8en")
+
+[node name="InteractArea" parent="." instance=ExtResource("3_jnhvr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037841797, 0.12443793, -0.03277588)
+shape = SubResource("BoxShape3D_gp8en")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3uruc")
+}
+
+[node name="Moving" type="Node3D" parent="."]
+
+[node name="Powercell" parent="Moving" instance=ExtResource("1_oqamy")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.12168795, 0)
+
+[node name="Marker3D" type="Marker3D" parent="Moving"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00029605627, -0.73262095)
+gizmo_extents = 0.5

@@ -1,14 +1,15 @@
+res://Items
+res://Scenes
+res://Items/HeavyItems/PowerCell
 res://
 res://Images
 res://Autoloads
-res://Scenes
 res://Worlds
 res://ShipFiles
 res://Images/ship_img
 res://modelScene/garage
 res://Robotic
 res://ComputerOS/ui
-res://Items
 res://MeshLibrary
 res://asset/doggo
 res://modelScene/shipParts
@@ -19,4 +20,3 @@ D:/GDot/space-garage/RepairProtocol
 res://Character/Player/States
 res://Scripts
 res://Sprites
-res://Character

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=4 format=3 uid="uid://csldw6knq447a"]
+
+[ext_resource type="Script" uid="uid://bi0ui5624tyc4" path="res://Scripts/Resources/tool.gd" id="1_ia4rn"]
+[ext_resource type="Texture2D" uid="uid://ccxsa4k1v78np" path="res://Images/EditorBaked/screwdriver_img.png" id="1_r7lsc"]
+[ext_resource type="PackedScene" uid="uid://qyn0yilmd6ir" path="res://Scenes/screw_driver.tscn" id="2_65hfl"]
+
+[resource]
+script = ExtResource("1_ia4rn")
+packed_scene = ExtResource("2_65hfl")
+item_type = 1
+item_texture = ExtResource("1_r7lsc")
+item_name = &"screwdriver"
+one_shot_name = &"Screwdriver"
+metadata/_custom_type_script = "uid://bi0ui5624tyc4"

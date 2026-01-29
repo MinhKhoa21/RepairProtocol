@@ -15,6 +15,8 @@ func _ready() -> void:
 	ColKit.set_interact(self, false)
 	ColKit.set_scan(self, true)
 	interacted.connect(func():
+		if puzzle.puzzle_type == Puzzle.type.pipe && !HotBar.is_hammer(): return
+		if puzzle.puzzle_type == Puzzle.type.panel && !HotBar.is_screwdriver(): return
 		var player = Watcher.player
 		var tween = create_tween()
 		tween.tween_property(player, "global_position", Vector3(cam.global_position.x, player.global_position.y, cam.global_position.z), 0.5)

@@ -11,5 +11,5 @@ func _ready() -> void:
 		)
 	
 
-func _process(delta: float) -> void:
+func _process(_d: float) -> void:
 	time_label.text = Watcher.get_clock(Settings.show_seconds)

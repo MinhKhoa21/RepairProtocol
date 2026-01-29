@@ -5,6 +5,7 @@ enum gstate_enum {
 	PAUSED,
 	PLAYING,
 	SETTINGS,
+	OVER,
 	NONE
 }
 
@@ -24,6 +25,7 @@ static var player_state:int = 0
 
 static func is_paused() -> bool: return game_state == gstate_enum.PAUSED
 static func is_playing() -> bool: return game_state == gstate_enum.PLAYING
+static func is_over() -> bool: return game_state == gstate_enum.OVER
 static func is_none() -> bool: return game_state == gstate_enum.NONE
 static func is_settings() -> bool: return game_state == gstate_enum.SETTINGS
 static func is_idling() -> bool: return player_state == pstate_enum.IDLE
@@ -38,6 +40,7 @@ static func is_ware() -> bool: return player_state == pstate_enum.WARE
 
 static func pause(): game_state = gstate_enum.PAUSED
 static func play(): game_state = gstate_enum.PLAYING
+static func over(): game_state = gstate_enum.OVER
 static func none(): game_state = gstate_enum.NONE
 static func settings(): game_state = gstate_enum.SETTINGS
 static func idle(): player_state = pstate_enum.IDLE

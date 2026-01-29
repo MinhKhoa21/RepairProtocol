@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b6vgbf3bsg77x" path="res://Scripts/command_prompt.gd" id="1_jol3t"]
 
 [node name="CommandPrompt" type="Node"]
+process_mode = 3
 script = ExtResource("1_jol3t")
 
 [node name="Control" type="PanelContainer" parent="."]
@@ -15,7 +16,19 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Close" type="Button" parent="Control"]
+[node name="VBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Yeet" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Yeet"
+
+[node name="Close" type="Button" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_horizontal = 8

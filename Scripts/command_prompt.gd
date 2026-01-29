@@ -8,6 +8,9 @@ const cp = "cmd"
 @onready var rot_x: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/XEdit
 @onready var rot_y: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/YEdit
 @onready var rot_z: TextEdit = $Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/ZEdit
+@onready var close_btn: Button = $Control/VBoxContainer/Close
+@onready var yeet_btn: Button = $Control/VBoxContainer/Yeet
+@onready var back_btn: Button = $Control/Back
 
 
 var stored_keys:String = "":
@@ -49,7 +52,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey && event.is_pressed():
 		stored_keys = event.as_text().to_lower()
 	if event.is_action_pressed("ui_cancel") && GState.is_typing():
-		$Control/Close.pressed.emit()
+		close_btn.pressed.emit()
 
 func open_cmd():
 	select_node()
@@ -60,15 +63,19 @@ func open_cmd():
 func _ready() -> void:
 	$Control.visible = false
 	select_node()
-	$Control/Back.pressed.connect(func():
+	back_btn.pressed.connect(func():
 		select_node()
 		prompt_gen(back.pop_back())
 		)
-	$Control/Close.pressed.connect(func():
+	close_btn.pressed.connect(func():
 		$Control.visible = false
 		promt_wipe()
 		back.clear()
 		#<Change game state here>
+		)
+	yeet_btn.pressed.connect(func():
+		if Watcher.garage:
+			Watcher.garage.yeet()
 		)
 	$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer/Move.pressed.connect(move)
 	$Control/VBoxContainer2/Control/EditContainer/Node3DEdit/HBoxContainer2/Spin.pressed.connect(spin)

@@ -57,6 +57,9 @@ func close_door(_stm:StringName):
 	(ani_tree["parameters/Others/%s/playback"%[_stm]] as AnimationNodeStateMachinePlayback).travel("Close")
 	togge_fix_points()
 
+func close_all_doors():
+	for i in state_machine_name: close_door(i)
+
 func togge_fix_points():
 	ColKit.set_interact(front_left_repair, front_door_left_ia.flip)
 	ColKit.set_interact(front_right_repair, front_door_right_ia.flip)
@@ -73,4 +76,10 @@ func fix_point_init(rp:RepairPoint):
 	puz.create_puzzle.emit()
 	puzzles.append([rp, puz])
 	puz.complete.connect(rp.repair)
-	rp.interacted.connect(func(): puz.open_puzzle.emit())
+	rp.interacted.connect(func():
+		if puz.puzzle_type == Puzzle.type.pipe && !HotBar.is_hammer(): return
+		if puz.puzzle_type == Puzzle.type.panel && !HotBar.is_screwdriver(): return
+		puz.open_puzzle.emit())
+
+func engine_tweak(flt:float):
+	ani_tree.set("parameters/Engine/blend_position", clampf(flt, -1, 1))

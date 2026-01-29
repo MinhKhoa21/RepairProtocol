@@ -1,10 +1,9 @@
-[gd_scene load_steps=160 format=4 uid="uid://bixxetr8e5eed"]
+[gd_scene load_steps=159 format=4 uid="uid://bixxetr8e5eed"]
 
 [ext_resource type="Texture2D" uid="uid://bsfl6fb165lln" path="res://model/Ship/cybertexture.png" id="1_201up"]
 [ext_resource type="Script" uid="uid://bvavagpxeap7x" path="res://model/Ship/transport_ship.gd" id="1_kxc64"]
 [ext_resource type="Texture2D" uid="uid://n1eyw8x3yeex" path="res://model/level/GroundForRepairProtocol_Meteor Texture.png" id="3_kxc64"]
 [ext_resource type="PackedScene" uid="uid://d2wo1gs8a4kxt" path="res://Scenes/interact_area.tscn" id="5_enbsd"]
-[ext_resource type="PackedScene" uid="uid://ya3wrhlra5vn" path="res://Scenes/power_cell.tscn" id="5_guwuu"]
 [ext_resource type="Shader" uid="uid://r5hx55iu62s" path="res://model/Ship/ThrusterShader.gdshader" id="6_guwuu"]
 [ext_resource type="PackedScene" uid="uid://dg1tl7uy6bd4f" path="res://Scenes/pipe_puzzle_3d.tscn" id="7_c6mn2"]
 [ext_resource type="PackedScene" uid="uid://duljflehr7512" path="res://Scenes/control_panel.tscn" id="8_48n33"]
@@ -1896,9 +1895,6 @@ parameters/Others/RearDoorRight2/active = false
 parameters/Others/RearDoorRight2/internal_active = false
 parameters/Others/RearDoorRight2/request = 0
 parameters/Others/TimeScale/scale = 0.0
-
-[node name="PowerCell" parent="." instance=ExtResource("5_guwuu")]
-transform = Transform3D(-1.3987644e-08, 0, 0.32, 0, 0.32, 0, -0.32, 0, -1.3987644e-08, 1.2221793, 1.208712, 1.2128152)
 
 [node name="LandingPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028211176, 0.27220893)

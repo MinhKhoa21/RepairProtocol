@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbcesbkke0x6s"
-path.s3tc="res://.godot/imported/wrench_icon.png-d8a907c70be94a3118faa139630cb34c.s3tc.ctex"
+uid="uid://ccxsa4k1v78np"
+path="res://.godot/imported/screwdriver_img.png-9db65f1a4861e3baa7b7161042c9f594.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/wrench_icon.png"
-dest_files=["res://.godot/imported/wrench_icon.png-d8a907c70be94a3118faa139630cb34c.s3tc.ctex"]
+source_file="res://Images/EditorBaked/screwdriver_img.png"
+dest_files=["res://.godot/imported/screwdriver_img.png-9db65f1a4861e3baa7b7161042c9f594.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

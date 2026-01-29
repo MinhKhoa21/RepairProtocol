@@ -1,13 +1,11 @@
 @tool
 extends EditorScript
 
-const LEFT = 8
-const TOP = 4
-const RIGHT = 2
-const BOTTOM = 1
-
 func _run() -> void:
-	print(3/6)
+	print(get_one_selected_3D().transform)
 
 func get_one_selected() -> Node:
-	return get_editor_interface().get_selection().get_selected_nodes()[0]
+	return EditorInterface.get_selection().get_selected_nodes()[0]
+
+func get_one_selected_3D() -> Node3D:
+	return EditorInterface.get_selection().get_selected_nodes().filter(func(x): return x is Node3D)[0]

@@ -11,6 +11,7 @@ func set_opacity(a):
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	Watcher.reset_point()
 	Watcher.current_root = Watcher.root_enum.MAIN_MENU
 	$Control.visible = true
 	opacity = 0

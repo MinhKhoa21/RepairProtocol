@@ -86,6 +86,7 @@ func _input(event: InputEvent) -> void:
 	event is InputEventMouseButton &&
 	event.button_index == MOUSE_BUTTON_LEFT &&
 	event.is_pressed() &&
+	#HotBar.is_hammer() &&
 	hit_cell()):
 		var cell = get_cell()
 		var point = cell_to_point(cell)

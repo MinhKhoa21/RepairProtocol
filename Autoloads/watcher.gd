@@ -12,7 +12,7 @@ var game_state_watcher:int = 0:
 		game_state_watcher = val
 signal game_state_changed(_int:int)
 signal action_ended
-signal hand_swapped(_item:Item)
+signal hand_swapped(idx:int)
 signal cargo_assigned
 signal scan_hit(part_name: String)
 signal scan_cleared()
@@ -20,13 +20,17 @@ signal ship_changed
 signal repaired(rp)
 signal save_progress
 signal back
+signal hotbar_populated
 
 var total_game_time:float = 11*3600
-var total_real_time:float = 15*60
+var total_real_time:float = 60*2
 var head_start_time:float = 6*3600
 var elapsed_real_time:float = 0
 var elapsed_game_time:float = 0
 @onready var time_scale = total_game_time/total_real_time
+
+var ship_point:int = 0
+var repair_point:int = 0
 
 #const a_hour = 0
 #const a_minute = 1
@@ -75,22 +79,27 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	GState.play()
 	#Inventory.add_item(Tool.new(ItemNames.wrench))
-	hand_swapped.connect(func(item:Item):
+	hand_swapped.connect(func(_idx:int):
 		tool_cache()
+		var item = HotBar.slots[_idx]
+		if !item: return
 		if item is Tool:
 			var item_node:Node = (item as Tool).packed_scene.instantiate()
 			right_hand.add_child(item_node)
 			tool_nodes.append(item_node)
 		)
 	game_state_changed.connect(func():
-		get_tree().paused = GState.is_paused() || GState.is_settings()
+		get_tree().paused = GState.is_paused() || GState.is_settings() || GState.is_over()
 		if GState.is_idling() && GState.is_playing():
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		)
 		
-	repaired.connect(func(x): hologram_update())
+	repaired.connect(func(_a):
+		hologram_update()
+		repair_point += 1
+		)
 	back.connect(cancel)
 
 func _process(delta: float) -> void:
@@ -121,6 +130,7 @@ func _input(event: InputEvent) -> void:
 
 func tool_cache():
 	for i in tool_nodes:
+		right_hand.remove_child(i)
 		i.queue_free()
 		tool_nodes.erase(i)
 	#print("tool cache called", tool_nodes)
@@ -160,12 +170,13 @@ func hologram_update():
 		for j:MeshInstance3D in i.highlight_meshes:
 			current_hologram.set_override_color(j, (i as RepairPoint).severity)
 			var ci_hud:ComponentInspectHud = player_hud.get_children().filter(func(x): return x is ComponentInspectHud)[0]
-			ci_hud.add_item(j.mesh, i.severity, j.name)
+			get_tree().create_timer(2).timeout.connect(func(): ci_hud.add_item(j.mesh, i.severity, j.name), CONNECT_ONE_SHOT)
 
 func remove_ship():
 	current_ship = null
 	current_hologram = null
 	current_ship_file = null
+	ship_point += 1
 	var ci_hud : ComponentInspectHud = player_hud.get_children().filter(func(x): return x is ComponentInspectHud)[0]
 	ci_hud.item_cache()
 
@@ -174,6 +185,7 @@ func update_playtime(delta):
 	if elapsed_real_time < total_real_time:
 		elapsed_real_time += delta
 		elapsed_game_time = elapsed_real_time*time_scale + head_start_time
+	else: GState.over()
 
 func get_clock(includes_seconds:bool = true) -> String:
 	var hours = int(elapsed_game_time/3600) % 24
@@ -200,3 +212,7 @@ func cancel():
 
 func is_main_menu() -> bool: return current_root == root_enum.MAIN_MENU
 func is_garage() -> bool: return current_root == root_enum.GARAGE
+
+func reset_point():
+	ship_point = 0
+	repair_point = 0

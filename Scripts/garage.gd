@@ -23,11 +23,13 @@ func _ready() -> void:
 	#perform_landing()
 
 func yeet():
-	print("yeeet")
-	#var tween = create_tween()
-	#tween.tween_property(ship_root, "global_position", ship_spawn_point, 0.3)
-	#await tween.finished
-	#tween.kill()
+	toggle_thruster(true)
+	Watcher.current_ship.close_all_doors()
+	ship_root.global_position = destination_point.global_position
+	create_tween().tween_property(ship_root, "global_rotation", ship_root.global_rotation + Vector3(0, deg_to_rad(180), 0), 3).set_ease(Tween.EASE_OUT)
+	await create_tween().tween_property(ship_root, "global_position", ship_root.global_position + Vector3(0, 8, 0), 3).finished
+	await create_tween().tween_method(Watcher.current_ship.engine_tweak, 0, 1, 0.5).finished
+	await create_tween().tween_property(ship_root, "global_position", ship_spawn_point.origin, 2).set_ease(Tween.EASE_IN).finished
 	ship_root.get_child(0).queue_free()
 	Watcher.remove_ship()
 
@@ -93,5 +95,10 @@ func reset_anims():
 	if "thrusters" in ship_root.get_child(0):
 		for t in ship_root.get_child(0).thrusters:
 			t.visible = false
-			
 	print("Landed")
+
+func toggle_thruster(_bool:bool):
+	if !ship_root: return
+	if "thrusters" in ship_root.get_child(0):
+		for t in ship_root.get_child(0).thrusters:
+			t.visible = _bool

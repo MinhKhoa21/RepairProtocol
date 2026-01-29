@@ -3,10 +3,12 @@ class_name Item
 
 enum item_enum {
 	HAMMER,
+	SCREWDRIVER,
 	PIPE_L,
 	PIPE_I,
 }
 
+@export var item_type:item_enum = item_enum.HAMMER
 @export var item_texture:Texture2D
 @export var item_name:StringName
 @export var stackable:bool = false

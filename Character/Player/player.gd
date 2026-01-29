@@ -9,7 +9,7 @@ class_name Player
 @onready var arm_marker: Marker3D = $Neck/FPSCam/ArmMarker
 @onready var cutscene_eyes: Marker3D = $RepairEmployeeVer3/rig_001/Skeleton3D/EyesBone/CutSceneEyes
 @onready var scanner_hud = $ScannerHUD
-@onready var hud: Control = $Control
+@onready var hud: Control = $HUD
 
 @export var inventory:Storage
 @export var fps_cam: FPSCam
@@ -193,7 +193,7 @@ func hand_snap_back():
 	arm_ik.start()
 
 func sequence_open_briefcase(target_tf: Transform3D, look_target_pos: Vector3, box_anim: AnimationPlayer, ui_marker: Node3D):
-	var prev_state = GState.player_state
+	#var prev_state = GState.player_state
 	GState.inspect()
 	
 	arm_ik.stop()
@@ -214,7 +214,7 @@ func sequence_open_briefcase(target_tf: Transform3D, look_target_pos: Vector3, b
 	
 	var look_dir = (look_target_pos - ideal_eye_pos).normalized()
 	
-	var target_pitch = asin(look_dir.y) 
+	var target_pitch = asin(look_dir.y)
 	var target_yaw = atan2(-look_dir.x, -look_dir.z)
 	
 	var current_yaw = cam_controller.input_rotation.y
@@ -260,8 +260,8 @@ func ray_scan():
 	var cam  = get_viewport().get_camera_3d()
 	var point = get_viewport().get_visible_rect().get_center()
 	var from = cam.project_ray_origin(point)
-	var dir = cam.project_ray_normal(point)
-	var to = from + dir*(cam.far if cam.far > 0 else 100000)
+	var dir2 = cam.project_ray_normal(point)
+	var to = from + dir2*(cam.far if cam.far > 0 else 100000)
 	var layer = 1<<7
 	var query = PhysicsRayQueryParameters3D.create(from, to, layer)
 	query.collide_with_areas = true

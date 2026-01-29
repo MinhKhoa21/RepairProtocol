@@ -63,4 +63,4 @@ func scan_init():
 	set_param(0.0, "scanning_progress")
 	tween.tween_method(set_param.bind("visibility"), 0.0, 1.0, 0.2)
 	tween.parallel().tween_method(set_param.bind("scanning_progress"), 0.0, 1.0, 2)
-	tween.finished.connect(tween.kill)
+	#tween.finished.connect(func(): (Watcher.player_hud.get_children().filter(func(x): return x is ComponentInspectHud)[0] as ComponentInspectHud).update())
